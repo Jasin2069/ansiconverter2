@@ -1,0 +1,279 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<OBJECT type="text/site properties">
+	<param name="Window Styles" value="0x800025">
+</OBJECT>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="&quot;Block&quot; ASCII display in Windows">
+		<param name="Local" value="ANSI.SYS Codes2.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="ASCII to Unicode Mappings">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="CODEPAGE 1250           ;Eastern Europe - ANSI">
+			<param name="Local" value="ASCII to Unicode Mappings/bestfit1250.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="CODEPAGE 1251           ;Cyrillic - ANSI">
+			<param name="Local" value="ASCII to Unicode Mappings/bestfit1251.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="CODEPAGE 1252           ;Latin I - ANSI">
+			<param name="Local" value="ASCII to Unicode Mappings/bestfit1252.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="CODEPAGE 1253           ;Greek - ANSI">
+			<param name="Local" value="ASCII to Unicode Mappings/bestfit1253.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="CODEPAGE 1254           ;Turkish - ANSI">
+			<param name="Local" value="ASCII to Unicode Mappings/bestfit1254.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="CODEPAGE 1255           ;Hebrew - ANSI">
+			<param name="Local" value="ASCII to Unicode Mappings/bestfit1255.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="CODEPAGE 1256           ;Arabic - ANSI">
+			<param name="Local" value="ASCII to Unicode Mappings/bestfit1256.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="CODEPAGE 1257           ;Baltic - ANSI">
+			<param name="Local" value="ASCII to Unicode Mappings/bestfit1257.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="CODEPAGE 1258           ;Viet Nam - ANSI, OEM">
+			<param name="Local" value="ASCII to Unicode Mappings/bestfit1258.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="CODEPAGE 874            ;Thai - OEM ANSI">
+			<param name="Local" value="ASCII to Unicode Mappings/bestfit874.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="CODEPAGE 932            ; Japanese - ANSI, OEM">
+			<param name="Local" value="ASCII to Unicode Mappings/bestfit932.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="CODEPAGE 936            ; PRC GBK (XGB) - ANSI, OEM">
+			<param name="Local" value="ASCII to Unicode Mappings/bestfit936.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="CODEPAGE 949            ; Korean Extended Wansung - ANSI, OEM">
+			<param name="Local" value="ASCII to Unicode Mappings/bestfit949.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="CODEPAGE 950            ; Chinese (Taiwan, Hong Kong SAR) - ANSI, OEM">
+			<param name="Local" value="ASCII to Unicode Mappings/bestfit950.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="cp1250 to Unicode table
+">
+			<param name="Local" value="ASCII to Unicode Mappings/CP1250.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="cp1251 to Unicode table
+">
+			<param name="Local" value="ASCII to Unicode Mappings/CP1251.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="cp1252 to Unicode table
+">
+			<param name="Local" value="ASCII to Unicode Mappings/CP1252.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="cp1253 to Unicode table
+">
+			<param name="Local" value="ASCII to Unicode Mappings/CP1253.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="cp1254 to Unicode table
+">
+			<param name="Local" value="ASCII to Unicode Mappings/CP1254.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="cp1255 to Unicode table">
+			<param name="Local" value="ASCII to Unicode Mappings/CP1255.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="cp1256 to Unicode table
+">
+			<param name="Local" value="ASCII to Unicode Mappings/CP1256.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="cp1257 to Unicode table
+">
+			<param name="Local" value="ASCII to Unicode Mappings/CP1257.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="cp1258 to Unicode table">
+			<param name="Local" value="ASCII to Unicode Mappings/CP1258.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="cp437_DOSLatinUS to Unicode table">
+			<param name="Local" value="ASCII to Unicode Mappings/CP437.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="cp737_DOSGreek to Unicode table">
+			<param name="Local" value="ASCII to Unicode Mappings/CP737.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="cp775_DOSBaltRim to Unicode table
+">
+			<param name="Local" value="ASCII to Unicode Mappings/CP775.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="cp850_DOSLatin1 to Unicode table
+">
+			<param name="Local" value="ASCII to Unicode Mappings/CP850.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="cp852_DOSLatin2 to Unicode table
+">
+			<param name="Local" value="ASCII to Unicode Mappings/CP852.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="cp855_DOSCyrillic to Unicode table
+">
+			<param name="Local" value="ASCII to Unicode Mappings/CP855.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="cp857_DOSTurkish to Unicode table">
+			<param name="Local" value="ASCII to Unicode Mappings/CP857.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="cp860_DOSPortuguese to Unicode table">
+			<param name="Local" value="ASCII to Unicode Mappings/CP860.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="cp861_DOSIcelandic to Unicode table">
+			<param name="Local" value="ASCII to Unicode Mappings/CP861.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="cp862_DOSHebrew to Unicode table
+">
+			<param name="Local" value="ASCII to Unicode Mappings/CP862.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="cp863_DOSCanadaF to Unicode table">
+			<param name="Local" value="ASCII to Unicode Mappings/CP863.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="cp864_DOSArabic to Unicode table
+">
+			<param name="Local" value="ASCII to Unicode Mappings/CP864.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="cp865_DOSNordic to Unicode table
+">
+			<param name="Local" value="ASCII to Unicode Mappings/CP865.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="cp866_DOSCyrillicRussian to Unicode table">
+			<param name="Local" value="ASCII to Unicode Mappings/CP866.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="cp869_DOSGreek2 to Unicode table
+">
+			<param name="Local" value="ASCII to Unicode Mappings/CP869.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="cp874 to Unicode table
+">
+			<param name="Local" value="ASCII to Unicode Mappings/CP874(1).htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="cp874 to Unicode table">
+			<param name="Local" value="ASCII to Unicode Mappings/CP874.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="cp932 to Unicode table
+">
+			<param name="Local" value="ASCII to Unicode Mappings/CP932.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="cp936 to Unicode table
+">
+			<param name="Local" value="ASCII to Unicode Mappings/CP936.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="cp949 to Unicode table
+">
+			<param name="Local" value="ASCII to Unicode Mappings/CP949.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="cp950 to Unicode table">
+			<param name="Local" value="ASCII to Unicode Mappings/CP950.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Unicode Mappings Readme">
+			<param name="Local" value="ASCII to Unicode Mappings/readme.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Other Systems">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="ISO-IR-68 to Unicode
+">
+				<param name="Local" value="ASCII to Unicode Mappings/Other Systems/APL-ISO-IR-68.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="AtariST  to Unicode
+">
+				<param name="Local" value="ASCII to Unicode Mappings/Other Systems/ATARIST.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="IBM CP1006  to Unicode
+">
+				<param name="Local" value="ASCII to Unicode Mappings/Other Systems/CP1006.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="IBM EBCDIC CP424 (Hebrew) to Unicode table
+">
+				<param name="Local" value="ASCII to Unicode Mappings/Other Systems/CP424.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="cp856_Hebrew_PC to Unicode table
+">
+				<param name="Local" value="ASCII to Unicode Mappings/Other Systems/CP856.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="IBM PC memory-mapped video graphics to Unicode
+">
+				<param name="Local" value="ASCII to Unicode Mappings/Other Systems/IBMGRAPH.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="KOI8-R (RFC1489) to Unicode
+">
+				<param name="Local" value="ASCII to Unicode Mappings/Other Systems/KOI8-R.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="KOI8-U (RFC2319) to Unicode
+">
+				<param name="Local" value="ASCII to Unicode Mappings/Other Systems/KOI8-U.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="KZ-1048 to Unicode">
+				<param name="Local" value="ASCII to Unicode Mappings/Other Systems/KZ1048.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="ISOamsa, ISOamsb, ISOamsc, ISOamsn, ISOamso,
+# ISOamsr, ISObox, ISOcyr1, ISOcyr2, ISOdia, ISOgrk1, ISOgrk2,
+# ISOgrk3, ISOgrk4, ISOlat1, ISOlat2, ISOnum, ISOpub, ISOtech">
+				<param name="Local" value="ASCII to Unicode Mappings/Other Systems/SGML.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="ANSI X3.4-1968 (US-ASCII) with 0x60/0x27 as left/right single quotation mark to Unicode">
+				<param name="Local" value="ASCII to Unicode Mappings/Other Systems/US-ASCII-QUOTES.htm">
+				</OBJECT>
+		</UL>
+	</UL>
+</UL>
+</BODY></HTML>

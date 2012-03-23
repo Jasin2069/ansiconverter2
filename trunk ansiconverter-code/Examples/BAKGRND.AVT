@@ -1,0 +1,59 @@
+
+                     ÿSample Background Color Effectsÿ
+
+    The header line has a "solid" space Alt-225 at the beginning and the end
+    of the line, to help "frame" it in the background color, here is the
+    line in the same color, with out the solid spaces.
+
+                     Sample Background Color Effects 
+
+    Notice the difference, in this particular case, None. It really depends
+    on your editor. If leaving a normal space does not give the effect
+    you want, use the solid space.
+
+    I mentioned having a paragraph in a different background color, and the
+    effects of not having a code for the standard color at the end of each
+    line. As you may have noticed, our "standard" color in this message is
+    Cyan on Black. Now lets go for Bright Yellow on Blue, without the ending
+    color codes.
+
+    This paragraph is Brite Yellow on Blue. The code for this color has only
+    been placed at the beginning of the Paragraph. And this is the effect
+    you get!
+
+    The color stops at the last character of each line, and the leading
+    spaces at the beginning, are changed to Blue.
+
+    Now we do it again, this time, we place the Bright Yellow on Blue code   
+    at the beginning, and the Cyan On Black at the end of each line. On      
+    short lines, we place it so we will have  the same size blue background, 
+    all through the paragraph.                                               
+
+   The repetative color codes above were entered one time, on the first
+   line, then pasted with the editor block marking - pasteing function.
+   This paragraph has no code at the beginning, because the last code read,
+   was our standard color, Cyan On Black, at the end of the last line in the
+   previous paragraph.
+
+   Multi Color words
+ are	 EASY with T2A, just type in your text, then go
+   through and place a different color code between each word!
+
+   A point to mention....when you do what we have here, with lots of codes
+   and words on one line, you may want to set your right margin to 255, so
+   there is no accidental word wrap.
+   If you enter ALL your text first, use about 76 as a right margin,
+   then set to 255 to enter all the color and variable codes.
+
+  p I hope this Background Color Example is of some help to you. I think you  
+  p will find T2A a useful tool, and once you get used to it, easy to use. It 
+  p sometimes seems like a lot of work, but you will find that for certian    
+  p things, its the only way to go!                                           
+
+  Another note: You see some flashing colors here, entered with the
+  caret character, the Blinking Attribute code is one of the Registered Only
+  features.
+
+          Now go create something.....and Thanks! for trying T2A
+
+

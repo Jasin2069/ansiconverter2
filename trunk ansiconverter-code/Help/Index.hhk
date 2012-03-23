@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<OBJECT type="text/site properties">
+	<param name="SaveType" value="ANSI">
+	<param name="SaveTypeDesc" value="ANSI Standard">
+	<param name="Category" value="ANSI.SYS">
+	<param name="CategoryDesc" value="MS DOS Driver Ansi.sys">
+	<param name="Category" value="Code Pages">
+	<param name="CategoryDesc" value="MS DOS Code Pages">
+	<param name="Category" value="Unicode">
+	<param name="CategoryDesc" value="Unicode Character Sets">
+</OBJECT>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="CP850">
+		<param name="Name" value="CP850">
+		<param name="Local" value="ASCII to Unicode Mappings\CP850.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="CP437">
+		<param name="Name" value="CP437">
+		<param name="Local" value="ASCII to Unicode Mappings\CP437.htm">
+		</OBJECT>
+</UL>
+</BODY></HTML>

@@ -1,0 +1,82 @@
+[OPTIONS]
+Auto Index=Yes
+Binary TOC=Yes
+Compatibility=1.1 or later
+Compiled file=ANSIASCIIConverterHelp.chm
+Contents file=Table of Contents.hhc
+Default Font=Perfect DOS VGA 437,8,0
+Default Window=main
+Default topic=ANSI.SYS Codes2.htm
+Display compile progress=Yes
+Enhanced decompilation=Yes
+Error log file=_errorlog.txt
+Full-text search=Yes
+Index file=ANSIASCIIConverterHelp.hhk
+Language=0x409 English (United States)
+Title=ANSI-ANSI Resources
+
+[WINDOWS]
+main="ANSI-ANSI Resources","Table of Contents.hhc","ANSIASCIIConverterHelp.hhk","ANSI.SYS Codes2.htm","ANSI.SYS Codes2.htm",,,,,0x23520,222,0x1046,[10,10,640,450],0xb0000,,,,,,0
+
+
+[FILES]
+ANSI.SYS Codes2.htm
+ASCII to Unicode Mappings\Other Systems\APL-ISO-IR-68.htm
+ASCII to Unicode Mappings\Other Systems\ATARIST.htm
+ASCII to Unicode Mappings\bestfit1250.htm
+ASCII to Unicode Mappings\bestfit1251.htm
+ASCII to Unicode Mappings\bestfit1252.htm
+ASCII to Unicode Mappings\bestfit1253.htm
+ASCII to Unicode Mappings\bestfit1254.htm
+ASCII to Unicode Mappings\bestfit1255.htm
+ASCII to Unicode Mappings\bestfit1256.htm
+ASCII to Unicode Mappings\bestfit1257.htm
+ASCII to Unicode Mappings\bestfit1258.htm
+ASCII to Unicode Mappings\bestfit874.htm
+ASCII to Unicode Mappings\bestfit932.htm
+ASCII to Unicode Mappings\bestfit936.htm
+ASCII to Unicode Mappings\bestfit949.htm
+ASCII to Unicode Mappings\bestfit950.htm
+ASCII to Unicode Mappings\Other Systems\CP1006.htm
+ASCII to Unicode Mappings\CP1250.htm
+ASCII to Unicode Mappings\CP1251.htm
+ASCII to Unicode Mappings\CP1252.htm
+ASCII to Unicode Mappings\CP1253.htm
+ASCII to Unicode Mappings\CP1254.htm
+ASCII to Unicode Mappings\CP1255.htm
+ASCII to Unicode Mappings\CP1256.htm
+ASCII to Unicode Mappings\CP1257.htm
+ASCII to Unicode Mappings\CP1258.htm
+ASCII to Unicode Mappings\Other Systems\CP424.htm
+ASCII to Unicode Mappings\CP437.htm
+ASCII to Unicode Mappings\CP737.htm
+ASCII to Unicode Mappings\CP775.htm
+ASCII to Unicode Mappings\CP850.htm
+ASCII to Unicode Mappings\CP852.htm
+ASCII to Unicode Mappings\CP855.htm
+ASCII to Unicode Mappings\Other Systems\CP856.htm
+ASCII to Unicode Mappings\CP857.htm
+ASCII to Unicode Mappings\CP860.htm
+ASCII to Unicode Mappings\CP861.htm
+ASCII to Unicode Mappings\CP862.htm
+ASCII to Unicode Mappings\CP863.htm
+ASCII to Unicode Mappings\CP864.htm
+ASCII to Unicode Mappings\CP865.htm
+ASCII to Unicode Mappings\CP866.htm
+ASCII to Unicode Mappings\CP869.htm
+ASCII to Unicode Mappings\CP874(1).htm
+ASCII to Unicode Mappings\CP874.htm
+ASCII to Unicode Mappings\CP932.htm
+ASCII to Unicode Mappings\CP936.htm
+ASCII to Unicode Mappings\CP949.htm
+ASCII to Unicode Mappings\CP950.htm
+ASCII to Unicode Mappings\Other Systems\IBMGRAPH.htm
+ASCII to Unicode Mappings\Other Systems\KOI8-R.htm
+ASCII to Unicode Mappings\Other Systems\KOI8-U.htm
+ASCII to Unicode Mappings\Other Systems\KZ1048.htm
+ASCII to Unicode Mappings\readme.htm
+ASCII to Unicode Mappings\Other Systems\SGML.htm
+ASCII to Unicode Mappings\Other Systems\US-ASCII-QUOTES.htm
+
+[INFOTYPES]
+
