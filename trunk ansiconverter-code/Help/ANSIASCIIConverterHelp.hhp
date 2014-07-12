@@ -2,81 +2,83 @@
 Auto Index=Yes
 Binary TOC=Yes
 Compatibility=1.1 or later
-Compiled file=ANSIASCIIConverterHelp.chm
-Contents file=Table of Contents.hhc
-Default Font=Perfect DOS VGA 437,8,0
+Compiled File=ANSIASCIIConverterHelp.chm
+Contents File=Table of Contents.hhc
+Default Font=Lucida Console,9.0
 Default Window=main
-Default topic=ANSI.SYS Codes2.htm
+Default Topic=ANSI.SYS Codes2.htm
 Display compile progress=Yes
 Enhanced decompilation=Yes
 Error log file=_errorlog.txt
 Full-text search=Yes
-Index file=ANSIASCIIConverterHelp.hhk
+Index File=ANSIASCIIConverterHelp.hhk
 Language=0x409 English (United States)
 Title=ANSI-ANSI Resources
+Binary Index=Yes
+Create CHI file=No
+Full text search stop list file=
+Display compile notes=Yes
 
 [WINDOWS]
-main="ANSI-ANSI Resources","Table of Contents.hhc","ANSIASCIIConverterHelp.hhk","ANSI.SYS Codes2.htm","ANSI.SYS Codes2.htm",,,,,0x23520,222,0x1046,[10,10,640,450],0xb0000,,,,,,0
-
+main="ANSI-ANSI Resources","Table of Contents.hhc","ANSIASCIIConverterHelp.hhk","ANSI.SYS Codes2.htm","ANSI.SYS Codes2.htm",,,,,0x23520,222,0x1046,[10,10,640,450],0xB0000,,,,,,0
 
 [FILES]
 ANSI.SYS Codes2.htm
-ASCII to Unicode Mappings\Other Systems\APL-ISO-IR-68.htm
-ASCII to Unicode Mappings\Other Systems\ATARIST.htm
-ASCII to Unicode Mappings\bestfit1250.htm
-ASCII to Unicode Mappings\bestfit1251.htm
-ASCII to Unicode Mappings\bestfit1252.htm
-ASCII to Unicode Mappings\bestfit1253.htm
-ASCII to Unicode Mappings\bestfit1254.htm
-ASCII to Unicode Mappings\bestfit1255.htm
-ASCII to Unicode Mappings\bestfit1256.htm
-ASCII to Unicode Mappings\bestfit1257.htm
-ASCII to Unicode Mappings\bestfit1258.htm
-ASCII to Unicode Mappings\bestfit874.htm
-ASCII to Unicode Mappings\bestfit932.htm
-ASCII to Unicode Mappings\bestfit936.htm
-ASCII to Unicode Mappings\bestfit949.htm
-ASCII to Unicode Mappings\bestfit950.htm
-ASCII to Unicode Mappings\Other Systems\CP1006.htm
-ASCII to Unicode Mappings\CP1250.htm
-ASCII to Unicode Mappings\CP1251.htm
-ASCII to Unicode Mappings\CP1252.htm
-ASCII to Unicode Mappings\CP1253.htm
-ASCII to Unicode Mappings\CP1254.htm
-ASCII to Unicode Mappings\CP1255.htm
-ASCII to Unicode Mappings\CP1256.htm
-ASCII to Unicode Mappings\CP1257.htm
-ASCII to Unicode Mappings\CP1258.htm
-ASCII to Unicode Mappings\Other Systems\CP424.htm
-ASCII to Unicode Mappings\CP437.htm
-ASCII to Unicode Mappings\CP737.htm
-ASCII to Unicode Mappings\CP775.htm
-ASCII to Unicode Mappings\CP850.htm
-ASCII to Unicode Mappings\CP852.htm
-ASCII to Unicode Mappings\CP855.htm
-ASCII to Unicode Mappings\Other Systems\CP856.htm
-ASCII to Unicode Mappings\CP857.htm
-ASCII to Unicode Mappings\CP860.htm
-ASCII to Unicode Mappings\CP861.htm
-ASCII to Unicode Mappings\CP862.htm
-ASCII to Unicode Mappings\CP863.htm
-ASCII to Unicode Mappings\CP864.htm
-ASCII to Unicode Mappings\CP865.htm
-ASCII to Unicode Mappings\CP866.htm
-ASCII to Unicode Mappings\CP869.htm
-ASCII to Unicode Mappings\CP874(1).htm
-ASCII to Unicode Mappings\CP874.htm
-ASCII to Unicode Mappings\CP932.htm
-ASCII to Unicode Mappings\CP936.htm
-ASCII to Unicode Mappings\CP949.htm
-ASCII to Unicode Mappings\CP950.htm
-ASCII to Unicode Mappings\Other Systems\IBMGRAPH.htm
-ASCII to Unicode Mappings\Other Systems\KOI8-R.htm
-ASCII to Unicode Mappings\Other Systems\KOI8-U.htm
-ASCII to Unicode Mappings\Other Systems\KZ1048.htm
-ASCII to Unicode Mappings\readme.htm
-ASCII to Unicode Mappings\Other Systems\SGML.htm
-ASCII to Unicode Mappings\Other Systems\US-ASCII-QUOTES.htm
+ASCII to Unicode Mappings\bestfit1250.txt
+ASCII to Unicode Mappings\bestfit1251.txt
+ASCII to Unicode Mappings\bestfit1252.txt
+ASCII to Unicode Mappings\bestfit1253.txt
+ASCII to Unicode Mappings\bestfit1254.txt
+ASCII to Unicode Mappings\bestfit1256.txt
+ASCII to Unicode Mappings\bestfit1257.txt
+ASCII to Unicode Mappings\bestfit1258.txt
+ASCII to Unicode Mappings\bestfit874.txt
+ASCII to Unicode Mappings\bestfit932.txt
+ASCII to Unicode Mappings\bestfit936.txt
+ASCII to Unicode Mappings\bestfit949.txt
+ASCII to Unicode Mappings\bestfit950.txt
+ASCII to Unicode Mappings\CP1250.txt
+ASCII to Unicode Mappings\CP1251.txt
+ASCII to Unicode Mappings\CP1252.txt
+ASCII to Unicode Mappings\CP1253.txt
+ASCII to Unicode Mappings\CP1254.txt
+ASCII to Unicode Mappings\CP1255.txt
+ASCII to Unicode Mappings\CP1256.txt
+ASCII to Unicode Mappings\CP1257.txt
+ASCII to Unicode Mappings\CP1258.txt
+ASCII to Unicode Mappings\CP437.txt
+ASCII to Unicode Mappings\CP737.txt
+ASCII to Unicode Mappings\CP775.txt
+ASCII to Unicode Mappings\CP850.txt
+ASCII to Unicode Mappings\CP852.txt
+ASCII to Unicode Mappings\CP855.txt
+ASCII to Unicode Mappings\CP857.txt
+ASCII to Unicode Mappings\CP860.txt
+ASCII to Unicode Mappings\CP861.txt
+ASCII to Unicode Mappings\CP862.txt
+ASCII to Unicode Mappings\CP863.txt
+ASCII to Unicode Mappings\CP864.txt
+ASCII to Unicode Mappings\CP865.txt
+ASCII to Unicode Mappings\CP866.txt
+ASCII to Unicode Mappings\CP869.txt
+ASCII to Unicode Mappings\CP874.txt
+ASCII to Unicode Mappings\CP932.txt
+ASCII to Unicode Mappings\CP936.txt
+ASCII to Unicode Mappings\CP949.txt
+ASCII to Unicode Mappings\CP950.txt
+ASCII to Unicode Mappings\readme.txt
+ASCII to Unicode Mappings\Other Systems\APL-ISO-IR-68.txt
+ASCII to Unicode Mappings\Other Systems\ATARIST.txt
+ASCII to Unicode Mappings\Other Systems\CP1006.txt
+ASCII to Unicode Mappings\Other Systems\CP424.txt
+ASCII to Unicode Mappings\Other Systems\CP856.txt
+ASCII to Unicode Mappings\Other Systems\IBMGRAPH.txt
+ASCII to Unicode Mappings\Other Systems\KOI8-R.txt
+ASCII to Unicode Mappings\Other Systems\KOI8-U.txt
+ASCII to Unicode Mappings\Other Systems\KZ1048.txt
+ASCII to Unicode Mappings\Other Systems\SGML.txt
+ASCII to Unicode Mappings\Other Systems\US-ASCII-QUOTES.txt
+ASCII to Unicode Mappings\bestfit1255.txt
 
 [INFOTYPES]
 

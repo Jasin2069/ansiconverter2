@@ -6,14 +6,20 @@
     End Sub
 
     Private Sub UnicodeBlocks_Activated(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Activated
-        Me.Width = MainForm.Width
-        Me.Height = MainForm.Height
-        Me.Top = MainForm.Top
-        Me.Left = MainForm.Left
+        Me.Width = oMainForm.Width
+        Me.Height = oMainForm.Height
+        Me.Top = oMainForm.Top
+        Me.Left = oMainForm.Left
         'btnClose.Top = MainForm.Height - btnClose.Height - 30
         'btnClose.Left = MainForm.Width - btnClose.Width - 15
         bBlockUpdating = False
         Me.Cursor = Cursors.Default
+    End Sub
+
+    Protected Overrides Sub OnLocationChanged(e As System.EventArgs)
+        MyBase.OnLocationChanged(e)
+        ' Me.FadingLabel1.Top = Me.pUniBlockTemplate.PointToScreen(Me.pUniBlockTemplate.Location).Y + 20
+        ' Me.FadingLabel1.Left = Me.pUniBlockTemplate.PointToScreen(Me.pUniBlockTemplate.Location).X + 100
     End Sub
 
     Private Sub UnicodeBlocks_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
@@ -64,8 +70,8 @@
         bBlockUpdating = True
         'FadingLabel1.Location = pUniBlockTemplate.PointToScreen(New Point(pUniBlockTemplate.Top, pUniBlockTemplate.Left))
         'FadingLabel1.Left = pUniBlockTemplate.PointToScreen(New Point(pUniBlockTemplate.Top, pUniBlockTemplate.Left)).X + 100
-        FadingLabel1.Top = pUniBlockTemplate.Top + 20
-        FadingLabel1.Left = pUniBlockTemplate.Left + 100
+        'Me.FadingLabel1.Top = Me.pUniBlockTemplate.PointToScreen(Me.pUniBlockTemplate.Location).Y + 20
+        'Me.FadingLabel1.Left = Me.pUniBlockTemplate.PointToScreen(Me.pUniBlockTemplate.Location).X + 100
 
         ProcBlocks(selBlock)
         bBlockUpdating = False
@@ -107,5 +113,9 @@
 
     Private Sub UnicodeBlocks_VisibleChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.VisibleChanged
 
+    End Sub
+    Protected Overrides Sub OnClosing(e As System.ComponentModel.CancelEventArgs)
+        MyBase.OnClosing(e)
+        My.Application.OpenForms.Remove(oUnicodeBlocks)
     End Sub
 End Class

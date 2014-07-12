@@ -6,11 +6,15 @@
         Me.Close()
     End Sub
 
+    Protected Overrides Sub OnClosing(e As System.ComponentModel.CancelEventArgs)
+        MyBase.OnClosing(e)
+        My.Application.OpenForms.Remove(oCodePageMaps)
+    End Sub
     Private Sub CodePageMaps_Activated(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Activated
-        Me.Width = MainForm.Width
-        Me.Height = MainForm.Height
-        Me.Top = MainForm.Top
-        Me.Left = MainForm.Left
+        Me.Width = oMainForm.Width
+        Me.Height = oMainForm.Height
+        Me.Top = oMainForm.Top
+        Me.Left = oMainForm.Left
         'btnClose.Top = MainForm.Height - btnClose.Height - 30
         'btnClose.Left = MainForm.Width - btnClose.Width - 15
         'DataGridView1.Width = MainForm.Width - 30
@@ -89,7 +93,7 @@
                     DataGridView1.Columns.Add("CNAME", "Name")
                     DataGridView1.Columns.Add("UNI", "UNI (HEX)")
                     DataGridView1.Columns.Add("HTML", "HTML")
-                    My.Application.DoEvents()
+                    System.Windows.Forms.Application.DoEvents()
                     DataGridView1.Columns(0).ReadOnly = True
                     DataGridView1.Columns(0).DefaultCellStyle.Font = New Drawing.Font(selectedFont.FontFamily, selectedFont.Size * 0.4, FontStyle.Regular, 3) ' New Font("Lucida Console", 9, FontStyle.Regular, GraphicsUnit.Point)
                     DataGridView1.Columns(0).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
@@ -113,8 +117,8 @@
                     DataGridView1.Columns(4).Width = 100
                     Converter.bHTMLEncode = False
                     Converter.bSanitize = False
-                    Converter.BuildMappings(SelectedCP)
-                    My.Application.DoEvents()
+                    Converter.ConverterSupport.BuildMappings(SelectedCP)
+                    System.Windows.Forms.Application.DoEvents()
                     Try
                         For a As Integer = 0 To 254
                             Dim itemP As New DataGridViewRow
@@ -123,23 +127,23 @@
                                 .Cells(0).Value = Microsoft.VisualBasic.Right("  " & a, 3) & " (" & Microsoft.VisualBasic.Right("00" & Hex(a), 2) & ")"
                                 If a >= 0 And a <= 32 Then
                                     '.Cells(1).Value = ChrW(AscW(ChrW(9216 + a)))
-                                    .Cells(1).Value = Converter.aCtrlChars(a)
+                                    .Cells(1).Value = Converter.Internal.aCtrlChars(a)
                                     .Cells(1).Style.Font = New Drawing.Font(selectedFont.FontFamily, selectedFont.Size * 0.4, FontStyle.Bold, 3) 'New Font("Lucida Console", 9, FontStyle.Bold, GraphicsUnit.Point)
                                 Else
-                                    .Cells(1).Value = Converter.AscConv(a)
+                                    .Cells(1).Value = Converter.ConverterSupport.AscConv(a)
                                 End If
 
-                                .Cells(2).Value = Converter.aCPdesc(a)
-                                .Cells(3).Value = Microsoft.VisualBasic.Right("     " & Converter.aUniCode(a), 5) & " (" & Microsoft.VisualBasic.Right("0000" & Hex(Converter.aUniCode(a)), 4) & ")"
-                                If Converter.aSpecH(a) <> "" Then
-                                    .Cells(4).Value = Converter.aSpecH(a)
+                                .Cells(2).Value = Converter.Internal.aCPdesc(a)
+                                .Cells(3).Value = Microsoft.VisualBasic.Right("     " & Converter.Internal.aUniCode(a), 5) & " (" & Microsoft.VisualBasic.Right("0000" & Hex(Converter.Internal.aUniCode(a)), 4) & ")"
+                                If Converter.Internal.aSpecH(a) <> "" Then
+                                    .Cells(4).Value = Converter.Internal.aSpecH(a)
                                 Else
                                     .Cells(4).Value = ""
                                 End If
 
                             End With
                             MyRow = DataGridView1.Rows.Add(itemP)
-                            My.Application.DoEvents()
+                            System.Windows.Forms.Application.DoEvents()
                         Next
                     Catch ex As Exception
 
@@ -167,4 +171,9 @@
     End Sub
 
 
+    Private Sub btnCompare_Click(sender As System.Object, e As System.EventArgs) Handles btnCompare.Click
+        CodePageDifferences(DataGridView1)
+        selCPName.Text = "Code Page Comparison"
+        DataGridView1.ScrollBars = ScrollBars.Horizontal
+    End Sub
 End Class

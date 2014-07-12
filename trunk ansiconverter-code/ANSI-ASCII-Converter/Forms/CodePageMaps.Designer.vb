@@ -22,18 +22,19 @@ Partial Class CodePageMaps
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Me.selCPName = New System.Windows.Forms.Label
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView
-        Me.btnClose = New MyControls.GButton
-        Me.lblSelFont = New System.Windows.Forms.Label
-        Me.btnSelfont = New MyControls.GButton
-        Me.FontDialog1 = New System.Windows.Forms.FontDialog
-        Me.listCPnew = New System.Windows.Forms.ComboBox
-        Me.lblselectacp = New System.Windows.Forms.Label
+        Me.components = New System.ComponentModel.Container()
+        Me.selCPName = New System.Windows.Forms.Label()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.btnClose = New MyControls.GButton()
+        Me.lblSelFont = New System.Windows.Forms.Label()
+        Me.btnSelfont = New MyControls.GButton()
+        Me.FontDialog1 = New System.Windows.Forms.FontDialog()
+        Me.listCPnew = New System.Windows.Forms.ComboBox()
+        Me.lblselectacp = New System.Windows.Forms.Label()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.ScrollBar1 = New ANSI_ASCII_Converter.ScrollBar
+        Me.ScrollBar1 = New ANSI_ASCII_Converter.ScrollBar()
+        Me.btnCompare = New MyControls.GButton()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -111,7 +112,7 @@ Partial Class CodePageMaps
         Me.lblSelFont.TabIndex = 14
         Me.lblSelFont.Text = "Font Name"
         Me.ToolTip1.SetToolTip(Me.lblSelFont, "Name of the currently " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "selected font for the" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "display of the character" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "sets. Yo" & _
-                "u can change it!")
+        "u can change it!")
         '
         'btnSelfont
         '
@@ -172,10 +173,38 @@ Partial Class CodePageMaps
         '
         Me.ScrollBar1.Location = New System.Drawing.Point(830, 103)
         Me.ScrollBar1.Margin = New System.Windows.Forms.Padding(0)
+        Me.ScrollBar1.MiddleBtnColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.ScrollBar1.Name = "ScrollBar1"
+        Me.ScrollBar1.ObjectScale = CType(100, Long)
+        Me.ScrollBar1.ObjectSize = CType(100, Long)
+        Me.ScrollBar1.ObjectVisibleRange = CType(10, Long)
+        Me.ScrollBar1.Orientation = ANSI_ASCII_Converter.ScrollBar.eOrientation.Vertical
+        Me.ScrollBar1.ScrollBarBackColor = System.Drawing.Color.Navy
         Me.ScrollBar1.Size = New System.Drawing.Size(24, 327)
         Me.ScrollBar1.TabIndex = 19
         Me.ScrollBar1.Text = "ScrollBar1"
+        Me.ScrollBar1.UpDnBtnsBackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(105, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ScrollBar1.UpDnBtnsForeColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ScrollBar1.UpDownBigBtnsBackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ScrollBar1.UpDownBigBtnsForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
+        '
+        'btnCompare
+        '
+        Me.btnCompare.BeginColor = System.Drawing.SystemColors.Control
+        Me.btnCompare.BeginColorDisabled = System.Drawing.Color.Black
+        Me.btnCompare.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnCompare.EndColor = System.Drawing.SystemColors.ActiveCaption
+        Me.btnCompare.EndColorDisabled = System.Drawing.Color.FromArgb(CType(CType(204, Byte), Integer), CType(CType(170, Byte), Integer), CType(CType(170, Byte), Integer))
+        Me.btnCompare.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCompare.ForeColor = System.Drawing.Color.Cornsilk
+        Me.btnCompare.ForeColorDisabled = System.Drawing.Color.DarkGray
+        Me.btnCompare.Location = New System.Drawing.Point(537, 435)
+        Me.btnCompare.Name = "btnCompare"
+        Me.btnCompare.Size = New System.Drawing.Size(149, 28)
+        Me.btnCompare.TabIndex = 20
+        Me.btnCompare.Text = "Compare CP"
+        Me.ToolTip1.SetToolTip(Me.btnCompare, "list code page " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "list and return " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "to converter")
+        Me.btnCompare.UseVisualStyleBackColor = True
         '
         'CodePageMaps
         '
@@ -184,6 +213,7 @@ Partial Class CodePageMaps
         Me.BackgroundImage = Global.ANSI_ASCII_Converter.My.Resources.Resources.CHSAC
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(869, 466)
+        Me.Controls.Add(Me.btnCompare)
         Me.Controls.Add(Me.ScrollBar1)
         Me.Controls.Add(Me.lblselectacp)
         Me.Controls.Add(Me.listCPnew)
@@ -212,4 +242,5 @@ Partial Class CodePageMaps
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
     Friend WithEvents Timer1 As System.Windows.Forms.Timer
     Friend WithEvents ScrollBar1 As ANSI_ASCII_Converter.ScrollBar
+    Friend WithEvents btnCompare As MyControls.GButton
 End Class

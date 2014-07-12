@@ -22,23 +22,23 @@ Partial Class UnicodeBlocks
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Me.btnClose = New MyControls.GButton
-        Me.listUniBlocks = New System.Windows.Forms.ListBox
-        Me.seBlockName = New System.Windows.Forms.Label
-        Me.pUniBlockTemplate = New System.Windows.Forms.Panel
-        Me.pCharTemplate = New System.Windows.Forms.Panel
-        Me.lblCharHextemplate = New System.Windows.Forms.Label
-        Me.lblCharIntTemplate = New System.Windows.Forms.Label
-        Me.lblCharTemplate = New System.Windows.Forms.Label
-        Me.NuMBlocks = New System.Windows.Forms.Label
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.lblShiftKey = New System.Windows.Forms.Label
-        Me.FontDialog1 = New System.Windows.Forms.FontDialog
-        Me.btnSelfont = New MyControls.GButton
-        Me.lblSelFont = New System.Windows.Forms.Label
+        Me.components = New System.ComponentModel.Container()
+        Me.btnClose = New MyControls.GButton()
+        Me.listUniBlocks = New System.Windows.Forms.ListBox()
+        Me.seBlockName = New System.Windows.Forms.Label()
+        Me.pUniBlockTemplate = New System.Windows.Forms.Panel()
+        Me.FadingLabel1 = New ANSI_ASCII_Converter.FadingLabelPanel()
+        Me.pCharTemplate = New System.Windows.Forms.Panel()
+        Me.lblCharHextemplate = New System.Windows.Forms.Label()
+        Me.lblCharIntTemplate = New System.Windows.Forms.Label()
+        Me.lblCharTemplate = New System.Windows.Forms.Label()
+        Me.NuMBlocks = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblShiftKey = New System.Windows.Forms.Label()
+        Me.FontDialog1 = New System.Windows.Forms.FontDialog()
+        Me.btnSelfont = New MyControls.GButton()
+        Me.lblSelFont = New System.Windows.Forms.Label()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.FadingLabel1 = New MyControls.FadingLabel
         Me.pUniBlockTemplate.SuspendLayout()
         Me.pCharTemplate.SuspendLayout()
         Me.SuspendLayout()
@@ -92,6 +92,31 @@ Partial Class UnicodeBlocks
         Me.pUniBlockTemplate.Name = "pUniBlockTemplate"
         Me.pUniBlockTemplate.Size = New System.Drawing.Size(840, 289)
         Me.pUniBlockTemplate.TabIndex = 7
+        Me.ToolTip1.SetToolTip(Me.pUniBlockTemplate, "Click Character for Details")
+        '
+        'FadingLabel1
+        '
+        Me.FadingLabel1.AutoSize = True
+        Me.FadingLabel1.BackColor = System.Drawing.Color.White
+        Me.FadingLabel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.FadingLabel1.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.FadingLabel1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.FadingLabel1.HotKeyPrefix = System.Drawing.Text.HotkeyPrefix.Show
+        Me.FadingLabel1.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic
+        Me.FadingLabel1.Interval = 4
+        Me.FadingLabel1.Label = "Loading Characters"
+        Me.FadingLabel1.Location = New System.Drawing.Point(226, 80)
+        Me.FadingLabel1.Margin = New System.Windows.Forms.Padding(7)
+        Me.FadingLabel1.Name = "FadingLabel1"
+        Me.FadingLabel1.ShowFocus = False
+        Me.FadingLabel1.Size = New System.Drawing.Size(330, 46)
+        Me.FadingLabel1.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality
+        Me.FadingLabel1.StepSize = 1
+        Me.FadingLabel1.StringFormat = ANSI_ASCII_Converter.FadingLabelPanel.StringFormats.FitBlackBox
+        Me.FadingLabel1.TabIndex = 13
+        Me.FadingLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.FadingLabel1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit
+        Me.FadingLabel1.UseMnemonic = True
         '
         'pCharTemplate
         '
@@ -216,7 +241,7 @@ Partial Class UnicodeBlocks
         Me.lblSelFont.TabIndex = 12
         Me.lblSelFont.Text = "Font Name"
         Me.ToolTip1.SetToolTip(Me.lblSelFont, "Name of the currently " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "selected font for the" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "display of the character" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "sets. Yo" & _
-                "u can change it!")
+        "u can change it!")
         '
         'ToolTip1
         '
@@ -225,27 +250,6 @@ Partial Class UnicodeBlocks
         Me.ToolTip1.ShowAlways = True
         Me.ToolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info
         Me.ToolTip1.ToolTipTitle = "Quick Help"
-        '
-        'FadingLabel1
-        '
-        Me.FadingLabel1.AutoSize = True
-        Me.FadingLabel1.BackColor = System.Drawing.Color.White
-        Me.FadingLabel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.FadingLabel1.ffAutoFade = True
-        Me.FadingLabel1.ffBringCtrlToFront = True
-        Me.FadingLabel1.ffDisplayPause = 1000
-        Me.FadingLabel1.ffHideCtrlWhenDone = True
-        Me.FadingLabel1.ffText = "Loading Characters"
-        Me.FadingLabel1.ffTransitionStep = 4
-        Me.FadingLabel1.ffTransitionTime = 1
-        Me.FadingLabel1.ffUnderObject = Nothing
-        Me.FadingLabel1.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.FadingLabel1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.FadingLabel1.Location = New System.Drawing.Point(226, 80)
-        Me.FadingLabel1.Margin = New System.Windows.Forms.Padding(7, 7, 7, 7)
-        Me.FadingLabel1.Name = "FadingLabel1"
-        Me.FadingLabel1.Size = New System.Drawing.Size(330, 46)
-        Me.FadingLabel1.TabIndex = 13
         '
         'UnicodeBlocks
         '
@@ -289,5 +293,5 @@ Partial Class UnicodeBlocks
     Friend WithEvents btnSelfont As MyControls.GButton
     Friend WithEvents lblSelFont As System.Windows.Forms.Label
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
-    Friend WithEvents FadingLabel1 As MyControls.FadingLabel
+    Friend WithEvents FadingLabel1 As FadingLabelPanel
 End Class

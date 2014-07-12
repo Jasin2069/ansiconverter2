@@ -22,132 +22,132 @@ Partial Class Settings
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Me.btnClose = New MyControls.GButton
-        Me.pThumbs = New System.Windows.Forms.Panel
-        Me.lblTHumbs = New System.Windows.Forms.Label
-        Me.lblPropPercent = New System.Windows.Forms.Label
-        Me.ThumbHeight = New System.Windows.Forms.TextBox
-        Me.ThumbWidth = New System.Windows.Forms.TextBox
-        Me.ThumbScalePercent = New System.Windows.Forms.TextBox
-        Me.selThumbProp = New System.Windows.Forms.RadioButton
-        Me.lblScaleSize = New System.Windows.Forms.Label
-        Me.selThumbCustom = New System.Windows.Forms.RadioButton
-        Me.selThumbHFixed = New System.Windows.Forms.RadioButton
-        Me.selThumbWFixed = New System.Windows.Forms.RadioButton
-        Me.Panel2 = New System.Windows.Forms.Panel
-        Me.pGen = New System.Windows.Forms.Panel
-        Me.bRemoveCompleted = New MyControls.OnOffInputControlSmall
-        Me.lblRemComplete = New System.Windows.Forms.Label
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.Panel3 = New System.Windows.Forms.Panel
-        Me.lblUTFOut = New System.Windows.Forms.Label
-        Me.pUTF = New System.Windows.Forms.Panel
-        Me.rUTF16 = New System.Windows.Forms.RadioButton
-        Me.rUTF8 = New System.Windows.Forms.RadioButton
-        Me.pSettHTML = New System.Windows.Forms.Panel
-        Me.pHTMLFont = New System.Windows.Forms.Panel
-        Me.lblHTMLFont = New System.Windows.Forms.Label
-        Me.cbHTMLFont = New System.Windows.Forms.ComboBox
-        Me.pSanitize = New System.Windows.Forms.Panel
-        Me.Sanitize = New MyControls.OnOffInputControlSmall
-        Me.lblSanitize = New System.Windows.Forms.Label
-        Me.pAnim = New System.Windows.Forms.Panel
-        Me.rStatic = New System.Windows.Forms.RadioButton
-        Me.rAnim = New System.Windows.Forms.RadioButton
-        Me.pHTMLObj = New System.Windows.Forms.Panel
-        Me.rObjectOnly = New System.Windows.Forms.RadioButton
-        Me.rCompleteHTML = New System.Windows.Forms.RadioButton
-        Me.lblHTMLOut = New System.Windows.Forms.Label
-        Me.pSettImage = New System.Windows.Forms.Panel
-        Me.pIMGOut = New System.Windows.Forms.Panel
-        Me.rEMF = New System.Windows.Forms.RadioButton
-        Me.rWMF = New System.Windows.Forms.RadioButton
-        Me.rICO = New System.Windows.Forms.RadioButton
-        Me.rTIF = New System.Windows.Forms.RadioButton
-        Me.rJPG = New System.Windows.Forms.RadioButton
-        Me.rGIF = New System.Windows.Forms.RadioButton
-        Me.rBMP = New System.Windows.Forms.RadioButton
-        Me.rPNG = New System.Windows.Forms.RadioButton
-        Me.pThumb = New System.Windows.Forms.Panel
-        Me.Thumb = New MyControls.OnOffInputControlSmall
-        Me.lblThumb = New System.Windows.Forms.Label
-        Me.pSmallFnt = New System.Windows.Forms.Panel
-        Me.SmallFnt = New MyControls.OnOffInputControlSmall
-        Me.lblSmallFnt = New System.Windows.Forms.Label
-        Me.pNoCols = New System.Windows.Forms.Panel
-        Me.NoCols = New MyControls.OnOffInputControlSmall
-        Me.lblNoCols = New System.Windows.Forms.Label
-        Me.lblImgFormat = New System.Windows.Forms.Label
-        Me.lblImageOutputs = New System.Windows.Forms.Label
-        Me.Panel6 = New System.Windows.Forms.Panel
-        Me.btnSelfont = New MyControls.GButton
-        Me.lblSelFont = New System.Windows.Forms.Label
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.pGeneral = New System.Windows.Forms.Panel
-        Me.pExt = New System.Windows.Forms.Panel
-        Me.rReplaceExt = New System.Windows.Forms.RadioButton
-        Me.rExtraExt = New System.Windows.Forms.RadioButton
-        Me.lblExtension = New System.Windows.Forms.Label
-        Me.pOutExist = New System.Windows.Forms.Panel
-        Me.lblOutputExists = New System.Windows.Forms.Label
-        Me.rOver = New System.Windows.Forms.RadioButton
-        Me.rSkip = New System.Windows.Forms.RadioButton
-        Me.rAutoRen = New System.Windows.Forms.RadioButton
-        Me.rAsk = New System.Windows.Forms.RadioButton
-        Me.pSauce = New System.Windows.Forms.Panel
-        Me.rSauceStrip = New System.Windows.Forms.RadioButton
-        Me.lblSauce = New System.Windows.Forms.Label
-        Me.rSauceKeep = New System.Windows.Forms.RadioButton
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.FontDialog1 = New System.Windows.Forms.FontDialog
+        Me.components = New System.ComponentModel.Container()
+        Me.btnClose = New MyControls.GButton()
+        Me.pThumbs = New System.Windows.Forms.Panel()
+        Me.lblThumbs = New System.Windows.Forms.Label()
+        Me.lblPropPercent = New System.Windows.Forms.Label()
+        Me.ThumbHeight = New System.Windows.Forms.TextBox()
+        Me.ThumbWidth = New System.Windows.Forms.TextBox()
+        Me.ThumbScalePercent = New System.Windows.Forms.TextBox()
+        Me.selThumbProp = New System.Windows.Forms.RadioButton()
+        Me.lblScaleSize = New System.Windows.Forms.Label()
+        Me.selThumbCustom = New System.Windows.Forms.RadioButton()
+        Me.selThumbHFixed = New System.Windows.Forms.RadioButton()
+        Me.selThumbWFixed = New System.Windows.Forms.RadioButton()
+        Me.pSettInpFileList = New System.Windows.Forms.Panel()
+        Me.pGen = New System.Windows.Forms.Panel()
+        Me.bRemoveCompleted = New MyControls.OnOffInputControlSmall()
+        Me.lblRemComplete = New System.Windows.Forms.Label()
+        Me.lblSettInpFileList = New System.Windows.Forms.Label()
+        Me.pSettUnicode = New System.Windows.Forms.Panel()
+        Me.lblSettUnicode = New System.Windows.Forms.Label()
+        Me.pUTF = New System.Windows.Forms.Panel()
+        Me.rUTF16 = New System.Windows.Forms.RadioButton()
+        Me.rUTF8 = New System.Windows.Forms.RadioButton()
+        Me.pSettHTML = New System.Windows.Forms.Panel()
+        Me.pHTMLFont = New System.Windows.Forms.Panel()
+        Me.lblHTMLFont = New System.Windows.Forms.Label()
+        Me.cbHTMLFont = New System.Windows.Forms.ComboBox()
+        Me.pSanitize = New System.Windows.Forms.Panel()
+        Me.Sanitize = New MyControls.OnOffInputControlSmall()
+        Me.lblSanitize = New System.Windows.Forms.Label()
+        Me.pAnim = New System.Windows.Forms.Panel()
+        Me.rStatic = New System.Windows.Forms.RadioButton()
+        Me.rAnim = New System.Windows.Forms.RadioButton()
+        Me.pHTMLObj = New System.Windows.Forms.Panel()
+        Me.rObjectOnly = New System.Windows.Forms.RadioButton()
+        Me.rCompleteHTML = New System.Windows.Forms.RadioButton()
+        Me.lblSettHTML = New System.Windows.Forms.Label()
+        Me.pSettImage = New System.Windows.Forms.Panel()
+        Me.pIMGOut = New System.Windows.Forms.Panel()
+        Me.rEMF = New System.Windows.Forms.RadioButton()
+        Me.rWMF = New System.Windows.Forms.RadioButton()
+        Me.rICO = New System.Windows.Forms.RadioButton()
+        Me.rTIF = New System.Windows.Forms.RadioButton()
+        Me.rJPG = New System.Windows.Forms.RadioButton()
+        Me.rGIF = New System.Windows.Forms.RadioButton()
+        Me.rBMP = New System.Windows.Forms.RadioButton()
+        Me.rPNG = New System.Windows.Forms.RadioButton()
+        Me.pThumb = New System.Windows.Forms.Panel()
+        Me.Thumb = New MyControls.OnOffInputControlSmall()
+        Me.lblThumb = New System.Windows.Forms.Label()
+        Me.pSmallFnt = New System.Windows.Forms.Panel()
+        Me.SmallFnt = New MyControls.OnOffInputControlSmall()
+        Me.lblSmallFnt = New System.Windows.Forms.Label()
+        Me.pNoCols = New System.Windows.Forms.Panel()
+        Me.NoCols = New MyControls.OnOffInputControlSmall()
+        Me.lblNoCols = New System.Windows.Forms.Label()
+        Me.lblIMGOut = New System.Windows.Forms.Label()
+        Me.lblSettImage = New System.Windows.Forms.Label()
+        Me.pSettFont = New System.Windows.Forms.Panel()
+        Me.btnSelfont = New MyControls.GButton()
+        Me.lblSelFont = New System.Windows.Forms.Label()
+        Me.lblSettFont = New System.Windows.Forms.Label()
+        Me.pGeneral = New System.Windows.Forms.Panel()
+        Me.pExt = New System.Windows.Forms.Panel()
+        Me.rReplaceExt = New System.Windows.Forms.RadioButton()
+        Me.rExtraExt = New System.Windows.Forms.RadioButton()
+        Me.lblExtension = New System.Windows.Forms.Label()
+        Me.pOutExist = New System.Windows.Forms.Panel()
+        Me.lblOutputExists = New System.Windows.Forms.Label()
+        Me.rOver = New System.Windows.Forms.RadioButton()
+        Me.rSkip = New System.Windows.Forms.RadioButton()
+        Me.rAutoRen = New System.Windows.Forms.RadioButton()
+        Me.rAsk = New System.Windows.Forms.RadioButton()
+        Me.pSauce = New System.Windows.Forms.Panel()
+        Me.rSauceStrip = New System.Windows.Forms.RadioButton()
+        Me.lblSauce = New System.Windows.Forms.Label()
+        Me.rSauceKeep = New System.Windows.Forms.RadioButton()
+        Me.lblGeneral = New System.Windows.Forms.Label()
+        Me.lblSettings = New System.Windows.Forms.Label()
+        Me.FontDialog1 = New System.Windows.Forms.FontDialog()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.pVideo = New System.Windows.Forms.Panel
-        Me.lblBPS = New System.Windows.Forms.Label
-        Me.lblVideoPanel = New System.Windows.Forms.Label
-        Me.lblFPS = New System.Windows.Forms.Label
-        Me.txtBPS = New System.Windows.Forms.TextBox
-        Me.txtFPS = New System.Windows.Forms.TextBox
-        Me.pVideoOutFormats = New System.Windows.Forms.Panel
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.pVidFmts = New System.Windows.Forms.Panel
-        Me.rVOB = New System.Windows.Forms.RadioButton
-        Me.rMPG = New System.Windows.Forms.RadioButton
-        Me.rMKV = New System.Windows.Forms.RadioButton
-        Me.rMP4 = New System.Windows.Forms.RadioButton
-        Me.rFLV = New System.Windows.Forms.RadioButton
-        Me.rAGIF = New System.Windows.Forms.RadioButton
-        Me.rWMV = New System.Windows.Forms.RadioButton
-        Me.rAVI = New System.Windows.Forms.RadioButton
-        Me.pAVICodec = New System.Windows.Forms.Panel
-        Me.lblAVICodec = New System.Windows.Forms.Label
-        Me.rFFVI = New System.Windows.Forms.RadioButton
-        Me.rLIBXVID = New System.Windows.Forms.RadioButton
-        Me.rMJPEG = New System.Windows.Forms.RadioButton
-        Me.rH264 = New System.Windows.Forms.RadioButton
-        Me.rLIBX264 = New System.Windows.Forms.RadioButton
-        Me.rMPEG4 = New System.Windows.Forms.RadioButton
-        Me.rZMBV = New System.Windows.Forms.RadioButton
-        Me.pMPGCodec = New System.Windows.Forms.Panel
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.rMPEG2 = New System.Windows.Forms.RadioButton
-        Me.rMPEG1 = New System.Windows.Forms.RadioButton
-        Me.pLFrame = New System.Windows.Forms.Panel
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.lblFExtend = New System.Windows.Forms.Label
-        Me.txtLastFrame = New System.Windows.Forms.TextBox
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.pBBS = New System.Windows.Forms.Panel
-        Me.rWildcat3 = New System.Windows.Forms.RadioButton
-        Me.rWildcat2 = New System.Windows.Forms.RadioButton
-        Me.rAvatar = New System.Windows.Forms.RadioButton
-        Me.rPCBoard = New System.Windows.Forms.RadioButton
-        Me.lblBBSFormats = New System.Windows.Forms.Label
+        Me.pVideo = New System.Windows.Forms.Panel()
+        Me.lblBPS = New System.Windows.Forms.Label()
+        Me.lblVideo = New System.Windows.Forms.Label()
+        Me.lblFPS = New System.Windows.Forms.Label()
+        Me.txtBPS = New System.Windows.Forms.TextBox()
+        Me.txtFPS = New System.Windows.Forms.TextBox()
+        Me.pVideoOutFormats = New System.Windows.Forms.Panel()
+        Me.lblVideoOutFormats = New System.Windows.Forms.Label()
+        Me.pVidFmts = New System.Windows.Forms.Panel()
+        Me.rVOB = New System.Windows.Forms.RadioButton()
+        Me.rMPG = New System.Windows.Forms.RadioButton()
+        Me.rMKV = New System.Windows.Forms.RadioButton()
+        Me.rMP4 = New System.Windows.Forms.RadioButton()
+        Me.rFLV = New System.Windows.Forms.RadioButton()
+        Me.rAGIF = New System.Windows.Forms.RadioButton()
+        Me.rWMV = New System.Windows.Forms.RadioButton()
+        Me.rAVI = New System.Windows.Forms.RadioButton()
+        Me.pAVICodec = New System.Windows.Forms.Panel()
+        Me.lblAVICodec = New System.Windows.Forms.Label()
+        Me.rFFVI = New System.Windows.Forms.RadioButton()
+        Me.rLIBXVID = New System.Windows.Forms.RadioButton()
+        Me.rMJPEG = New System.Windows.Forms.RadioButton()
+        Me.rH264 = New System.Windows.Forms.RadioButton()
+        Me.rLIBX264 = New System.Windows.Forms.RadioButton()
+        Me.rMPEG4 = New System.Windows.Forms.RadioButton()
+        Me.rZMBV = New System.Windows.Forms.RadioButton()
+        Me.pMPGCodec = New System.Windows.Forms.Panel()
+        Me.lblMPGCodec = New System.Windows.Forms.Label()
+        Me.rMPEG2 = New System.Windows.Forms.RadioButton()
+        Me.rMPEG1 = New System.Windows.Forms.RadioButton()
+        Me.pLFrame = New System.Windows.Forms.Panel()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.lblFExtend = New System.Windows.Forms.Label()
+        Me.txtLastFrame = New System.Windows.Forms.TextBox()
+        Me.lblOrnament1 = New System.Windows.Forms.Label()
+        Me.pBBS = New System.Windows.Forms.Panel()
+        Me.lblBBS = New System.Windows.Forms.Label()
+        Me.rWildcat3 = New System.Windows.Forms.RadioButton()
+        Me.rWildcat2 = New System.Windows.Forms.RadioButton()
+        Me.rAvatar = New System.Windows.Forms.RadioButton()
+        Me.rPCBoard = New System.Windows.Forms.RadioButton()
         Me.pThumbs.SuspendLayout()
-        Me.Panel2.SuspendLayout()
+        Me.pSettInpFileList.SuspendLayout()
         Me.pGen.SuspendLayout()
-        Me.Panel3.SuspendLayout()
+        Me.pSettUnicode.SuspendLayout()
         Me.pUTF.SuspendLayout()
         Me.pSettHTML.SuspendLayout()
         Me.pHTMLFont.SuspendLayout()
@@ -159,7 +159,7 @@ Partial Class Settings
         Me.pThumb.SuspendLayout()
         Me.pSmallFnt.SuspendLayout()
         Me.pNoCols.SuspendLayout()
-        Me.Panel6.SuspendLayout()
+        Me.pSettFont.SuspendLayout()
         Me.pGeneral.SuspendLayout()
         Me.pExt.SuspendLayout()
         Me.pOutExist.SuspendLayout()
@@ -183,7 +183,7 @@ Partial Class Settings
         Me.btnClose.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnClose.ForeColor = System.Drawing.Color.Cornsilk
         Me.btnClose.ForeColorDisabled = System.Drawing.Color.DarkGray
-        Me.btnClose.Location = New System.Drawing.Point(560, 397)
+        Me.btnClose.Location = New System.Drawing.Point(565, 397)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(202, 55)
         Me.btnClose.TabIndex = 4
@@ -192,8 +192,8 @@ Partial Class Settings
         '
         'pThumbs
         '
-        Me.pThumbs.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.pThumbs.Controls.Add(Me.lblTHumbs)
+        Me.pThumbs.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(96, Byte), Integer))
+        Me.pThumbs.Controls.Add(Me.lblThumbs)
         Me.pThumbs.Controls.Add(Me.lblPropPercent)
         Me.pThumbs.Controls.Add(Me.ThumbHeight)
         Me.pThumbs.Controls.Add(Me.ThumbWidth)
@@ -203,24 +203,24 @@ Partial Class Settings
         Me.pThumbs.Controls.Add(Me.selThumbCustom)
         Me.pThumbs.Controls.Add(Me.selThumbHFixed)
         Me.pThumbs.Controls.Add(Me.selThumbWFixed)
-        Me.pThumbs.Location = New System.Drawing.Point(47, 130)
+        Me.pThumbs.Location = New System.Drawing.Point(47, 137)
         Me.pThumbs.Name = "pThumbs"
         Me.pThumbs.Size = New System.Drawing.Size(345, 90)
         Me.pThumbs.TabIndex = 63
         Me.pThumbs.Tag = "0"
         '
-        'lblTHumbs
+        'lblThumbs
         '
-        Me.lblTHumbs.BackColor = System.Drawing.Color.Transparent
-        Me.lblTHumbs.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTHumbs.ForeColor = System.Drawing.Color.Yellow
-        Me.lblTHumbs.Location = New System.Drawing.Point(-5, 8)
-        Me.lblTHumbs.Name = "lblTHumbs"
-        Me.lblTHumbs.Size = New System.Drawing.Size(116, 20)
-        Me.lblTHumbs.TabIndex = 63
-        Me.lblTHumbs.Text = "Thumbnails"
-        Me.lblTHumbs.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.lblTHumbs.UseCompatibleTextRendering = True
+        Me.lblThumbs.BackColor = System.Drawing.Color.Transparent
+        Me.lblThumbs.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblThumbs.ForeColor = System.Drawing.Color.White
+        Me.lblThumbs.Location = New System.Drawing.Point(10, 8)
+        Me.lblThumbs.Name = "lblThumbs"
+        Me.lblThumbs.Size = New System.Drawing.Size(90, 20)
+        Me.lblThumbs.TabIndex = 63
+        Me.lblThumbs.Text = "Thumbnails"
+        Me.lblThumbs.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.lblThumbs.UseCompatibleTextRendering = True
         '
         'lblPropPercent
         '
@@ -301,7 +301,7 @@ Partial Class Settings
         'lblScaleSize
         '
         Me.lblScaleSize.BackColor = System.Drawing.Color.Transparent
-        Me.lblScaleSize.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblScaleSize.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblScaleSize.ForeColor = System.Drawing.Color.White
         Me.lblScaleSize.Location = New System.Drawing.Point(110, 8)
         Me.lblScaleSize.Name = "lblScaleSize"
@@ -377,23 +377,23 @@ Partial Class Settings
         Me.selThumbWFixed.UseCompatibleTextRendering = True
         Me.selThumbWFixed.UseVisualStyleBackColor = False
         '
-        'Panel2
+        'pSettInpFileList
         '
-        Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.Panel2.Controls.Add(Me.pGen)
-        Me.Panel2.Controls.Add(Me.Label7)
-        Me.Panel2.Location = New System.Drawing.Point(150, 366)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(261, 55)
-        Me.Panel2.TabIndex = 64
-        Me.Panel2.Tag = "0"
+        Me.pSettInpFileList.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(96, Byte), Integer))
+        Me.pSettInpFileList.Controls.Add(Me.pGen)
+        Me.pSettInpFileList.Controls.Add(Me.lblSettInpFileList)
+        Me.pSettInpFileList.Location = New System.Drawing.Point(132, 375)
+        Me.pSettInpFileList.Name = "pSettInpFileList"
+        Me.pSettInpFileList.Size = New System.Drawing.Size(271, 55)
+        Me.pSettInpFileList.TabIndex = 64
+        Me.pSettInpFileList.Tag = "0"
         '
         'pGen
         '
         Me.pGen.BackColor = System.Drawing.Color.Transparent
         Me.pGen.Controls.Add(Me.bRemoveCompleted)
         Me.pGen.Controls.Add(Me.lblRemComplete)
-        Me.pGen.Location = New System.Drawing.Point(0, 20)
+        Me.pGen.Location = New System.Drawing.Point(4, 20)
         Me.pGen.Name = "pGen"
         Me.pGen.Size = New System.Drawing.Size(258, 30)
         Me.pGen.TabIndex = 75
@@ -410,7 +410,7 @@ Partial Class Settings
         Me.bRemoveCompleted.LabelFont = New System.Drawing.Font("Lucida Console", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.bRemoveCompleted.LabelForeColor = System.Drawing.Color.Yellow
         Me.bRemoveCompleted.LabelShow = False
-        Me.bRemoveCompleted.Location = New System.Drawing.Point(154, 4)
+        Me.bRemoveCompleted.Location = New System.Drawing.Point(159, 4)
         Me.bRemoveCompleted.Margin = New System.Windows.Forms.Padding(0)
         Me.bRemoveCompleted.Name = "bRemoveCompleted"
         Me.bRemoveCompleted.OffCheckedBack = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
@@ -430,11 +430,10 @@ Partial Class Settings
         '
         'lblRemComplete
         '
-        Me.lblRemComplete.AutoSize = True
         Me.lblRemComplete.BackColor = System.Drawing.Color.Transparent
         Me.lblRemComplete.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblRemComplete.ForeColor = System.Drawing.Color.White
-        Me.lblRemComplete.Location = New System.Drawing.Point(0, 7)
+        Me.lblRemComplete.Location = New System.Drawing.Point(1, 7)
         Me.lblRemComplete.Margin = New System.Windows.Forms.Padding(0)
         Me.lblRemComplete.Name = "lblRemComplete"
         Me.lblRemComplete.Size = New System.Drawing.Size(157, 19)
@@ -443,40 +442,40 @@ Partial Class Settings
         Me.lblRemComplete.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.lblRemComplete.UseCompatibleTextRendering = True
         '
-        'Label7
+        'lblSettInpFileList
         '
-        Me.Label7.BackColor = System.Drawing.Color.Transparent
-        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.ForeColor = System.Drawing.Color.Yellow
-        Me.Label7.Location = New System.Drawing.Point(0, 3)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(116, 20)
-        Me.Label7.TabIndex = 74
-        Me.Label7.Text = "Input File List"
-        Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.Label7.UseCompatibleTextRendering = True
+        Me.lblSettInpFileList.BackColor = System.Drawing.Color.Transparent
+        Me.lblSettInpFileList.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSettInpFileList.ForeColor = System.Drawing.Color.White
+        Me.lblSettInpFileList.Location = New System.Drawing.Point(4, 3)
+        Me.lblSettInpFileList.Name = "lblSettInpFileList"
+        Me.lblSettInpFileList.Size = New System.Drawing.Size(116, 20)
+        Me.lblSettInpFileList.TabIndex = 74
+        Me.lblSettInpFileList.Text = "Input File List"
+        Me.lblSettInpFileList.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblSettInpFileList.UseCompatibleTextRendering = True
         '
-        'Panel3
+        'pSettUnicode
         '
-        Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.Panel3.Controls.Add(Me.lblUTFOut)
-        Me.Panel3.Controls.Add(Me.pUTF)
-        Me.Panel3.Location = New System.Drawing.Point(417, 387)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(132, 67)
-        Me.Panel3.TabIndex = 75
-        Me.Panel3.Tag = "0"
+        Me.pSettUnicode.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(96, Byte), Integer))
+        Me.pSettUnicode.Controls.Add(Me.lblSettUnicode)
+        Me.pSettUnicode.Controls.Add(Me.pUTF)
+        Me.pSettUnicode.Location = New System.Drawing.Point(417, 387)
+        Me.pSettUnicode.Name = "pSettUnicode"
+        Me.pSettUnicode.Size = New System.Drawing.Size(140, 67)
+        Me.pSettUnicode.TabIndex = 75
+        Me.pSettUnicode.Tag = "0"
         '
-        'lblUTFOut
+        'lblSettUnicode
         '
-        Me.lblUTFOut.BackColor = System.Drawing.Color.Transparent
-        Me.lblUTFOut.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUTFOut.ForeColor = System.Drawing.Color.Yellow
-        Me.lblUTFOut.Location = New System.Drawing.Point(5, 8)
-        Me.lblUTFOut.Name = "lblUTFOut"
-        Me.lblUTFOut.Size = New System.Drawing.Size(126, 20)
-        Me.lblUTFOut.TabIndex = 56
-        Me.lblUTFOut.Text = "Unicode Outputs"
+        Me.lblSettUnicode.BackColor = System.Drawing.Color.Transparent
+        Me.lblSettUnicode.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSettUnicode.ForeColor = System.Drawing.Color.White
+        Me.lblSettUnicode.Location = New System.Drawing.Point(5, 8)
+        Me.lblSettUnicode.Name = "lblSettUnicode"
+        Me.lblSettUnicode.Size = New System.Drawing.Size(126, 20)
+        Me.lblSettUnicode.TabIndex = 56
+        Me.lblSettUnicode.Text = "Unicode Outputs"
         '
         'pUTF
         '
@@ -539,15 +538,15 @@ Partial Class Settings
         '
         'pSettHTML
         '
-        Me.pSettHTML.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.pSettHTML.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(96, Byte), Integer))
         Me.pSettHTML.Controls.Add(Me.pHTMLFont)
         Me.pSettHTML.Controls.Add(Me.pSanitize)
         Me.pSettHTML.Controls.Add(Me.pAnim)
         Me.pSettHTML.Controls.Add(Me.pHTMLObj)
-        Me.pSettHTML.Controls.Add(Me.lblHTMLOut)
-        Me.pSettHTML.Location = New System.Drawing.Point(20, 226)
+        Me.pSettHTML.Controls.Add(Me.lblSettHTML)
+        Me.pSettHTML.Location = New System.Drawing.Point(20, 230)
         Me.pSettHTML.Name = "pSettHTML"
-        Me.pSettHTML.Size = New System.Drawing.Size(296, 134)
+        Me.pSettHTML.Size = New System.Drawing.Size(305, 134)
         Me.pSettHTML.TabIndex = 76
         Me.pSettHTML.Tag = "0"
         '
@@ -758,26 +757,26 @@ Partial Class Settings
         Me.rCompleteHTML.UseCompatibleTextRendering = True
         Me.rCompleteHTML.UseVisualStyleBackColor = False
         '
-        'lblHTMLOut
+        'lblSettHTML
         '
-        Me.lblHTMLOut.BackColor = System.Drawing.Color.Transparent
-        Me.lblHTMLOut.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblHTMLOut.ForeColor = System.Drawing.Color.Yellow
-        Me.lblHTMLOut.Location = New System.Drawing.Point(3, 9)
-        Me.lblHTMLOut.Name = "lblHTMLOut"
-        Me.lblHTMLOut.Size = New System.Drawing.Size(124, 23)
-        Me.lblHTMLOut.TabIndex = 6
-        Me.lblHTMLOut.Text = "HTML Outputs"
+        Me.lblSettHTML.BackColor = System.Drawing.Color.Transparent
+        Me.lblSettHTML.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSettHTML.ForeColor = System.Drawing.Color.White
+        Me.lblSettHTML.Location = New System.Drawing.Point(3, 9)
+        Me.lblSettHTML.Name = "lblSettHTML"
+        Me.lblSettHTML.Size = New System.Drawing.Size(124, 23)
+        Me.lblSettHTML.TabIndex = 6
+        Me.lblSettHTML.Text = "HTML Outputs"
         '
         'pSettImage
         '
-        Me.pSettImage.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.pSettImage.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(96, Byte), Integer))
         Me.pSettImage.Controls.Add(Me.pIMGOut)
         Me.pSettImage.Controls.Add(Me.pThumb)
         Me.pSettImage.Controls.Add(Me.pSmallFnt)
         Me.pSettImage.Controls.Add(Me.pNoCols)
-        Me.pSettImage.Controls.Add(Me.lblImgFormat)
-        Me.pSettImage.Controls.Add(Me.lblImageOutputs)
+        Me.pSettImage.Controls.Add(Me.lblIMGOut)
+        Me.pSettImage.Controls.Add(Me.lblSettImage)
         Me.pSettImage.Location = New System.Drawing.Point(12, 12)
         Me.pSettImage.Name = "pSettImage"
         Me.pSettImage.Size = New System.Drawing.Size(380, 122)
@@ -986,7 +985,7 @@ Partial Class Settings
         Me.pThumb.Controls.Add(Me.lblThumb)
         Me.pThumb.Location = New System.Drawing.Point(8, 93)
         Me.pThumb.Name = "pThumb"
-        Me.pThumb.Size = New System.Drawing.Size(247, 27)
+        Me.pThumb.Size = New System.Drawing.Size(200, 23)
         Me.pThumb.TabIndex = 66
         Me.pThumb.Tag = "lblThumb"
         '
@@ -1027,7 +1026,7 @@ Partial Class Settings
         Me.lblThumb.ForeColor = System.Drawing.Color.White
         Me.lblThumb.Location = New System.Drawing.Point(89, 4)
         Me.lblThumb.Name = "lblThumb"
-        Me.lblThumb.Size = New System.Drawing.Size(98, 23)
+        Me.lblThumb.Size = New System.Drawing.Size(98, 20)
         Me.lblThumb.TabIndex = 10
         Me.lblThumb.Text = "Thumbnails?"
         Me.lblThumb.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -1081,7 +1080,7 @@ Partial Class Settings
         Me.lblSmallFnt.ForeColor = System.Drawing.Color.White
         Me.lblSmallFnt.Location = New System.Drawing.Point(89, 7)
         Me.lblSmallFnt.Name = "lblSmallFnt"
-        Me.lblSmallFnt.Size = New System.Drawing.Size(138, 23)
+        Me.lblSmallFnt.Size = New System.Drawing.Size(121, 23)
         Me.lblSmallFnt.TabIndex = 10
         Me.lblSmallFnt.Text = "80x50 Lines Mode?"
         Me.lblSmallFnt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -1141,41 +1140,41 @@ Partial Class Settings
         Me.lblNoCols.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.lblNoCols.UseCompatibleTextRendering = True
         '
-        'lblImgFormat
+        'lblIMGOut
         '
-        Me.lblImgFormat.BackColor = System.Drawing.Color.Transparent
-        Me.lblImgFormat.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblImgFormat.ForeColor = System.Drawing.Color.White
-        Me.lblImgFormat.Location = New System.Drawing.Point(220, 4)
-        Me.lblImgFormat.Name = "lblImgFormat"
-        Me.lblImgFormat.Size = New System.Drawing.Size(54, 20)
-        Me.lblImgFormat.TabIndex = 62
-        Me.lblImgFormat.Text = "Format"
-        Me.lblImgFormat.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.lblImgFormat.UseCompatibleTextRendering = True
+        Me.lblIMGOut.BackColor = System.Drawing.Color.Transparent
+        Me.lblIMGOut.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblIMGOut.ForeColor = System.Drawing.Color.White
+        Me.lblIMGOut.Location = New System.Drawing.Point(220, 4)
+        Me.lblIMGOut.Name = "lblIMGOut"
+        Me.lblIMGOut.Size = New System.Drawing.Size(54, 20)
+        Me.lblIMGOut.TabIndex = 62
+        Me.lblIMGOut.Text = "Format"
+        Me.lblIMGOut.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lblIMGOut.UseCompatibleTextRendering = True
         '
-        'lblImageOutputs
+        'lblSettImage
         '
-        Me.lblImageOutputs.BackColor = System.Drawing.Color.Transparent
-        Me.lblImageOutputs.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblImageOutputs.ForeColor = System.Drawing.Color.Yellow
-        Me.lblImageOutputs.Location = New System.Drawing.Point(4, 4)
-        Me.lblImageOutputs.Name = "lblImageOutputs"
-        Me.lblImageOutputs.Size = New System.Drawing.Size(174, 23)
-        Me.lblImageOutputs.TabIndex = 56
-        Me.lblImageOutputs.Text = "Image Outputs"
+        Me.lblSettImage.BackColor = System.Drawing.Color.Transparent
+        Me.lblSettImage.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSettImage.ForeColor = System.Drawing.Color.White
+        Me.lblSettImage.Location = New System.Drawing.Point(4, 4)
+        Me.lblSettImage.Name = "lblSettImage"
+        Me.lblSettImage.Size = New System.Drawing.Size(174, 23)
+        Me.lblSettImage.TabIndex = 56
+        Me.lblSettImage.Text = "Image Outputs"
         '
-        'Panel6
+        'pSettFont
         '
-        Me.Panel6.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.Panel6.Controls.Add(Me.btnSelfont)
-        Me.Panel6.Controls.Add(Me.lblSelFont)
-        Me.Panel6.Controls.Add(Me.Label8)
-        Me.Panel6.Location = New System.Drawing.Point(445, 171)
-        Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(383, 54)
-        Me.Panel6.TabIndex = 75
-        Me.Panel6.Tag = "0"
+        Me.pSettFont.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(96, Byte), Integer))
+        Me.pSettFont.Controls.Add(Me.btnSelfont)
+        Me.pSettFont.Controls.Add(Me.lblSelFont)
+        Me.pSettFont.Controls.Add(Me.lblSettFont)
+        Me.pSettFont.Location = New System.Drawing.Point(445, 171)
+        Me.pSettFont.Name = "pSettFont"
+        Me.pSettFont.Size = New System.Drawing.Size(383, 54)
+        Me.pSettFont.TabIndex = 75
+        Me.pSettFont.Tag = "0"
         '
         'btnSelfont
         '
@@ -1184,8 +1183,9 @@ Partial Class Settings
         Me.btnSelfont.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnSelfont.EndColor = System.Drawing.SystemColors.ActiveCaption
         Me.btnSelfont.EndColorDisabled = System.Drawing.Color.FromArgb(CType(CType(204, Byte), Integer), CType(CType(170, Byte), Integer), CType(CType(170, Byte), Integer))
+        Me.btnSelfont.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSelfont.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSelfont.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.btnSelfont.ForeColor = System.Drawing.Color.White
         Me.btnSelfont.ForeColorDisabled = System.Drawing.Color.DarkGray
         Me.btnSelfont.Location = New System.Drawing.Point(288, 25)
         Me.btnSelfont.Name = "btnSelfont"
@@ -1207,24 +1207,24 @@ Partial Class Settings
         Me.lblSelFont.TabIndex = 73
         Me.lblSelFont.Text = "Font Name"
         '
-        'Label8
+        'lblSettFont
         '
-        Me.Label8.BackColor = System.Drawing.Color.Transparent
-        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.ForeColor = System.Drawing.Color.Yellow
-        Me.Label8.Location = New System.Drawing.Point(3, 3)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(174, 23)
-        Me.Label8.TabIndex = 71
-        Me.Label8.Text = "Display Font"
+        Me.lblSettFont.BackColor = System.Drawing.Color.Transparent
+        Me.lblSettFont.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSettFont.ForeColor = System.Drawing.Color.White
+        Me.lblSettFont.Location = New System.Drawing.Point(3, 3)
+        Me.lblSettFont.Name = "lblSettFont"
+        Me.lblSettFont.Size = New System.Drawing.Size(174, 23)
+        Me.lblSettFont.TabIndex = 71
+        Me.lblSettFont.Text = "Display Font"
         '
         'pGeneral
         '
-        Me.pGeneral.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.pGeneral.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(96, Byte), Integer))
         Me.pGeneral.Controls.Add(Me.pExt)
         Me.pGeneral.Controls.Add(Me.pOutExist)
         Me.pGeneral.Controls.Add(Me.pSauce)
-        Me.pGeneral.Controls.Add(Me.Label4)
+        Me.pGeneral.Controls.Add(Me.lblGeneral)
         Me.pGeneral.Location = New System.Drawing.Point(412, 10)
         Me.pGeneral.Name = "pGeneral"
         Me.pGeneral.Size = New System.Drawing.Size(450, 88)
@@ -1491,28 +1491,29 @@ Partial Class Settings
         Me.rSauceKeep.UseCompatibleTextRendering = True
         Me.rSauceKeep.UseVisualStyleBackColor = False
         '
-        'Label4
+        'lblGeneral
         '
-        Me.Label4.BackColor = System.Drawing.Color.Transparent
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.Yellow
-        Me.Label4.Location = New System.Drawing.Point(2, 3)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(71, 23)
-        Me.Label4.TabIndex = 65
-        Me.Label4.Text = "General"
+        Me.lblGeneral.BackColor = System.Drawing.Color.Transparent
+        Me.lblGeneral.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblGeneral.ForeColor = System.Drawing.Color.White
+        Me.lblGeneral.Location = New System.Drawing.Point(2, 3)
+        Me.lblGeneral.Name = "lblGeneral"
+        Me.lblGeneral.Size = New System.Drawing.Size(71, 23)
+        Me.lblGeneral.TabIndex = 65
+        Me.lblGeneral.Text = "General"
         '
-        'Label6
+        'lblSettings
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.BackColor = System.Drawing.Color.Transparent
-        Me.Label6.Font = New System.Drawing.Font("Basic Font", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Label6.Location = New System.Drawing.Point(27, 422)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(194, 32)
-        Me.Label6.TabIndex = 78
-        Me.Label6.Text = "Settings"
+        Me.lblSettings.BackColor = System.Drawing.Color.Transparent
+        Me.lblSettings.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSettings.ForeColor = System.Drawing.Color.Navy
+        Me.lblSettings.Location = New System.Drawing.Point(12, 432)
+        Me.lblSettings.Margin = New System.Windows.Forms.Padding(0)
+        Me.lblSettings.Name = "lblSettings"
+        Me.lblSettings.Size = New System.Drawing.Size(140, 34)
+        Me.lblSettings.TabIndex = 78
+        Me.lblSettings.Text = "Settings"
+        Me.lblSettings.UseCompatibleTextRendering = True
         '
         'ToolTip1
         '
@@ -1524,13 +1525,13 @@ Partial Class Settings
         '
         'pVideo
         '
-        Me.pVideo.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.pVideo.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(96, Byte), Integer))
         Me.pVideo.Controls.Add(Me.lblBPS)
-        Me.pVideo.Controls.Add(Me.lblVideoPanel)
+        Me.pVideo.Controls.Add(Me.lblVideo)
         Me.pVideo.Controls.Add(Me.lblFPS)
         Me.pVideo.Controls.Add(Me.txtBPS)
         Me.pVideo.Controls.Add(Me.txtFPS)
-        Me.pVideo.Location = New System.Drawing.Point(343, 233)
+        Me.pVideo.Location = New System.Drawing.Point(333, 233)
         Me.pVideo.Name = "pVideo"
         Me.pVideo.Size = New System.Drawing.Size(142, 84)
         Me.pVideo.TabIndex = 64
@@ -1550,18 +1551,18 @@ Partial Class Settings
         Me.lblBPS.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.lblBPS.UseCompatibleTextRendering = True
         '
-        'lblVideoPanel
+        'lblVideo
         '
-        Me.lblVideoPanel.BackColor = System.Drawing.Color.Transparent
-        Me.lblVideoPanel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblVideoPanel.ForeColor = System.Drawing.Color.Yellow
-        Me.lblVideoPanel.Location = New System.Drawing.Point(-5, 8)
-        Me.lblVideoPanel.Name = "lblVideoPanel"
-        Me.lblVideoPanel.Size = New System.Drawing.Size(116, 20)
-        Me.lblVideoPanel.TabIndex = 63
-        Me.lblVideoPanel.Text = "Video Outputs"
-        Me.lblVideoPanel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.lblVideoPanel.UseCompatibleTextRendering = True
+        Me.lblVideo.BackColor = System.Drawing.Color.Transparent
+        Me.lblVideo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblVideo.ForeColor = System.Drawing.Color.White
+        Me.lblVideo.Location = New System.Drawing.Point(3, 8)
+        Me.lblVideo.Name = "lblVideo"
+        Me.lblVideo.Size = New System.Drawing.Size(116, 20)
+        Me.lblVideo.TabIndex = 63
+        Me.lblVideo.Text = "Video Outputs"
+        Me.lblVideo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblVideo.UseCompatibleTextRendering = True
         '
         'lblFPS
         '
@@ -1603,8 +1604,8 @@ Partial Class Settings
         '
         'pVideoOutFormats
         '
-        Me.pVideoOutFormats.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.pVideoOutFormats.Controls.Add(Me.Label1)
+        Me.pVideoOutFormats.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(96, Byte), Integer))
+        Me.pVideoOutFormats.Controls.Add(Me.lblVideoOutFormats)
         Me.pVideoOutFormats.Controls.Add(Me.pVidFmts)
         Me.pVideoOutFormats.Location = New System.Drawing.Point(480, 233)
         Me.pVideoOutFormats.Name = "pVideoOutFormats"
@@ -1612,18 +1613,18 @@ Partial Class Settings
         Me.pVideoOutFormats.TabIndex = 65
         Me.pVideoOutFormats.Tag = "lblFPS"
         '
-        'Label1
+        'lblVideoOutFormats
         '
-        Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(8, 1)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(54, 20)
-        Me.Label1.TabIndex = 70
-        Me.Label1.Text = "Format"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Label1.UseCompatibleTextRendering = True
+        Me.lblVideoOutFormats.BackColor = System.Drawing.Color.Transparent
+        Me.lblVideoOutFormats.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblVideoOutFormats.ForeColor = System.Drawing.Color.White
+        Me.lblVideoOutFormats.Location = New System.Drawing.Point(8, 1)
+        Me.lblVideoOutFormats.Name = "lblVideoOutFormats"
+        Me.lblVideoOutFormats.Size = New System.Drawing.Size(54, 20)
+        Me.lblVideoOutFormats.TabIndex = 70
+        Me.lblVideoOutFormats.Text = "Format"
+        Me.lblVideoOutFormats.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lblVideoOutFormats.UseCompatibleTextRendering = True
         '
         'pVidFmts
         '
@@ -1636,7 +1637,7 @@ Partial Class Settings
         Me.pVidFmts.Controls.Add(Me.rAGIF)
         Me.pVidFmts.Controls.Add(Me.rWMV)
         Me.pVidFmts.Controls.Add(Me.rAVI)
-        Me.pVidFmts.Location = New System.Drawing.Point(15, 22)
+        Me.pVidFmts.Location = New System.Drawing.Point(15, 20)
         Me.pVidFmts.Name = "pVidFmts"
         Me.pVidFmts.Size = New System.Drawing.Size(202, 60)
         Me.pVidFmts.TabIndex = 69
@@ -1822,7 +1823,7 @@ Partial Class Settings
         '
         'pAVICodec
         '
-        Me.pAVICodec.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.pAVICodec.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(96, Byte), Integer))
         Me.pAVICodec.Controls.Add(Me.lblAVICodec)
         Me.pAVICodec.Controls.Add(Me.rFFVI)
         Me.pAVICodec.Controls.Add(Me.rLIBXVID)
@@ -1831,9 +1832,9 @@ Partial Class Settings
         Me.pAVICodec.Controls.Add(Me.rLIBX264)
         Me.pAVICodec.Controls.Add(Me.rMPEG4)
         Me.pAVICodec.Controls.Add(Me.rZMBV)
-        Me.pAVICodec.Location = New System.Drawing.Point(488, 317)
+        Me.pAVICodec.Location = New System.Drawing.Point(480, 317)
         Me.pAVICodec.Name = "pAVICodec"
-        Me.pAVICodec.Size = New System.Drawing.Size(265, 60)
+        Me.pAVICodec.Size = New System.Drawing.Size(270, 60)
         Me.pAVICodec.TabIndex = 76
         Me.pAVICodec.Tag = "ZMBV"
         '
@@ -1841,11 +1842,11 @@ Partial Class Settings
         '
         Me.lblAVICodec.AutoSize = True
         Me.lblAVICodec.BackColor = System.Drawing.Color.Transparent
-        Me.lblAVICodec.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAVICodec.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAVICodec.ForeColor = System.Drawing.Color.White
         Me.lblAVICodec.Location = New System.Drawing.Point(214, 32)
         Me.lblAVICodec.Name = "lblAVICodec"
-        Me.lblAVICodec.Size = New System.Drawing.Size(44, 20)
+        Me.lblAVICodec.Size = New System.Drawing.Size(45, 20)
         Me.lblAVICodec.TabIndex = 71
         Me.lblAVICodec.Text = "Codec"
         Me.lblAVICodec.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -2009,29 +2010,28 @@ Partial Class Settings
         '
         'pMPGCodec
         '
-        Me.pMPGCodec.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.pMPGCodec.Controls.Add(Me.Label2)
+        Me.pMPGCodec.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(96, Byte), Integer))
+        Me.pMPGCodec.Controls.Add(Me.lblMPGCodec)
         Me.pMPGCodec.Controls.Add(Me.rMPEG2)
         Me.pMPGCodec.Controls.Add(Me.rMPEG1)
         Me.pMPGCodec.Location = New System.Drawing.Point(702, 233)
         Me.pMPGCodec.Name = "pMPGCodec"
-        Me.pMPGCodec.Size = New System.Drawing.Size(72, 84)
+        Me.pMPGCodec.Size = New System.Drawing.Size(75, 84)
         Me.pMPGCodec.TabIndex = 77
         Me.pMPGCodec.Tag = "MPEG1"
         '
-        'Label2
+        'lblMPGCodec
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.BackColor = System.Drawing.Color.Transparent
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(4, 4)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(44, 20)
-        Me.Label2.TabIndex = 71
-        Me.Label2.Text = "Codec"
-        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Label2.UseCompatibleTextRendering = True
+        Me.lblMPGCodec.BackColor = System.Drawing.Color.Transparent
+        Me.lblMPGCodec.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblMPGCodec.ForeColor = System.Drawing.Color.White
+        Me.lblMPGCodec.Location = New System.Drawing.Point(4, 4)
+        Me.lblMPGCodec.Name = "lblMPGCodec"
+        Me.lblMPGCodec.Size = New System.Drawing.Size(54, 14)
+        Me.lblMPGCodec.TabIndex = 71
+        Me.lblMPGCodec.Text = "Codec"
+        Me.lblMPGCodec.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.lblMPGCodec.UseCompatibleTextRendering = True
         '
         'rMPEG2
         '
@@ -2081,11 +2081,11 @@ Partial Class Settings
         '
         'pLFrame
         '
-        Me.pLFrame.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.pLFrame.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(96, Byte), Integer))
         Me.pLFrame.Controls.Add(Me.Label3)
         Me.pLFrame.Controls.Add(Me.lblFExtend)
         Me.pLFrame.Controls.Add(Me.txtLastFrame)
-        Me.pLFrame.Location = New System.Drawing.Point(343, 323)
+        Me.pLFrame.Location = New System.Drawing.Point(333, 323)
         Me.pLFrame.Name = "pLFrame"
         Me.pLFrame.Size = New System.Drawing.Size(142, 31)
         Me.pLFrame.TabIndex = 65
@@ -2107,13 +2107,12 @@ Partial Class Settings
         '
         'lblFExtend
         '
-        Me.lblFExtend.AutoSize = True
         Me.lblFExtend.BackColor = System.Drawing.Color.Transparent
         Me.lblFExtend.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblFExtend.ForeColor = System.Drawing.Color.White
         Me.lblFExtend.Location = New System.Drawing.Point(13, 7)
         Me.lblFExtend.Name = "lblFExtend"
-        Me.lblFExtend.Size = New System.Drawing.Size(47, 20)
+        Me.lblFExtend.Size = New System.Drawing.Size(47, 18)
         Me.lblFExtend.TabIndex = 17
         Me.lblFExtend.Text = "Extend"
         Me.lblFExtend.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -2131,30 +2130,42 @@ Partial Class Settings
         Me.txtLastFrame.Text = "5"
         Me.txtLastFrame.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'Label9
+        'lblOrnament1
         '
-        Me.Label9.BackColor = System.Drawing.Color.Transparent
-        Me.Label9.Font = New System.Drawing.Font("Lucida Console", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.ForeColor = System.Drawing.Color.Yellow
-        Me.Label9.Location = New System.Drawing.Point(774, 330)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(88, 122)
-        Me.Label9.TabIndex = 80
-        Me.Label9.Text = "__o|___" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "|____   \       ___" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "      \   \____/" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "       \_________/"
+        Me.lblOrnament1.BackColor = System.Drawing.Color.Transparent
+        Me.lblOrnament1.Font = New System.Drawing.Font("Lucida Console", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblOrnament1.ForeColor = System.Drawing.Color.Yellow
+        Me.lblOrnament1.Location = New System.Drawing.Point(774, 330)
+        Me.lblOrnament1.Name = "lblOrnament1"
+        Me.lblOrnament1.Size = New System.Drawing.Size(88, 122)
+        Me.lblOrnament1.TabIndex = 80
+        Me.lblOrnament1.Text = "__o|___" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "|____   \       ___" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "      \   \____/" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "       \_________/"
         '
         'pBBS
         '
-        Me.pBBS.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.pBBS.Controls.Add(Me.lblBBSFormats)
+        Me.pBBS.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(96, Byte), Integer))
+        Me.pBBS.Controls.Add(Me.lblBBS)
         Me.pBBS.Controls.Add(Me.rWildcat3)
         Me.pBBS.Controls.Add(Me.rWildcat2)
         Me.pBBS.Controls.Add(Me.rAvatar)
         Me.pBBS.Controls.Add(Me.rPCBoard)
-        Me.pBBS.Location = New System.Drawing.Point(451, 105)
+        Me.pBBS.Location = New System.Drawing.Point(445, 105)
         Me.pBBS.Name = "pBBS"
         Me.pBBS.Size = New System.Drawing.Size(265, 60)
         Me.pBBS.TabIndex = 81
         Me.pBBS.Tag = "PCB"
+        '
+        'lblBBS
+        '
+        Me.lblBBS.BackColor = System.Drawing.Color.Transparent
+        Me.lblBBS.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblBBS.ForeColor = System.Drawing.Color.White
+        Me.lblBBS.Location = New System.Drawing.Point(19, 7)
+        Me.lblBBS.Name = "lblBBS"
+        Me.lblBBS.Size = New System.Drawing.Size(71, 40)
+        Me.lblBBS.TabIndex = 66
+        Me.lblBBS.Text = "BBS" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Formats"
+        Me.lblBBS.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'rWildcat3
         '
@@ -2246,40 +2257,29 @@ Partial Class Settings
         Me.rPCBoard.UseCompatibleTextRendering = True
         Me.rPCBoard.UseVisualStyleBackColor = False
         '
-        'lblBBSFormats
-        '
-        Me.lblBBSFormats.BackColor = System.Drawing.Color.Transparent
-        Me.lblBBSFormats.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblBBSFormats.ForeColor = System.Drawing.Color.Yellow
-        Me.lblBBSFormats.Location = New System.Drawing.Point(19, 7)
-        Me.lblBBSFormats.Name = "lblBBSFormats"
-        Me.lblBBSFormats.Size = New System.Drawing.Size(71, 40)
-        Me.lblBBSFormats.TabIndex = 66
-        Me.lblBBSFormats.Text = "BBS" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Formats"
-        Me.lblBBSFormats.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        '
         'Settings
         '
         Me.AcceptButton = Me.btnClose
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.ANSI_ASCII_Converter.My.Resources.Resources.CHSAC
+        Me.BackgroundImage = Global.ANSI_ASCII_Converter.My.Resources.Resources.PanelBgRev
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(869, 466)
         Me.ControlBox = False
         Me.Controls.Add(Me.pBBS)
-        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.lblOrnament1)
         Me.Controls.Add(Me.pLFrame)
         Me.Controls.Add(Me.pMPGCodec)
         Me.Controls.Add(Me.pAVICodec)
         Me.Controls.Add(Me.pVideoOutFormats)
         Me.Controls.Add(Me.pVideo)
-        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.lblSettings)
         Me.Controls.Add(Me.pSettHTML)
         Me.Controls.Add(Me.pSettImage)
         Me.Controls.Add(Me.pGeneral)
-        Me.Controls.Add(Me.Panel6)
-        Me.Controls.Add(Me.Panel3)
-        Me.Controls.Add(Me.Panel2)
+        Me.Controls.Add(Me.pSettFont)
+        Me.Controls.Add(Me.pSettUnicode)
+        Me.Controls.Add(Me.pSettInpFileList)
         Me.Controls.Add(Me.pThumbs)
         Me.Controls.Add(Me.btnClose)
         Me.DoubleBuffered = True
@@ -2291,10 +2291,9 @@ Partial Class Settings
         Me.Text = "Settings"
         Me.pThumbs.ResumeLayout(False)
         Me.pThumbs.PerformLayout()
-        Me.Panel2.ResumeLayout(False)
+        Me.pSettInpFileList.ResumeLayout(False)
         Me.pGen.ResumeLayout(False)
-        Me.pGen.PerformLayout()
-        Me.Panel3.ResumeLayout(False)
+        Me.pSettUnicode.ResumeLayout(False)
         Me.pUTF.ResumeLayout(False)
         Me.pSettHTML.ResumeLayout(False)
         Me.pHTMLFont.ResumeLayout(False)
@@ -2307,7 +2306,7 @@ Partial Class Settings
         Me.pThumb.ResumeLayout(False)
         Me.pSmallFnt.ResumeLayout(False)
         Me.pNoCols.ResumeLayout(False)
-        Me.Panel6.ResumeLayout(False)
+        Me.pSettFont.ResumeLayout(False)
         Me.pGeneral.ResumeLayout(False)
         Me.pExt.ResumeLayout(False)
         Me.pOutExist.ResumeLayout(False)
@@ -2319,12 +2318,10 @@ Partial Class Settings
         Me.pAVICodec.ResumeLayout(False)
         Me.pAVICodec.PerformLayout()
         Me.pMPGCodec.ResumeLayout(False)
-        Me.pMPGCodec.PerformLayout()
         Me.pLFrame.ResumeLayout(False)
         Me.pLFrame.PerformLayout()
         Me.pBBS.ResumeLayout(False)
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents btnClose As MyControls.GButton
@@ -2338,11 +2335,11 @@ Partial Class Settings
     Friend WithEvents ThumbHeight As System.Windows.Forms.TextBox
     Friend WithEvents ThumbWidth As System.Windows.Forms.TextBox
     Friend WithEvents ThumbScalePercent As System.Windows.Forms.TextBox
-    Friend WithEvents lblTHumbs As System.Windows.Forms.Label
-    Friend WithEvents Panel2 As System.Windows.Forms.Panel
-    Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents Panel3 As System.Windows.Forms.Panel
-    Friend WithEvents lblUTFOut As System.Windows.Forms.Label
+    Friend WithEvents lblThumbs As System.Windows.Forms.Label
+    Friend WithEvents pSettInpFileList As System.Windows.Forms.Panel
+    Friend WithEvents lblSettInpFileList As System.Windows.Forms.Label
+    Friend WithEvents pSettUnicode As System.Windows.Forms.Panel
+    Friend WithEvents lblSettUnicode As System.Windows.Forms.Label
     Friend WithEvents rUTF16 As System.Windows.Forms.RadioButton
     Friend WithEvents rUTF8 As System.Windows.Forms.RadioButton
     Friend WithEvents pSettHTML As System.Windows.Forms.Panel
@@ -2352,21 +2349,21 @@ Partial Class Settings
     Friend WithEvents rAnim As System.Windows.Forms.RadioButton
     Friend WithEvents rObjectOnly As System.Windows.Forms.RadioButton
     Friend WithEvents rCompleteHTML As System.Windows.Forms.RadioButton
-    Friend WithEvents lblHTMLOut As System.Windows.Forms.Label
+    Friend WithEvents lblSettHTML As System.Windows.Forms.Label
     Friend WithEvents pSettImage As System.Windows.Forms.Panel
     Friend WithEvents NoCols As MyControls.OnOffInputControlSmall
     Friend WithEvents lblNoCols As System.Windows.Forms.Label
-    Friend WithEvents lblImgFormat As System.Windows.Forms.Label
-    Friend WithEvents lblImageOutputs As System.Windows.Forms.Label
+    Friend WithEvents lblIMGOut As System.Windows.Forms.Label
+    Friend WithEvents lblSettImage As System.Windows.Forms.Label
     Friend WithEvents SmallFnt As MyControls.OnOffInputControlSmall
     Friend WithEvents lblSmallFnt As System.Windows.Forms.Label
-    Friend WithEvents Panel6 As System.Windows.Forms.Panel
+    Friend WithEvents pSettFont As System.Windows.Forms.Panel
     Friend WithEvents pThumb As System.Windows.Forms.Panel
     Friend WithEvents Thumb As MyControls.OnOffInputControlSmall
     Friend WithEvents lblThumb As System.Windows.Forms.Label
     Friend WithEvents btnSelfont As MyControls.GButton
     Friend WithEvents lblSelFont As System.Windows.Forms.Label
-    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents lblSettFont As System.Windows.Forms.Label
     Friend WithEvents pGeneral As System.Windows.Forms.Panel
     Friend WithEvents rOver As System.Windows.Forms.RadioButton
     Friend WithEvents lblOutputExists As System.Windows.Forms.Label
@@ -2376,8 +2373,8 @@ Partial Class Settings
     Friend WithEvents rSauceStrip As System.Windows.Forms.RadioButton
     Friend WithEvents lblSauce As System.Windows.Forms.Label
     Friend WithEvents rSauceKeep As System.Windows.Forms.RadioButton
-    Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents lblGeneral As System.Windows.Forms.Label
+    Friend WithEvents lblSettings As System.Windows.Forms.Label
     Friend WithEvents FontDialog1 As System.Windows.Forms.FontDialog
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
     Friend WithEvents pIMGOut As System.Windows.Forms.Panel
@@ -2409,12 +2406,12 @@ Partial Class Settings
     Friend WithEvents lblExtension As System.Windows.Forms.Label
     Friend WithEvents pVideo As System.Windows.Forms.Panel
     Friend WithEvents lblBPS As System.Windows.Forms.Label
-    Friend WithEvents lblVideoPanel As System.Windows.Forms.Label
+    Friend WithEvents lblVideo As System.Windows.Forms.Label
     Friend WithEvents lblFPS As System.Windows.Forms.Label
     Friend WithEvents txtBPS As System.Windows.Forms.TextBox
     Friend WithEvents txtFPS As System.Windows.Forms.TextBox
     Friend WithEvents pVideoOutFormats As System.Windows.Forms.Panel
-    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents lblVideoOutFormats As System.Windows.Forms.Label
     Friend WithEvents pVidFmts As System.Windows.Forms.Panel
     Friend WithEvents rVOB As System.Windows.Forms.RadioButton
     Friend WithEvents rMPG As System.Windows.Forms.RadioButton
@@ -2434,18 +2431,18 @@ Partial Class Settings
     Friend WithEvents rFFVI As System.Windows.Forms.RadioButton
     Friend WithEvents lblAVICodec As System.Windows.Forms.Label
     Friend WithEvents pMPGCodec As System.Windows.Forms.Panel
-    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents lblMPGCodec As System.Windows.Forms.Label
     Friend WithEvents rMPEG2 As System.Windows.Forms.RadioButton
     Friend WithEvents rMPEG1 As System.Windows.Forms.RadioButton
     Friend WithEvents pLFrame As System.Windows.Forms.Panel
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents lblFExtend As System.Windows.Forms.Label
     Friend WithEvents txtLastFrame As System.Windows.Forms.TextBox
-    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents lblOrnament1 As System.Windows.Forms.Label
     Friend WithEvents pBBS As System.Windows.Forms.Panel
     Friend WithEvents rWildcat3 As System.Windows.Forms.RadioButton
     Friend WithEvents rWildcat2 As System.Windows.Forms.RadioButton
     Friend WithEvents rAvatar As System.Windows.Forms.RadioButton
     Friend WithEvents rPCBoard As System.Windows.Forms.RadioButton
-    Friend WithEvents lblBBSFormats As System.Windows.Forms.Label
+    Friend WithEvents lblBBS As System.Windows.Forms.Label
 End Class

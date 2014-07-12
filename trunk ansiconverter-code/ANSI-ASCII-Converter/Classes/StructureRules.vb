@@ -30,8 +30,8 @@
 
             'ListIn2.Item(a - 1).Enabled = False
         Next
-        MainForm.pOut.Visible = True
-        MainForm.pCPin.Visible = bCheckRes(0)
+        oMainForm.pOut.Visible = True
+        oMainForm.pCPin.Visible = bCheckRes(0)
 
     End Sub
 
@@ -62,13 +62,13 @@
         End Sub
         Public Sub ExecRule()
             If CPoutVis = False Then
-                MainForm.pCPout.Visible = False
+                oMainForm.pCPout.Visible = False
             Else
-                If MainForm.pCPin.Visible = False Then
-                    MainForm.pCPout.Visible = True
+                If oMainForm.pCPin.Visible = False Then
+                    oMainForm.pCPout.Visible = True
                 Else
-                    MainForm.pCPout.Visible = False
-                    MainForm.pCPin.Visible = False
+                    oMainForm.pCPout.Visible = False
+                    oMainForm.pCPin.Visible = False
                 End If
             End If
             '            MainForm.pCPout.Visible = (CPoutVis Or MainForm.pCPin.Visible) And Not MainForm.pCPin.Visible

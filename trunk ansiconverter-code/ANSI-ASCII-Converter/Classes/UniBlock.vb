@@ -30,9 +30,9 @@
     Public Sub New(ByVal N As String, ByVal F As String, ByVal T As String)
         sName = N
         sFrom = F
-        IFrom = Converter.HexToDec(sFrom)
+        IFrom = Converter.ConverterSupport.HexToDec(sFrom)
         sTo = T
-        iTo = Converter.HexToDec(sTo)
+        iTo = Converter.ConverterSupport.HexToDec(sTo)
         myKey = sFrom & "-" & sTo
         MyDisplay = myKey & " : " & sName & " (" & CStr(iTo - IFrom + 1) & " characters)"
     End Sub

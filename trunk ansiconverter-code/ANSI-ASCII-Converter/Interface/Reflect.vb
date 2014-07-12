@@ -14,7 +14,7 @@ Public Module Reflect
         Dim pi As ParameterInfo
 
         Dim sTmpFile As String = IO.Path.GetTempFileName & ".dll"
-        Call Converter.WriteFile(sTmpFile, My.Resources.BassMOD_Net, True, 0, True, True)
+        Call Converter.ConverterSupport.WriteFile(sTmpFile, My.Resources.BassMOD_Net, True, 0, True, True)
         asm = System.Reflection.Assembly.LoadFrom(sTmpFile)
 
         ReflectionMain(asm)

@@ -1,8 +1,7 @@
 ﻿Imports System.Reflection
 Imports AnsiCPMaps
 Public Module Data
-    Public Const ToolVersion = "1.04.00"
-    Public Const ToolVersionDate = "03.2012"
+
     Public oConv As New Converter.ProcessFiles
     Public sCodePg As String
     Public sCodePgOut As String
@@ -20,7 +19,7 @@ Public Module Data
     Public bConv2Unicode As Boolean
     Public sOutPutFormat As String
     Public sInputFormat As String
-    Public CPS As AnsiCPMaps.AnsiCPMaps = New AnsiCPMaps.AnsiCPMaps
+    Public CPS As AnsiCPMaps.AnsiCPMaps = AnsiCPMaps.AnsiCPMaps.Instance
     Public executing_assembly As System.Reflection.Assembly = System.Reflection.Assembly.GetExecutingAssembly()
     Public iLoop As Integer = 0
     Public oBASS As BassModNet = New BassModNet
@@ -61,7 +60,7 @@ Public Module Data
 
     Public iSelectionStartBak As Integer = 0
     Public iLastRTFTextLen As Integer = 0
-
+    Public bBatchAdd As Boolean = False
     Public LastFrame As Integer = 3
     Public ListAllLeft As New List(Of Integer)
     Public ListDepends As New List(Of ControlDepends)
@@ -142,23 +141,24 @@ Public Module Data
         VID = 10
     End Enum
 
-    Public Const sCPLN = "|Latin US/United States/Canada|Greek|Baltic Rim|Latin 1 (Western Europe: DE, FR, ES)|" & _
-                  "Latin 2 (Slavic: PL, RU, BA, HR, HU, CZ, SK)|" & _
-                  "Cyrillic (RU, BG, UA)|Turkish, TR|Latin 1 Alt (= 850, 0xD5 = U+20AC EURO SYM)|" & _
-                  "Portuguese, PT|Islandic, IS|Hebrew, IL|Canada, CA (French)|Arabic|Nordic (except IS) (DK, SE, NO, FI)|" & _
-                  "Cyrillic Russian (based on GOST 19768-87)|Greek 2 (IBM Modern GR)|MS-DOS Thai|"
+    Friend Const sCPLN = "Latin US/United States/Canada|Greek|Baltic Rim|Latin 1 (Western Europe: DE, FR, ES)|" & _
+              "Latin 2 (Slavic: PL, RU, BA, HR, HU, CZ, SK)|" & _
+              "Cyrillic (RU, BG, UA)|Turkish, TR|Latin 1 Alt (= 850, 0xD5 = U+20AC EURO SYM)|" & _
+              "Portuguese, PT|Islandic, IS|Hebrew, IL|Canada, CA (French)|Arabic|Nordic (except IS) (DK, SE, NO, FI)|" & _
+              "Cyrillic Russian (based on GOST 19768-87)|Greek 2 (IBM Modern GR)|MS-DOS Thai"
 
-    Public Const sWinCPLN = "|Windows Latin-2|Windows Cyrillic|Windows Latin-1|Windows Greek|Windows Turkish|Windows Hebrew|Windows Arabic|" & _
-                     "Windows Baltic (1)|Windows Vietnamese|Windows Thai|Windows Japanese|Windows Chinese (VRCN)|Windows Korean|Windows Chinese (HK)|"
+    Friend Const sWinCPLN = "Windows Latin-2|Windows Cyrillic|Windows Latin-1|Windows Greek|Windows Turkish|Windows Hebrew|Windows Arabic|" & _
+                     "Windows Baltic (1)|Windows Vietnamese|Windows Thai|Windows Japanese|Windows Chinese (VRCN)|Windows Korean|Windows Chinese (HK)"
 
-    Public Const sCPLISO = "|iso-8859-1|iso-8859-7|iso-8859-4|iso-8859-1|iso-8859-2|iso-8859-5|iso-8859-9|iso-8859-1" & _
-                           "|iso-8859-15|iso-8859-8|iso-8859-1|iso-8859-1|iso-8859-5|iso-8859-7|tactis|-|-|"
+    Friend Const sCPLISO = "iso-8859-1|iso-8859-7|iso-8859-4|iso-8859-1|iso-8859-2|iso-8859-5|iso-8859-9|iso-8859-1" & _
+                           "|iso-8859-15|iso-8859-8|iso-8859-1|iso-8859-1|iso-8859-5|iso-8859-7|tactis|-|-"
 
-    Public Const sWinCPLISO = "|iso-8859-2|iso-8859-5|us-ascii|iso-8859-7|iso-8859-9|iso-8859-8|-|iso-8859-4|-|tactis|-|-|-|"
+    Friend Const sWinCPLISO = "iso-8859-2|iso-8859-5|us-ascii|iso-8859-7|iso-8859-9|iso-8859-8|-|iso-8859-4|-|tactis|-|-|-|-"
 
-    Public Const sCPL = "|CP437|CP737|CP775|CP850|CP852|CP855|CP857|CP858|CP860|CP861|CP862|CP863|CP864|CP865|CP866|CP869|CP874|"
-    Public Const sWinCPL = "|CP1250|CP1251|CP1252|CP1253|CP1254|CP1255|CP1256|CP1257|CP1258|CP874|CP932|CP936|CP949|CP950|"
+    Friend Const sCPL = "CP437|CP737|CP775|CP850|CP852|CP855|CP857|CP858|CP860|CP861|CP862|CP863|CP864|CP865|CP866|CP869|CP874"
+    Friend Const sWinCPL = "CP1250|CP1251|CP1252|CP1253|CP1254|CP1255|CP1256|CP1257|CP1258|CP874|CP932|CP936|CP949|CP950"
 
+    Public bWebConnectionIssue As Boolean = False
 
     Public Sub InitConst()
 
@@ -170,9 +170,10 @@ Public Module Data
         AddHandler oConv.AdjustnumSel, AddressOf evHandlerAdjustnumSel
         AddHandler oConv.AdjustnumASCII, AddressOf evHandlerAdjustnumASCII
         AddHandler oConv.AdjustnumTotal, AddressOf evHandlerAdjustnumTotal
-
-        Converter.MForm = MainForm
-        Converter.ToolTip = MainForm.ToolTip1
+        AddHandler oConv.ProcessFinished, AddressOf evHandlerProcessFinished
+        AddHandler oConv.ListItemRemoved, AddressOf evHandlerListItemRemoved
+        Converter.MForm = oMainForm
+        Converter.ToolTip = oMainForm.ToolTip1
 
         aCPLN = Split(sCPLN, "|")
         aCPL = Split(sCPL, "|")
@@ -180,10 +181,17 @@ Public Module Data
         aWinCPL = Split(sWinCPL, "|")
         aWinCPLN = Split(sWinCPLN, "|")
         aWinCPLISO = Split(sWinCPLISO, "|")
+        Try
+            UniNamesList = BuildUniCodeNamesList(UniNamesList)
+        Catch ex As System.Net.WebException
+            bWebConnectionIssue = True
+        Catch ex As Exception
+
+        End Try
+
 
         Call InitRulez()
         Call InitializeForm()
-
         Try
             oBASS.ExportAndLoadAssembly()
         Catch ex As Exception

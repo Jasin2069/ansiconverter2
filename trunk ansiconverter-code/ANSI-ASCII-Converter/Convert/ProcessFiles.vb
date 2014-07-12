@@ -3,12 +3,29 @@ Imports System.Text.RegularExpressions.RegexOptions
 
 
 Public Module ProcessFiles
+    Public Sub evHandlerProcessFinished(ByVal sender As Object, ByVal e As EventArgs)
+        oMainForm.btnStart.BeginColor = System.Drawing.Color.Green
+        oMainForm.btnStart.EndColor = System.Drawing.Color.Lime
+        oMainForm.btnStart.Text = "Convert"
+        oMainForm.btnStart.Enabled = True
+        oMainForm.ToolTip1.SetToolTip(oMainForm.btnStart, "start converting all files" & vbCrLf & "in the input file list")
+    End Sub
     Public Sub evHandlerProcessedFile(ByVal idx As Integer)
-        MainForm.listFiles.DataSource = Nothing
-        MainForm.listFiles.DataSource = Converter.ListInputFiles
+        oMainForm.listFiles.SuspendLayout()
+        'MainForm.listFiles.DataSource = Nothing
+        'MainForm.listFiles.DataSource = Converter.ListInputFiles
         UpdateCounts()
         UpdateControls()
-        My.Application.DoEvents()
+        oMainForm.listFiles.ResumeLayout(False)
+        oMainForm.listFiles.PerformLayout()
+        System.Windows.Forms.Application.DoEvents()
+    End Sub
+    Public Sub evHandlerListItemRemoved(ByVal sender As Object, ByVal item As Converter.FileListItem)
+        oMainForm.FileListItemBindingSource.SuspendBinding()
+        oMainForm.FileListItemBindingSource.Remove(item)
+        oMainForm.FileListItemBindingSource.ResumeBinding()
+        oMainForm.listFiles.PerformLayout()
+        System.Windows.Forms.Application.DoEvents()
     End Sub
     Public Sub evHandlerInfoMsg(ByVal Msg As String, ByVal nolinebreak As Boolean, ByVal removelast As Boolean)
         InfoMsg(Msg, nolinebreak, removelast)
@@ -17,35 +34,45 @@ Public Module ProcessFiles
         ErrMsg(Msg)
     End Sub
     Public Sub evHandlerAdjustnumUTF16(ByVal value As Integer)
-        MainForm.numUTF16.Text += value
-        UpdateControls()
-        My.Application.DoEvents()
+        oMainForm.numUTF16.Text += value
+        If bBatchAdd = False Then
+            UpdateControls()
+            System.Windows.Forms.Application.DoEvents()
+        End If
     End Sub
     Public Sub evHandlerAdjustnumUTF8(ByVal value As Integer)
-        MainForm.numUTF8.Text += value
-        UpdateControls()
-        My.Application.DoEvents()
+        oMainForm.numUTF8.Text += value
+        If bBatchAdd = False Then
+            UpdateControls()
+            System.Windows.Forms.Application.DoEvents()
+        End If
     End Sub
     Public Sub evHandlerAdjustnumSel(ByVal value As Integer)
-        MainForm.numSel.Text += value
-        UpdateControls()
-        My.Application.DoEvents()
+        oMainForm.numSel.Text += value
+        If bBatchAdd = False Then
+            UpdateControls()
+            System.Windows.Forms.Application.DoEvents()
+        End If
     End Sub
     Public Sub evHandlerAdjustnumASCII(ByVal value As Integer)
-        MainForm.numASCII.Text += value
-        UpdateControls()
-        My.Application.DoEvents()
+        oMainForm.numASCII.Text += value
+        If bBatchAdd = False Then
+            UpdateControls()
+            System.Windows.Forms.Application.DoEvents()
+        End If
     End Sub
     Public Sub evHandlerAdjustnumTotal(ByVal value As Integer)
-        MainForm.numTotal.Text += value
-        UpdateControls()
-        My.Application.DoEvents()
+        oMainForm.numTotal.Text += value
+        If bBatchAdd = False Then
+            UpdateControls()
+            System.Windows.Forms.Application.DoEvents()
+        End If
     End Sub
 
     Public Sub ConvertAllFiles()
 
         Converter.bDebug = bDebug
-        Converter.txtExt = ANSI_ASCII_Converter.MainForm.txtExt.Text
+        Converter.txtExt = oMainForm.txtExt.Text
         Converter.rReplaceExt = ANSI_ASCII_Converter.Settings.rReplaceExt.Checked
         Converter.pNoColors = ANSI_ASCII_Converter.Settings.NoCols.Checked
         Converter.pSmallFont = ANSI_ASCII_Converter.Settings.SmallFnt.Checked
@@ -73,14 +100,14 @@ Public Module ProcessFiles
 
         End If
         Converter.pSanitize = False
-        If MainForm.outHTML.Checked = True And ANSI_ASCII_Converter.Settings.Sanitize.Checked = True Then
+        If oMainForm.outHTML.Checked = True And ANSI_ASCII_Converter.Settings.Sanitize.Checked = True Then
             Converter.pSanitize = True
         End If
         Converter.BPS = BPS
         Converter.FPS = FPS
         Converter.pBBS = ANSI_ASCII_Converter.Settings.pBBS.Tag.ToString
         Converter.LastFrame = LastFrame
-        Converter.rOutPathInput = MainForm.rOutPathInput.Checked
+        Converter.rOutPathInput = oMainForm.rOutPathInput.Checked
         Converter.VidFmt = ANSI_ASCII_Converter.Settings.pVidFmts.Tag.ToString
         Select Case ANSI_ASCII_Converter.Settings.pVidFmts.Tag.ToString
             Case "AVI"
@@ -91,14 +118,14 @@ Public Module ProcessFiles
                 Converter.VidCodec = ""
         End Select
         Converter.SelectedWebFont = SelectedWebFont
-        Converter.outPath = MainForm.outPath.FullText
+        Converter.outPath = oMainForm.outPath.FullText
         Converter.bForceOverwrite = bForceOverwrite
-        Converter.sOutPutFormat = MainForm.pOut.Tag.ToString
-        Converter.pOut = MainForm.pOut.Tag.ToString
+        Converter.sOutPutFormat = oMainForm.pOut.Tag.ToString
+        Converter.pOut = oMainForm.pOut.Tag.ToString
         'sInputFormat = MainForm.pIn.Tag.ToString
 
         Converter.pHTMLComplete = True
-        If MainForm.outHTML.Checked = True And ANSI_ASCII_Converter.Settings.rObjectOnly.Checked = True Then
+        If oMainForm.outHTML.Checked = True And ANSI_ASCII_Converter.Settings.rObjectOnly.Checked = True Then
             Converter.pHTMLComplete = False
         End If
         If ANSI_ASCII_Converter.Settings.rUTF16.Checked = True Then
@@ -113,16 +140,16 @@ Public Module ProcessFiles
         Converter.bSanitize = Converter.pSanitize
         Converter.sHTMLFont = sHTMLFont
         Converter.pCP = "CP437"
-        If MainForm.pCPin.Visible = True Then
-            Converter.pCP = MainForm.pCPin.Tag.ToString
+        If oMainForm.pCPin.Visible = True Then
+            Converter.pCP = oMainForm.pCPin.Tag.ToString
         Else
-            If MainForm.pCPout.Visible = True Then
-                Converter.pCP = MainForm.pCPout.Tag.ToString
+            If oMainForm.pCPout.Visible = True Then
+                Converter.pCP = oMainForm.pCPout.Tag.ToString
             End If
         End If
         Converter.sCodePg = Converter.pCP
         Converter.pHTMLEncode = False
-        If MainForm.outHTML.Checked = True Or ListCntLabels.Item(2).Text > 0 Then
+        If oMainForm.outHTML.Checked = True Or ListCntLabels.Item(2).Text > 0 Then
             Converter.pHTMLEncode = True
         End If
 
@@ -131,7 +158,7 @@ Public Module ProcessFiles
         oConv.ConvertAllFiles()
 
 
-       
+
 
 
 

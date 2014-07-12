@@ -1,5 +1,5 @@
 ﻿Module Module1
-    Public Const ToolVersion = "1.04.00"
+    Public ToolVersion As String = My.Application.Info.Version.ToString '"1.04.00"
     Public Const ToolVersionDate = "03.2012"
     Public Const bDebug As Boolean = False
     Public bInputFile As Boolean = True
@@ -26,7 +26,7 @@
     Public bReplaceExt As Boolean = False
     Public soutPath As String = ""
     Public bForceOverwrite As Boolean = False
-    Public CPS As AnsiCPMaps.AnsiCPMaps = New AnsiCPMaps.AnsiCPMaps
+    Public CPS As AnsiCPMaps.AnsiCPMaps = AnsiCPMaps.AnsiCPMaps.Instance
     Public bShowHelp As Boolean = False
     Public bShowCPList As Boolean = False
     Public sExtFilter As String = ""
@@ -741,6 +741,10 @@
         If sFile <> "" Then
             If IO.File.Exists(sFile) = False Then
                 bAdd = False
+            Else
+                If Converter.ConverterSupport.GetFileSizeNum(sFile) = 0 Then
+                    bAdd = False
+                End If
             End If
         Else
             bAdd = False
@@ -753,10 +757,10 @@
             Next
         End If
         If bAdd = True Then
-            Dim ff As FFormats = Converter.checkFileFormat(sFile)
+            Dim ff As FFormats = Converter.ConverterSupport.checkFileFormat(sFile)
             Dim ft As FTypes
             If ff = FFormats.us_ascii Then
-                ft = Converter.DetermineFileType(sFile)
+                ft = Converter.ConverterSupport.DetermineFileType(sFile)
             Else
                 ft = FTypes.Unicode
             End If

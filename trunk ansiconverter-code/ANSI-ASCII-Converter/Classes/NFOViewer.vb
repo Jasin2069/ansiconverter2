@@ -311,6 +311,7 @@ Imports System.Runtime.InteropServices
     Private Sub NFOViewer_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs)
         oBASS.Stop(True)
         Me.Opacity = 0
+        My.Application.OpenForms.Remove(oNfo)
         Me.DestroyHandle()
     End Sub
 

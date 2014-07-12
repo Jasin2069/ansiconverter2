@@ -2,48 +2,49 @@
 Imports System.Windows.Forms
 
 Public Module UserInterface
+    Public MainThreadID As String = ""
+
     Public Sub InitializeForm()
 
-        MainForm.Version.Text = ToolVersion
-        MainForm.VersionDate.Text = ToolVersionDate
 
-        ListIn2.Add(MainForm.in2ASCII)
-        ListCntLabels.Add(MainForm.cntASCII)
+
+        ListIn2.Add(oMainForm.in2ASCII)
+        ListCntLabels.Add(oMainForm.cntASCII)
         ListInCPVis.Add(True)
-        ListIn2.Add(MainForm.in2ANSI)
-        ListCntLabels.Add(MainForm.cntANSI)
+        ListIn2.Add(oMainForm.in2ANSI)
+        ListCntLabels.Add(oMainForm.cntANSI)
         ListInCPVis.Add(True)
-        ListIn2.Add(MainForm.in2HTML)
-        ListCntLabels.Add(MainForm.cntHTML)
+        ListIn2.Add(oMainForm.in2HTML)
+        ListCntLabels.Add(oMainForm.cntHTML)
         ListInCPVis.Add(False)
-        ListIn2.Add(MainForm.in2Unicode)
-        ListCntLabels.Add(MainForm.cntUNI)
+        ListIn2.Add(oMainForm.in2Unicode)
+        ListCntLabels.Add(oMainForm.cntUNI)
         ListInCPVis.Add(False)
-        ListIn2.Add(MainForm.in2PCBoard)
-        ListCntLabels.Add(MainForm.cntPCB)
+        ListIn2.Add(oMainForm.in2PCBoard)
+        ListCntLabels.Add(oMainForm.cntPCB)
         ListInCPVis.Add(True)
-        ListIn2.Add(MainForm.in2Binary)
-        ListCntLabels.Add(MainForm.cntBIN)
+        ListIn2.Add(oMainForm.in2Binary)
+        ListCntLabels.Add(oMainForm.cntBIN)
         ListInCPVis.Add(True)
-        ListIn2.Add(MainForm.in2Wildcat2)
-        ListCntLabels.Add(MainForm.cntWC2)
+        ListIn2.Add(oMainForm.in2Wildcat2)
+        ListCntLabels.Add(oMainForm.cntWC2)
         ListInCPVis.Add(True)
-        ListIn2.Add(MainForm.in2Wildcat3)
-        ListCntLabels.Add(MainForm.cntWC3)
+        ListIn2.Add(oMainForm.in2Wildcat3)
+        ListCntLabels.Add(oMainForm.cntWC3)
         ListInCPVis.Add(True)
-        ListIn2.Add(MainForm.in2Avatar)
-        ListCntLabels.Add(MainForm.cntAVT)
+        ListIn2.Add(oMainForm.in2Avatar)
+        ListCntLabels.Add(oMainForm.cntAVT)
         ListInCPVis.Add(True)
 
 
-        ListOut.Add(MainForm.outASCII)
-        ListOut.Add(MainForm.outANSI)
-        ListOut.Add(MainForm.outHTML)
-        ListOut.Add(MainForm.outUnicode)
-        ListOut.Add(MainForm.outBBS)
-        ListOut.Add(MainForm.outBinary)
-        ListOut.Add(MainForm.outImage)
-        ListOut.Add(MainForm.outVideo)
+        ListOut.Add(oMainForm.outASCII)
+        ListOut.Add(oMainForm.outANSI)
+        ListOut.Add(oMainForm.outHTML)
+        ListOut.Add(oMainForm.outUnicode)
+        ListOut.Add(oMainForm.outBBS)
+        ListOut.Add(oMainForm.outBinary)
+        ListOut.Add(oMainForm.outImage)
+        ListOut.Add(oMainForm.outVideo)
 
         ListOutExtTrig.Add(ANSI_ASCII_Converter.Settings.rAVI)
         ListOutExt.Add("AVI")
@@ -113,28 +114,28 @@ Public Module UserInterface
         ListOutExt.Add("WC3")
         ListOutExtReqOutSet.Add("BBS")
 
-        ListOutExtTrig.Add(MainForm.outImage)
+        ListOutExtTrig.Add(oMainForm.outImage)
         ListOutExt.Add("PNG")
         ListOutExtReqOutSet.Add("IMG")
-        ListOutExtTrig.Add(MainForm.outVideo)
+        ListOutExtTrig.Add(oMainForm.outVideo)
         ListOutExt.Add("AVI")
         ListOutExtReqOutSet.Add("AVI")
-        ListOutExtTrig.Add(MainForm.outHTML)
+        ListOutExtTrig.Add(oMainForm.outHTML)
         ListOutExt.Add("HTM")
         ListOutExtReqOutSet.Add("HTML")
-        ListOutExtTrig.Add(MainForm.outASCII)
+        ListOutExtTrig.Add(oMainForm.outASCII)
         ListOutExt.Add("ASC")
         ListOutExtReqOutSet.Add("ASC")
-        ListOutExtTrig.Add(MainForm.outANSI)
+        ListOutExtTrig.Add(oMainForm.outANSI)
         ListOutExt.Add("ANS")
         ListOutExtReqOutSet.Add("ANS")
-        ListOutExtTrig.Add(MainForm.outUnicode)
+        ListOutExtTrig.Add(oMainForm.outUnicode)
         ListOutExt.Add("TXT")
         ListOutExtReqOutSet.Add("UTF")
-        ListOutExtTrig.Add(MainForm.outBBS)
+        ListOutExtTrig.Add(oMainForm.outBBS)
         ListOutExt.Add("PCB")
         ListOutExtReqOutSet.Add("BBS")
-        ListOutExtTrig.Add(MainForm.outBinary)
+        ListOutExtTrig.Add(oMainForm.outBinary)
         ListOutExt.Add("BIN")
         ListOutExtReqOutSet.Add("BIN")
 
@@ -149,8 +150,8 @@ Public Module UserInterface
         ListUTF.Add(Settings.rUTF8)
         ListUTF.Add(Settings.rUTF16)
 
-        ListOutPath.Add(MainForm.rOutPathInput)
-        ListOutPath.Add(MainForm.rOutPathNew)
+        ListOutPath.Add(oMainForm.rOutPathInput)
+        ListOutPath.Add(oMainForm.rOutPathNew)
 
         ListOutExist.Add(Settings.rOver)
         ListOutExist.Add(Settings.rSkip)
@@ -258,60 +259,59 @@ Public Module UserInterface
 
 
 
-        ListSettLabels.Add(MainForm.settGen)
+        ListSettLabels.Add(oMainForm.settGen)
         ListSettPanels.Add(Settings.pGen)
-        ListSettLabels.Add(MainForm.settSauce)
+        ListSettLabels.Add(oMainForm.settSauce)
         ListSettPanels.Add(Settings.pSauce)
-        ListSettLabels.Add(MainForm.settExist)
+        ListSettLabels.Add(oMainForm.settExist)
         ListSettPanels.Add(Settings.pOutExist)
-        ListSettLabels.Add(MainForm.settExt)
+        ListSettLabels.Add(oMainForm.settExt)
         ListSettPanels.Add(Settings.pExt)
-        ListSettLabels.Add(MainForm.settUTF)
+        ListSettLabels.Add(oMainForm.settUTF)
         ListSettPanels.Add(Settings.pUTF)
-        ListSettLabels.Add(MainForm.settHTMLObj)
+        ListSettLabels.Add(oMainForm.settHTMLObj)
         ListSettPanels.Add(Settings.pHTMLObj)
-        ListSettLabels.Add(MainForm.settAnim)
+        ListSettLabels.Add(oMainForm.settAnim)
         ListSettPanels.Add(Settings.pAnim)
-        ListSettLabels.Add(MainForm.settSanitize)
+        ListSettLabels.Add(oMainForm.settSanitize)
         ListSettPanels.Add(Settings.pSanitize)
-        ListSettLabels.Add(MainForm.settHTMLFont)
+        ListSettLabels.Add(oMainForm.settHTMLFont)
         ListSettPanels.Add(Settings.pHTMLFont)
-        ListSettLabels.Add(MainForm.settNoCols)
+        ListSettLabels.Add(oMainForm.settNoCols)
         ListSettPanels.Add(Settings.pNoCols)
-        ListSettLabels.Add(MainForm.settSMALLFNT)
+        ListSettLabels.Add(oMainForm.settSMALLFNT)
         ListSettPanels.Add(Settings.pSmallFnt)
-        ListSettLabels.Add(MainForm.attCreTh)
+        ListSettLabels.Add(oMainForm.attCreTh)
         ListSettPanels.Add(Settings.pThumb)
-        ListSettLabels.Add(MainForm.settImgOut)
+        ListSettLabels.Add(oMainForm.settImgOut)
         ListSettPanels.Add(Settings.pIMGOut)
-        ListSettLabels.Add(MainForm.settThumbs)
+        ListSettLabels.Add(oMainForm.settThumbs)
         ListSettPanels.Add(Settings.pThumbs)
-        ListSettLabels.Add(MainForm.settVideo)
+        ListSettLabels.Add(oMainForm.settVideo)
         ListSettPanels.Add(Settings.pVideo)
-        ListSettLabels.Add(MainForm.settVidFmt)
+        ListSettLabels.Add(oMainForm.settVidFmt)
         ListSettPanels.Add(Settings.pVidFmts)
-        ListSettLabels.Add(MainForm.settVidCodec)
+        ListSettLabels.Add(oMainForm.settVidCodec)
         ListSettPanels.Add(Settings.pMPGCodec)
-        ListSettLabels.Add(MainForm.settVidCodec)
         ListSettPanels.Add(Settings.pAVICodec)
-        ListSettLabels.Add(MainForm.settLFExt)
+        ListSettLabels.Add(oMainForm.settLFExt)
         ListSettPanels.Add(Settings.pLFrame)
-        ListSettLabels.Add(MainForm.settBBS)
+        ListSettLabels.Add(oMainForm.settBBS)
         ListSettPanels.Add(Settings.pBBS)
 
-        ListDepends.Add(New ControlDepends(MainForm.in2ANSI, "checked", True, MainForm.outVideo, "visible", True))
-        ListDepends.Add(New ControlDepends(MainForm.in2ASCII, "checked", True, MainForm.outVideo, "visible", False))
-        ListDepends.Add(New ControlDepends(MainForm.in2HTML, "checked", True, MainForm.outVideo, "visible", False))
-        ListDepends.Add(New ControlDepends(MainForm.in2PCBoard, "checked", True, MainForm.outVideo, "visible", False))
-        ListDepends.Add(New ControlDepends(MainForm.in2Unicode, "checked", True, MainForm.outVideo, "visible", False))
-        ListDepends.Add(New ControlDepends(MainForm.in2Binary, "checked", True, MainForm.outVideo, "visible", False))
+        ListDepends.Add(New ControlDepends(oMainForm.in2ANSI, "checked", True, oMainForm.outVideo, "visible", True))
+        ListDepends.Add(New ControlDepends(oMainForm.in2ASCII, "checked", True, oMainForm.outVideo, "visible", False))
+        ListDepends.Add(New ControlDepends(oMainForm.in2HTML, "checked", True, oMainForm.outVideo, "visible", False))
+        ListDepends.Add(New ControlDepends(oMainForm.in2PCBoard, "checked", True, oMainForm.outVideo, "visible", False))
+        ListDepends.Add(New ControlDepends(oMainForm.in2Unicode, "checked", True, oMainForm.outVideo, "visible", False))
+        ListDepends.Add(New ControlDepends(oMainForm.in2Binary, "checked", True, oMainForm.outVideo, "visible", False))
 
-        ListDepends.Add(New ControlDepends(MainForm.rOutPathNew, "checked", True, MainForm.outPath, "visible", True))
-        ListDepends.Add(New ControlDepends(MainForm.rOutPathNew, "checked", True, MainForm.btnOutputFolder, "visible", True))
-        ListDepends.Add(New ControlDepends(MainForm.rOutPathNew, "checked", False, MainForm.outPath, "visible", False))
-        ListDepends.Add(New ControlDepends(MainForm.rOutPathNew, "checked", False, MainForm.btnOutputFolder, "visible", False))
-        ListDepends.Add(New ControlDepends(MainForm.rOutPathNew, "checked", True, MainForm.lblInfoSameDirOut, "visible", False))
-        ListDepends.Add(New ControlDepends(MainForm.rOutPathNew, "checked", False, MainForm.lblInfoSameDirOut, "visible", True))
+        ListDepends.Add(New ControlDepends(oMainForm.rOutPathNew, "checked", True, oMainForm.outPath, "visible", True))
+        ListDepends.Add(New ControlDepends(oMainForm.rOutPathNew, "checked", True, oMainForm.btnOutputFolder, "visible", True))
+        ListDepends.Add(New ControlDepends(oMainForm.rOutPathNew, "checked", False, oMainForm.outPath, "visible", False))
+        ListDepends.Add(New ControlDepends(oMainForm.rOutPathNew, "checked", False, oMainForm.btnOutputFolder, "visible", False))
+        ListDepends.Add(New ControlDepends(oMainForm.rOutPathNew, "checked", True, oMainForm.lblInfoSameDirOut, "visible", False))
+        ListDepends.Add(New ControlDepends(oMainForm.rOutPathNew, "checked", False, oMainForm.lblInfoSameDirOut, "visible", True))
 
         ListDepends.Add(New ControlDepends(Settings.selThumbProp, "checked", True, Settings.ThumbScalePercent, "Enabled", True))
         ListDepends.Add(New ControlDepends(Settings.selThumbProp, "checked", False, Settings.ThumbScalePercent, "Enabled", False))
@@ -323,6 +323,8 @@ Public Module UserInterface
         ListDepends.Add(New ControlDepends(Settings.rAVI, "checked", False, Settings.pAVICodec, "Visible", False))
         ListDepends.Add(New ControlDepends(Settings.rMPG, "checked", True, Settings.pMPGCodec, "Visible", True))
         ListDepends.Add(New ControlDepends(Settings.rMPG, "checked", False, Settings.pMPGCodec, "Visible", False))
+        ListDepends.Add(New ControlDepends(Settings.Thumb, "checked", False, Settings.pThumbs, "Visible", False))
+        ListDepends.Add(New ControlDepends(Settings.Thumb, "checked", True, Settings.pThumbs, "Visible", True))
 
         ListDepends.Add(New ControlDepends(Settings.selThumbWFixed, "checked", True, Settings.ThumbWidth, "Enabled", True))
         ListDepends.Add(New ControlDepends(Settings.selThumbWFixed, "checked", True, Settings.ThumbHeight, "Enabled", False))
@@ -354,48 +356,48 @@ Public Module UserInterface
 
         'ToolTipAndEvents(MainForm.lblOutputLoc, "Where do you want to " & vbCrLf & "save the results " & vbCrLf & "of the conversion?")
 
-        ToolTipAndEvents(MainForm.in2ASCII, "Input file(s) are " & vbCrLf & "MS DOS ASCII text files")
-        ToolTipAndEvents(MainForm.in2ANSI, "Input file(s) are MS DOS" & vbCrLf & "text files with" & vbCrLf & "ESC control sequences" & vbCrLf & "for terminal colors")
-        ToolTipAndEvents(MainForm.in2HTML, "Input file(s) are ASCII text" & vbCrLf & "formated HTML code" & vbCrLf & "where the Unicode" & vbCrLf & "characters were HTML" & vbCrLf & "encoded for display on the web." & vbCrLf & "It's the reverse of my" & vbCrLf & "HTML encoding function," & vbCrLf & "but only works for" & vbCrLf & "ASCII's (not ANSIs)")
-        ToolTipAndEvents(MainForm.in2Unicode, "Input file(s) are Unicode" & vbCrLf & "(UTF-8 or UTF-16) encoded" & vbCrLf & "text files for Windows")
-        ToolTipAndEvents(MainForm.in2PCBoard, "Input files are in PC DOS" & vbCrLf & "ASCII text format" & vbCrLf & "with Color Encoding" & vbCrLf & "used by the PCBoard" & vbCrLf & "BBS Software." & vbCrLf & "(@X.. color codes)")
-        ToolTipAndEvents(MainForm.in2Wildcat2, "Input files are in PC DOS" & vbCrLf & "ASCII text format" & vbCrLf & "with Color Encoding" & vbCrLf & "used by the Wildcat V2.X" & vbCrLf & "BBS Software." & vbCrLf & "(ANSI Like Codes)")
-        ToolTipAndEvents(MainForm.in2Wildcat3, "Input files are in PC DOS" & vbCrLf & "ASCII text format" & vbCrLf & "with Color Encoding" & vbCrLf & "used by the Wildcat V3.X" & vbCrLf & "BBS Software." & vbCrLf & "(@..@ color codes)")
-        ToolTipAndEvents(MainForm.in2Avatar, "Input files are in PC DOS" & vbCrLf & "ASCII text format" & vbCrLf & "with Color Encoding in AVATAR Format")
+        ToolTipAndEvents(oMainForm.in2ASCII, "Input file(s) are " & vbCrLf & "MS DOS ASCII text files")
+        ToolTipAndEvents(oMainForm.in2ANSI, "Input file(s) are MS DOS" & vbCrLf & "text files with" & vbCrLf & "ESC control sequences" & vbCrLf & "for terminal colors")
+        ToolTipAndEvents(oMainForm.in2HTML, "Input file(s) are ASCII text" & vbCrLf & "formated HTML code" & vbCrLf & "where the Unicode" & vbCrLf & "characters were HTML" & vbCrLf & "encoded for display on the web." & vbCrLf & "It's the reverse of my" & vbCrLf & "HTML encoding function," & vbCrLf & "but only works for" & vbCrLf & "ASCII's (not ANSIs)")
+        ToolTipAndEvents(oMainForm.in2Unicode, "Input file(s) are Unicode" & vbCrLf & "(UTF-8 or UTF-16) encoded" & vbCrLf & "text files for Windows")
+        ToolTipAndEvents(oMainForm.in2PCBoard, "Input files are in PC DOS" & vbCrLf & "ASCII text format" & vbCrLf & "with Color Encoding" & vbCrLf & "used by the PCBoard" & vbCrLf & "BBS Software." & vbCrLf & "(@X.. color codes)")
+        ToolTipAndEvents(oMainForm.in2Wildcat2, "Input files are in PC DOS" & vbCrLf & "ASCII text format" & vbCrLf & "with Color Encoding" & vbCrLf & "used by the Wildcat V2.X" & vbCrLf & "BBS Software." & vbCrLf & "(ANSI Like Codes)")
+        ToolTipAndEvents(oMainForm.in2Wildcat3, "Input files are in PC DOS" & vbCrLf & "ASCII text format" & vbCrLf & "with Color Encoding" & vbCrLf & "used by the Wildcat V3.X" & vbCrLf & "BBS Software." & vbCrLf & "(@..@ color codes)")
+        ToolTipAndEvents(oMainForm.in2Avatar, "Input files are in PC DOS" & vbCrLf & "ASCII text format" & vbCrLf & "with Color Encoding in AVATAR Format")
 
-        ToolTipAndEvents(MainForm.in2Binary, "Input files are MS DOS" & vbCrLf & "Binary encoded graphics files" & vbCrLf & "ANSIs with double the width" & vbCrLf & "of a normal PC ANSI" & vbCrLf & "file (160 chars instead of 80)")
-        ToolTipAndEvents(MainForm.lblCPin, "Code Page that was used" & vbCrLf & "originally. This only matters," & vbCrLf & "if the file uses characters that" & vbCrLf & "are different between code pages." & vbCrLf & "These are typically reginal text " & vbCrLf & "characters and some graphical" & vbCrLf & "elements as well, especially borders.")
-        ToolTipAndEvents(MainForm.lblCPout, "Code Page that should be used" & vbCrLf & "for the output DOS ASCII file." & vbCrLf & "This only matters, if " & vbCrLf & "characters were used that " & vbCrLf & "are different in different " & vbCrLf & "Code Page settings.")
-        ToolTipAndEvents(MainForm.outASCII, "Convert output to MS DOS PC ASCII text files")
-        ToolTipAndEvents(MainForm.outANSI, "Convert output to MSDOS" & vbCrLf & "PC Text files with" & vbCrLf & "ESC sequences for" & vbCrLf & "color encoding.")
-        ToolTipAndEvents(MainForm.outHTML, "Convert output to ASCII text" & vbCrLf & "(HTML) with HTML encoded" & vbCrLf & "Unicode charcters and" & vbCrLf & "using CSS for styling" & vbCrLf & "and coloring (of ANSIs)")
-        ToolTipAndEvents(MainForm.outUnicode, "Convert output to" & vbCrLf & "Windows PC/Unicode encoded" & vbCrLf & "plain text files.")
-        ToolTipAndEvents(MainForm.outBBS, "Convert output to ANSI-like" & vbCrLf & "text for DOS, in a format" & vbCrLf & "used by a specified Bulletin Board System software.")
-        ToolTipAndEvents(MainForm.outBinary, "Convert output to binary" & vbCrLf & "image DOS format for" & vbCrLf & "double width ANSIs or ASCIIs. ")
-        ToolTipAndEvents(MainForm.outImage, "Convert output to an Bitmap Image" & vbCrLf & "The specified Extension determines " & vbCrLf & "the Image Format. Supported " & vbCrLf & "Image Formats: PNG, BMP, JPG, GIF, TIF, ICO, WMF, EMF")
-        ToolTipAndEvents(MainForm.outVideo, "Convert ANSI Animation to Video")
-        ToolTipAndEvents(MainForm.rOutPathInput, "Use same path for output" & vbCrLf & "as the original input file")
-        ToolTipAndEvents(MainForm.rOutPathNew, "Write all outputs to the" & vbCrLf & "same folder location specified.")
-        ToolTipAndEvents(MainForm.btnOutputFolder, "Select folder location" & vbCrLf & "for all outputs")
-        ToolTipAndEvents(MainForm.numSel, "Number of files in the input" & vbCrLf & "file list that are currently" & vbCrLf & "selected and could be removed" & vbCrLf & "from the list, leaving any other" & vbCrLf & "non-selected file still in the list.")
-        ToolTipAndEvents(MainForm.numUTF8, "Number of UTF-8 Unicode encoded" & vbCrLf & "files in the file listing box")
-        ToolTipAndEvents(MainForm.numUTF16, "Number of UTF-16 Unicode encoded" & vbCrLf & "files in the file listing box")
-        ToolTipAndEvents(MainForm.numASCII, "Number of Non-Unicode encoded" & vbCrLf & "files in the file listing box")
-        ToolTipAndEvents(MainForm.numTotal, "Total Number of files in the" & vbCrLf & "file listing box of any type of" & vbCrLf & "encoding and format.")
-        ToolTipAndEvents(MainForm.lblDropHere, "Drop file from Windows" & vbCrLf & "directly into this list" & vbCrLf & "for selection and future" & vbCrLf & "processing.")
-        ToolTipAndEvents(MainForm.lblLogAndInfos, "Output messages as log," & vbCrLf & "showing information about" & vbCrLf & "the current files being processed" & vbCrLf & "as well as warnings and errors.")
-        ToolTipAndEvents(MainForm.btnUniBlocks, "Show Unicode Character" & vbCrLf & "Sets Grouped in Blocks")
-        ToolTipAndEvents(MainForm.btnCPMaps, "Show Unicode Mappings and" & vbCrLf & "Special HTML Encoding for" & vbCrLf & "the various DOS and" & vbCrLf & "Windows Code Pages")
-        ToolTipAndEvents(MainForm.btnSearch, "Search Unicode Character" & vbCrLf & "Definitions, by Code, Name and more")
-        ToolTipAndEvents(MainForm.btnSettings2, "Modify Program Settings")
-        ToolTipAndEvents(MainForm.btnSettings, "Modify Program Settings")
+        ToolTipAndEvents(oMainForm.in2Binary, "Input files are MS DOS" & vbCrLf & "Binary encoded graphics files" & vbCrLf & "ANSIs with double the width" & vbCrLf & "of a normal PC ANSI" & vbCrLf & "file (160 chars instead of 80)")
+        ToolTipAndEvents(oMainForm.lblCPin, "Code Page that was used" & vbCrLf & "originally. This only matters," & vbCrLf & "if the file uses characters that" & vbCrLf & "are different between code pages." & vbCrLf & "These are typically reginal text " & vbCrLf & "characters and some graphical" & vbCrLf & "elements as well, especially borders.")
+        ToolTipAndEvents(oMainForm.lblCPout, "Code Page that should be used" & vbCrLf & "for the output DOS ASCII file." & vbCrLf & "This only matters, if " & vbCrLf & "characters were used that " & vbCrLf & "are different in different " & vbCrLf & "Code Page settings.")
+        ToolTipAndEvents(oMainForm.outASCII, "Convert output to MS DOS PC ASCII text files")
+        ToolTipAndEvents(oMainForm.outANSI, "Convert output to MSDOS" & vbCrLf & "PC Text files with" & vbCrLf & "ESC sequences for" & vbCrLf & "color encoding.")
+        ToolTipAndEvents(oMainForm.outHTML, "Convert output to ASCII text" & vbCrLf & "(HTML) with HTML encoded" & vbCrLf & "Unicode charcters and" & vbCrLf & "using CSS for styling" & vbCrLf & "and coloring (of ANSIs)")
+        ToolTipAndEvents(oMainForm.outUnicode, "Convert output to" & vbCrLf & "Windows PC/Unicode encoded" & vbCrLf & "plain text files.")
+        ToolTipAndEvents(oMainForm.outBBS, "Convert output to ANSI-like" & vbCrLf & "text for DOS, in a format" & vbCrLf & "used by a specified Bulletin Board System software.")
+        ToolTipAndEvents(oMainForm.outBinary, "Convert output to binary" & vbCrLf & "image DOS format for" & vbCrLf & "double width ANSIs or ASCIIs. ")
+        ToolTipAndEvents(oMainForm.outImage, "Convert output to an Bitmap Image" & vbCrLf & "The specified Extension determines " & vbCrLf & "the Image Format. Supported " & vbCrLf & "Image Formats: PNG, BMP, JPG, GIF, TIF, ICO, WMF, EMF")
+        ToolTipAndEvents(oMainForm.outVideo, "Convert ANSI Animation to Video")
+        ToolTipAndEvents(oMainForm.rOutPathInput, "Use same path for output" & vbCrLf & "as the original input file")
+        ToolTipAndEvents(oMainForm.rOutPathNew, "Write all outputs to the" & vbCrLf & "same folder location specified.")
+        ToolTipAndEvents(oMainForm.btnOutputFolder, "Select folder location" & vbCrLf & "for all outputs")
+        ToolTipAndEvents(oMainForm.numSel, "Number of files in the input" & vbCrLf & "file list that are currently" & vbCrLf & "selected and could be removed" & vbCrLf & "from the list, leaving any other" & vbCrLf & "non-selected file still in the list.")
+        ToolTipAndEvents(oMainForm.numUTF8, "Number of UTF-8 Unicode encoded" & vbCrLf & "files in the file listing box")
+        ToolTipAndEvents(oMainForm.numUTF16, "Number of UTF-16 Unicode encoded" & vbCrLf & "files in the file listing box")
+        ToolTipAndEvents(oMainForm.numASCII, "Number of Non-Unicode encoded" & vbCrLf & "files in the file listing box")
+        ToolTipAndEvents(oMainForm.numTotal, "Total Number of files in the" & vbCrLf & "file listing box of any type of" & vbCrLf & "encoding and format.")
+        ToolTipAndEvents(oMainForm.lblDropHere, "Drop file from Windows" & vbCrLf & "directly into this list" & vbCrLf & "for selection and future" & vbCrLf & "processing.")
+        ToolTipAndEvents(oMainForm.lblLogAndInfos, "Output messages as log," & vbCrLf & "showing information about" & vbCrLf & "the current files being processed" & vbCrLf & "as well as warnings and errors.")
+        ToolTipAndEvents(oMainForm.btnUniBlocks, "Show Unicode Character" & vbCrLf & "Sets Grouped in Blocks")
+        ToolTipAndEvents(oMainForm.btnCPMaps, "Show Unicode Mappings and" & vbCrLf & "Special HTML Encoding for" & vbCrLf & "the various DOS and" & vbCrLf & "Windows Code Pages")
+        ToolTipAndEvents(oMainForm.btnSearch, "Search Unicode Character" & vbCrLf & "Definitions, by Code, Name and more")
+        ToolTipAndEvents(oMainForm.btnSettings2, "Modify Program Settings")
+        ToolTipAndEvents(oMainForm.btnSettings, "Modify Program Settings")
         'lblSelInput
         'btnSettings2
-        ToolTipAndEvents(MainForm.lblInputFormats, "The tool automatically" & vbCrLf & "detects the format of the" & vbCrLf & "selected files and" & vbCrLf & "updates counts/checks formats" & vbCrLf & "while you select more" & vbCrLf & "files to process.")
-        ToolTipAndEvents(MainForm.lblOutput, "The selection for possible" & vbCrLf & "output formats depends on" & vbCrLf & "the types of files added to" & vbCrLf & "the list for processing")
-        ToolTipAndEvents(MainForm.btnNFO, "Open the Release" & vbCrLf & "NFO File for this" & vbCrLf & "Tool(Version)")
+        ToolTipAndEvents(oMainForm.lblInputFormats, "The tool automatically" & vbCrLf & "detects the format of the" & vbCrLf & "selected files and" & vbCrLf & "updates counts/checks formats" & vbCrLf & "while you select more" & vbCrLf & "files to process.")
+        ToolTipAndEvents(oMainForm.lblOutput, "The selection for possible" & vbCrLf & "output formats depends on" & vbCrLf & "the types of files added to" & vbCrLf & "the list for processing")
+        ToolTipAndEvents(oMainForm.btnNFO, "Open the Release" & vbCrLf & "NFO File for this" & vbCrLf & "Tool(Version)")
 
-        ToolTipAndEvents(MainForm.txtExt, "Extension used for Output Files")
+        ToolTipAndEvents(oMainForm.txtExt, "Extension used for Output Files")
 
         ToolTipSettAndEvents(Settings.rUTF16, "Use Unicode UTF-16 Encoding" & vbCrLf & "for output text file")
         ToolTipSettAndEvents(Settings.rUTF8, "Use Unicode UTF-8 Encoding" & vbCrLf & "for output text file")
@@ -423,7 +425,7 @@ Public Module UserInterface
         ToolTipSettAndEvents(Settings.rSauceKeep, "If Input File has 'Sauce'" & vbCrLf & "Meta Tag, include it in converted" & vbCrLf & "output file as well.")
         ToolTipSettAndEvents(Settings.lblSauce, "Determine what to do, " & vbCrLf & "if 'Sauce' Meta Tag are " & vbCrLf & "found in input files.")
 
-        ToolTipSettAndEvents(Settings.lblImgFormat, "Select the bitmap output format" & vbCrLf & "for the export to images option")
+        ToolTipSettAndEvents(Settings.lblIMGOut, "Select the bitmap output format" & vbCrLf & "for the export to images option")
         ToolTipSettAndEvents(Settings.rPNG, "Image Output in " & vbCrLf & "Portable Network Graphics (PNG)" & vbCrLf & "File Format")
         ToolTipSettAndEvents(Settings.rGIF, "Image Output in " & vbCrLf & "Graphics Interchange Format (GIF)" & vbCrLf & "File Format")
         ToolTipSettAndEvents(Settings.rBMP, "Image Output in " & vbCrLf & "Windows Bitmap (BMP)" & vbCrLf & "File Format")
@@ -476,6 +478,7 @@ Public Module UserInterface
         Dim a As Integer
         If MainFormLoaded = True And bUpdatingControls = False Then
             bUpdatingControls = True
+            oMainForm.SuspendLayout()
             'ControlReset()
             For x As Integer = 0 To ListOrgPos.Count - 1
                 ListAllLeft.Item(x) = ListOrgPos.Item(x)
@@ -513,7 +516,7 @@ Public Module UserInterface
             End Try
 
 
-            If outSelected = -1 Then : MainForm.pOut.Tag = "" : End If
+            If outSelected = -1 Then : oMainForm.pOut.Tag = "" : End If
             For a = 0 To ListAll.Count - 1
                 UpdateRadioGroup(ListAll.Item(a), ListAllLeft.Item(a))
             Next
@@ -536,8 +539,9 @@ Public Module UserInterface
             Catch ex As Exception
 
             End Try
-
+            oMainForm.ResumeLayout(False)
             bUpdatingControls = False
+            oMainForm.PerformLayout()
         End If
     End Sub
     Public Sub UpdateControlDepends()
@@ -566,10 +570,10 @@ Public Module UserInterface
                     Dim item As Windows.Forms.RadioButton = Grp.Item(a)
                     Dim iFound As Integer = ListOutExtTrig.FindIndex(Function(x) item.Equals(x))
                     If iFound >= 0 Then
-                        If MainForm.pOut.Tag = ListOutExtReqOutSet.Item(iFound) Then
-                            If Not ListOutExt.Item(iFound).Equals(MainForm.txtExt.Text) Then
+                        If oMainForm.pOut.Tag = ListOutExtReqOutSet.Item(iFound) Then
+                            If Not ListOutExt.Item(iFound).Equals(oMainForm.txtExt.Text) Then
                                 bUpdatingControls = True
-                                MainForm.txtExt.Text = ListOutExt.Item(iFound)
+                                oMainForm.txtExt.Text = ListOutExt.Item(iFound)
                                 bUpdatingControls = False
                                 UpdateControls()
                             End If
@@ -596,20 +600,35 @@ Public Module UserInterface
     End Sub
 
     Public Sub ClearFileList()
+
+        oMainForm.FileListItemBindingSource.SuspendBinding()
+        oMainForm.FileListItemBindingSource.Clear()
         Converter.ListInputFiles.Clear()
-        MainForm.listFiles.DataSource = Nothing
-        MainForm.listFiles.DataSource = Converter.ListInputFiles
+        oMainForm.FileListItemBindingSource.ResumeBinding()
+
+        'MainForm.listFiles.DataSource = Nothing
+        'MainForm.listFiles.DataSource = Converter.ListInputFiles
         'MainForm.listFiles.Items.Clear()
         UpdateCounts()
         UpdateControls()
     End Sub
 
+    Public Delegate Sub delAddFile(ByVal sFile As String)
+    Public dlg As New delAddFile(AddressOf AddFile)
     Public Sub AddFile(ByVal sFile As String)
+        If Not isMainThread() Then
+            dlg.Invoke(sFile)
+            Exit Sub
+        End If
         Dim bAdd As Boolean = True
         sFile = IO.Path.GetFullPath(sFile)
         If sFile <> "" Then
             If IO.File.Exists(sFile) = False Then
                 bAdd = False
+            Else
+                If Converter.ConverterSupport.GetFileSizeNum(sFile) = 0 Then
+                    bAdd = False
+                End If
             End If
         Else
             bAdd = False
@@ -622,10 +641,10 @@ Public Module UserInterface
             Next
         End If
         If bAdd = True Then
-            Dim ff As FFormats = Converter.checkFileFormat(sFile)
+            Dim ff As FFormats = Converter.ConverterSupport.checkFileFormat(sFile)
             Dim ft As FTypes
             If ff = FFormats.us_ascii Then
-                ft = Converter.DetermineFileType(sFile)
+                ft = Converter.ConverterSupport.DetermineFileType(sFile)
             Else
                 ft = FTypes.Unicode
             End If
@@ -633,41 +652,62 @@ Public Module UserInterface
             'Console.WriteLine("sFile:" & sFile)
             'Console.WriteLine("MainForm.outPath.FullText:" & MainForm.outPath.FullText)
             'Console.WriteLine("GetDir:" & IO.Path.GetDirectoryName(sFile))
-            Converter.ListInputFiles.Add(New Converter.FileListItem(IO.Path.GetFileName(sFile), sFile, ff, ft))
-            If MainForm.outPath.FullText = "" Then
-                MainForm.outPath.Text = IO.Path.GetDirectoryName(sFile)
-                MainForm.outPath.FullText = IO.Path.GetDirectoryName(sFile)
+            Dim item = New Converter.FileListItem(IO.Path.GetFileName(sFile), sFile, ff, ft)
+            oMainForm.FileListItemBindingSource.SuspendBinding()
+            Converter.ListInputFiles.Add(item)
+            oMainForm.FileListItemBindingSource.Add(item)
+            oMainForm.FileListItemBindingSource.ResumeBinding()
+            If Not bBatchAdd Then
+                oMainForm.PerformLayout()
+            End If
+            If oMainForm.outPath.FullText = "" Then
+                oMainForm.outPath.Text = IO.Path.GetDirectoryName(sFile)
+                oMainForm.outPath.FullText = IO.Path.GetDirectoryName(sFile)
             End If
             If bAddingFiles = False Then
-                RefreshListFiles()
+
+                'RefreshListFiles()
             End If
         End If
     End Sub
     Public Sub RefreshListFiles()
-        MainForm.listFiles.DataSource = Nothing
-        MainForm.listFiles.DataSource = Converter.ListInputFiles
+        'MainForm.listFiles.DataSource = Nothing
+        'MainForm.listFiles.DataSource = Converter.ListInputFiles
+        oMainForm.listFiles.PerformLayout()
         UpdateCounts()
         UpdateControls()
     End Sub
     Public Sub RemoveSelectedFiles()
-        Dim cnt As Integer = MainForm.listFiles.SelectedItems.Count
+        Dim cnt As Integer = oMainForm.listFiles.SelectedItems.Count
+
         If cnt > 0 Then
-            For a As Integer = 0 To cnt - 1
-                Converter.ListInputFiles.Remove(MainForm.listFiles.SelectedItems.Item(a))
+            Dim l As New List(Of Converter.FileListItem)
+            For a As Integer = cnt - 1 To 0 Step -1
+                l.Add(oMainForm.listFiles.SelectedItems.Item(a))
             Next
-            MainForm.listFiles.DataSource = Nothing
-            MainForm.listFiles.DataSource = Converter.ListInputFiles
+            oMainForm.FileListItemBindingSource.SuspendBinding()
+            oMainForm.SuspendLayout()
+            For a As Integer = l.Count - 1 To 0 Step -1
+                Converter.ListInputFiles.Remove(l.Item(a))
+                oMainForm.FileListItemBindingSource.Remove(l.Item(a))
+            Next
+            l.Clear()
+            l = Nothing
+            'MainForm.listFiles.DataSource = Nothing
+            'MainForm.listFiles.DataSource = Converter.ListInputFiles
+            oMainForm.FileListItemBindingSource.ResumeBinding()
+            oMainForm.ResumeLayout(True)
         End If
         UpdateCounts()
         UpdateControls()
-        My.Application.DoEvents()
+        System.Windows.Forms.Application.DoEvents()
     End Sub
     Public Sub UpdateCounts()
-        MainForm.numSel.Text = 0
-        MainForm.numUTF8.Text = 0
-        MainForm.numUTF16.Text = 0
-        MainForm.numASCII.Text = 0
-        MainForm.numTotal.Text = Converter.ListInputFiles.Count
+        oMainForm.numSel.Text = 0
+        oMainForm.numUTF8.Text = 0
+        oMainForm.numUTF16.Text = 0
+        oMainForm.numASCII.Text = 0
+        oMainForm.numTotal.Text = Converter.ListInputFiles.Count
         'ChangeVisible(ListIn, True)
         ResetText(ListCntLabels)
         TypeCounts = New Integer() {0, 0, 0, 0, 0, 0, 0, 0, 0}
@@ -675,15 +715,15 @@ Public Module UserInterface
             For a As Integer = 0 To Converter.ListInputFiles.Count - 1
                 Select Case Converter.ListInputFiles.Item(a).Format
                     Case FFormats.utf_16
-                        MainForm.numUTF16.Text += 1
+                        oMainForm.numUTF16.Text += 1
                     Case FFormats.utf_8
-                        MainForm.numUTF8.Text += 1
+                        oMainForm.numUTF8.Text += 1
                     Case Else
-                        MainForm.numASCII.Text += 1
+                        oMainForm.numASCII.Text += 1
                 End Select
                 TypeCounts(Converter.ListInputFiles.Item(a).Type) += 1
                 If Converter.ListInputFiles.Item(a).Selected = True Then
-                    MainForm.numSel.Text += 1
+                    oMainForm.numSel.Text += 1
                 End If
             Next
         End If
@@ -695,29 +735,29 @@ Public Module UserInterface
                 ListIn2.Item(a).Checked = False
             End If
         Next
-        If MainForm.listFiles.Items.Count = 0 Then
-            MainForm.lblDropHere.Visible = True
-            MainForm.lblDropHere.BringToFront()
+        If oMainForm.listFiles.Items.Count = 0 Then
+            oMainForm.lblDropHere.Visible = True
+            oMainForm.lblDropHere.BringToFront()
         Else
-            MainForm.lblDropHere.Visible = False
+            oMainForm.lblDropHere.Visible = False
         End If
-        If MainForm.pOut.Visible = False Or MainForm.listFiles.Items.Count = 0 Or MainForm.pOut.Tag = "" Then
-            MainForm.btnStart.Enabled = False
+        If oMainForm.pOut.Visible = False Or oMainForm.listFiles.Items.Count = 0 Or oMainForm.pOut.Tag = "" Then
+            oMainForm.btnStart.Enabled = False
         Else
-            MainForm.btnStart.Enabled = True
+            oMainForm.btnStart.Enabled = True
         End If
     End Sub
     Public Sub unSelectAll()
-        Dim cnt As Integer = MainForm.listFiles.SelectedIndices.Count
+        Dim cnt As Integer = oMainForm.listFiles.SelectedIndices.Count
         Dim val As Integer
-        Do While MainForm.numSel.Text > 0
-            For Each item In MainForm.listFiles.SelectedIndices
+        Do While oMainForm.numSel.Text > 0
+            For Each item In oMainForm.listFiles.SelectedIndices
                 val = item
-                MainForm.listFiles.Items(val).selected = False
-                MainForm.listFiles.SetSelected(val, False)
+                oMainForm.listFiles.Items(val).selected = False
+                oMainForm.listFiles.SetSelected(val, False)
 
             Next
-            MainForm.listFiles.Refresh()
+            'MainForm.listFiles.Refresh()
         Loop
         'For Each val In MainForm.listFiles.SelectedIndices
         ''val = MainForm.listFiles.SelectedIndices.Item(a)
@@ -729,26 +769,29 @@ Public Module UserInterface
 
 
     Public Sub filelistitem_indexchange(ByVal sender As Object, ByVal e As EventArgs)
-        MainForm.numTotal.Text = MainForm.listFiles.Items.Count
-        If MainForm.listFiles.Items.Count = 0 Then
-            MainForm.lblDropHere.Visible = True
+        oMainForm.listFiles.SuspendLayout()
+        oMainForm.btnSelNone.SuspendLayout()
+        oMainForm.numTotal.Text = oMainForm.listFiles.Items.Count
+        If oMainForm.listFiles.Items.Count = 0 Then
+            oMainForm.lblDropHere.Visible = True
         Else
-            MainForm.lblDropHere.Visible = False
+            oMainForm.lblDropHere.Visible = False
         End If
-        For a As Integer = 0 To MainForm.listFiles.Items.Count - 1
-            MainForm.listFiles.Items(a).selected = False
+        For a As Integer = 0 To oMainForm.listFiles.Items.Count - 1
+            oMainForm.listFiles.Items(a).selected = False
         Next
-        MainForm.numSel.Text = MainForm.listFiles.SelectedItems.Count
-        If MainForm.listFiles.SelectedItems.Count > 0 Then
-            For a As Integer = 0 To MainForm.listFiles.SelectedItems.Count - 1
-                MainForm.listFiles.SelectedItems.Item(a).selected = True
+        oMainForm.numSel.Text = oMainForm.listFiles.SelectedItems.Count
+        If oMainForm.listFiles.SelectedItems.Count > 0 Then
+            For a As Integer = 0 To oMainForm.listFiles.SelectedItems.Count - 1
+                oMainForm.listFiles.SelectedItems.Item(a).selected = True
             Next
-            MainForm.btnSelNone.Visible = True
+            oMainForm.btnSelNone.Visible = True
         Else
-            MainForm.btnSelNone.Visible = False
+            oMainForm.btnSelNone.Visible = False
         End If
-
-        sender.refresh()
+        oMainForm.btnSelNone.ResumeLayout(True)
+        oMainForm.listFiles.ResumeLayout(False)
+        sender.invalidate()
     End Sub
 
     Public Sub DrawItemHandler(ByVal sender As Object, ByVal e As DrawItemEventArgs)
@@ -805,6 +848,7 @@ Public Module UserInterface
                                 sPrintN = sPrnSubl & "..." & sPrnSubr & "\" & sFName
                             Else
                                 sPrintN = ".." & sFName
+                                Exit Do
                             End If
                             sStringSize = e.Graphics.MeasureString(sPrintN, fMyFont)
                         Loop
@@ -831,7 +875,7 @@ Public Module UserInterface
     End Sub 'MeasureItemHandler
 
     Public Sub ToolTipAndEvents(ByVal fctrl As Windows.Forms.Control, ByVal sStr As String)
-        MainForm.ToolTip1.SetToolTip(fctrl, sStr)
+        oMainForm.ToolTip1.SetToolTip(fctrl, sStr)
         AddHandler fctrl.MouseHover, AddressOf tooltip_MouseHover
         AddHandler fctrl.MouseLeave, AddressOf tooltip_MouseLeave
     End Sub
@@ -877,14 +921,14 @@ Public Module UserInterface
     Public Sub SaveAll()
         bUpdatingControls = True
         Try
-            SaveVariousSet("pOut", MainForm.pOut.Tag.ToString)
-            SaveVariousSet("pCPout", MainForm.pCPout.Tag.ToString)
-            SaveVariousSet("pCPin", MainForm.pCPin.Tag.ToString)
+            SaveVariousSet("pOut", oMainForm.pOut.Tag.ToString)
+            SaveVariousSet("pCPout", oMainForm.pCPout.Tag.ToString)
+            SaveVariousSet("pCPin", oMainForm.pCPin.Tag.ToString)
             SaveVariousSet("pExt", Settings.pExt.Tag.ToString)
-            SaveVariousSet("txtExt", MainForm.txtExt.Text)
+            SaveVariousSet("txtExt", oMainForm.txtExt.Text)
             SaveVariousSet("pOutExist", Settings.pOutExist.Tag.ToString)
-            SaveVariousSet("pOutPath", MainForm.pOutPath.Tag.ToString)
-            SaveVariousSet("outPath", MainForm.outPath.FullText)
+            SaveVariousSet("pOutPath", oMainForm.pOutPath.Tag.ToString)
+            SaveVariousSet("outPath", oMainForm.outPath.FullText)
             SaveVariousSet("pSauce", Settings.pSauce.Tag.ToString)
             SaveVariousSet("pUTF", Settings.pUTF.Tag.ToString)
             SaveVariousSet("pAnim", Settings.pAnim.Tag.ToString)
@@ -929,6 +973,46 @@ Public Module UserInterface
         End Try
         bUpdatingControls = False
     End Sub
+    Public Function isMainThread() As Boolean
+        If System.Threading.Thread.CurrentThread.GetHashCode() = MainThreadID Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+    ' Utility function for firing an event through the target.
+    ' It uses C#'s variable length parameter list support
+    ' to build the parameter list.
+    ' This functions presumes that the caller holds the object lock.
+    ' (This is because the event list is typically modified on the UI
+    ' thread, but events are usually raised on the worker thread.)
+    Public Sub FireAsync(ByVal dlg As [Delegate], ByVal ParamArray pList As Object())
+        If dlg IsNot Nothing Then
+            Try
+
+                '                    Console.WriteLine(" " + dlg.ToString());
+                'If CurrentWorkForm.Target.InvokeRequired Then
+                If isMainThread() = False Then
+                    'CurrentWorkForm.Target.BeginInvoke(dlg, pList)
+                    CType(oMainForm, MainForm).Target.BeginInvoke(New HandleCall(AddressOf FireAsync), New Object() {dlg, pList})
+                Else
+                    dlg.DynamicInvoke(pList)
+                End If
+
+            Catch e As Exception
+                ' The documentation recommends not catching
+                ' SystemExceptions, so having notified the caller we
+                ' rethrow if it was one of them.
+                If TypeOf e Is SystemException Then
+                    Throw
+                End If
+
+            End Try
+        End If
+    End Sub
+    Delegate Sub HandleCall(ByVal dlg As [Delegate], ByVal plist As Object())
+
     Public Sub LoadAll()
         Dim spOut As String = "", spHTMLObj As String = "", spAnim As String = "", spUTF As String = ""
         Dim spSauce As String = "", spOutPath As String = "", soutPath As String = "", stxtExt As String = ""
@@ -984,10 +1068,19 @@ Public Module UserInterface
             Dim sFiles As String = ""
             sFiles = ReadVariousSet("Files", "")
             If sFiles <> "" Then
+                oMainForm.SuspendLayout()
+                oMainForm.Visible = False
                 Dim aFiles() As String = Split(sFiles, "|")
-                For a As Integer = 0 To aFiles.Length - 1
-                    Call AddFile(aFiles(a))
-                Next
+                If aFiles.Length > 0 Then
+                    Dim ItemLoader As New FontsLoader(aFiles)
+                    ItemLoader.Show()
+                    ItemLoader.BringToFront()
+                End If
+
+                oMainForm.ResumeLayout(False)
+                oMainForm.PerformLayout()
+
+                InfoMsg(aFiles.Length.ToString & " files added to list.", False, False)
             End If
         Catch ex As Exception
 
@@ -997,21 +1090,21 @@ Public Module UserInterface
             bUpdatingControls = True
             Select Case spOut
                 Case "ASC"
-                    Call MainForm.ControlUpdate(MainForm.outASCII, Nothing)
+                    Call oMainForm.ControlUpdate(oMainForm.outASCII, Nothing)
                 Case "ANS"
-                    Call MainForm.ControlUpdate(MainForm.outANSI, Nothing)
+                    Call oMainForm.ControlUpdate(oMainForm.outANSI, Nothing)
                 Case "HTML"
-                    Call MainForm.ControlUpdate(MainForm.outHTML, Nothing)
+                    Call oMainForm.ControlUpdate(oMainForm.outHTML, Nothing)
                 Case "UTF"
-                    Call MainForm.ControlUpdate(MainForm.outUnicode, Nothing)
+                    Call oMainForm.ControlUpdate(oMainForm.outUnicode, Nothing)
                 Case "BBS"
-                    Call MainForm.ControlUpdate(MainForm.outBBS, Nothing)
+                    Call oMainForm.ControlUpdate(oMainForm.outBBS, Nothing)
                 Case "BIN"
-                    Call MainForm.ControlUpdate(MainForm.outBinary, Nothing)
+                    Call oMainForm.ControlUpdate(oMainForm.outBinary, Nothing)
                 Case "IMG"
-                    Call MainForm.ControlUpdate(MainForm.outImage, Nothing)
+                    Call oMainForm.ControlUpdate(oMainForm.outImage, Nothing)
                 Case "AVI"
-                    Call MainForm.ControlUpdate(MainForm.outVideo, Nothing)
+                    Call oMainForm.ControlUpdate(oMainForm.outVideo, Nothing)
                 Case Else
             End Select
             sHTMLFont = sHTMLFontRead
@@ -1090,40 +1183,40 @@ Public Module UserInterface
                     Call Settings.ControlUpdate(Settings.rWildcat3, Nothing)
             End Select
             If spHTMLObj = "COMPLETE" Then
-                Call MainForm.ControlUpdate(Settings.rCompleteHTML, Nothing)
+                Call oMainForm.ControlUpdate(Settings.rCompleteHTML, Nothing)
             Else
-                Call MainForm.ControlUpdate(Settings.rObjectOnly, Nothing)
+                Call oMainForm.ControlUpdate(Settings.rObjectOnly, Nothing)
             End If
             If spAnim = "STATIC" Then
-                Call MainForm.ControlUpdate(Settings.rStatic, Nothing)
+                Call oMainForm.ControlUpdate(Settings.rStatic, Nothing)
             Else
-                Call MainForm.ControlUpdate(Settings.rAnim, Nothing)
+                Call oMainForm.ControlUpdate(Settings.rAnim, Nothing)
             End If
             If spUTF = "UTF-16" Then
-                Call MainForm.ControlUpdate(Settings.rUTF16, Nothing)
+                Call oMainForm.ControlUpdate(Settings.rUTF16, Nothing)
             Else
-                Call MainForm.ControlUpdate(Settings.rUTF8, Nothing)
+                Call oMainForm.ControlUpdate(Settings.rUTF8, Nothing)
             End If
             If spSauce = "KEEP" Then
-                Call MainForm.ControlUpdate(Settings.rSauceKeep, Nothing)
+                Call oMainForm.ControlUpdate(Settings.rSauceKeep, Nothing)
             Else
-                Call MainForm.ControlUpdate(Settings.rSauceStrip, Nothing)
+                Call oMainForm.ControlUpdate(Settings.rSauceStrip, Nothing)
             End If
             If spOutPath = "INPUT" Then
-                Call MainForm.ControlUpdate(MainForm.rOutPathInput, Nothing)
+                Call oMainForm.ControlUpdate(oMainForm.rOutPathInput, Nothing)
             Else
-                Call MainForm.ControlUpdate(MainForm.rOutPathNew, Nothing)
+                Call oMainForm.ControlUpdate(oMainForm.rOutPathNew, Nothing)
             End If
-            MainForm.outPath.FullText = soutPath
-            MainForm.txtExt.Text = stxtExt
+            oMainForm.outPath.FullText = soutPath
+            oMainForm.txtExt.Text = stxtExt
             Settings.txtFPS.Text = sFPS
             Settings.txtBPS.Text = sBPS
             Settings.txtLastFrame.Text = sLastFrame
 
             If spExt = "REPLACE" Then
-                Call MainForm.ControlUpdate(Settings.rReplaceExt, Nothing)
+                Call oMainForm.ControlUpdate(Settings.rReplaceExt, Nothing)
             Else
-                Call MainForm.ControlUpdate(Settings.rExtraExt, Nothing)
+                Call oMainForm.ControlUpdate(Settings.rExtraExt, Nothing)
             End If
             Select Case spOutExist.ToString
                 Case "0"
@@ -1179,8 +1272,10 @@ Public Module UserInterface
             End If
             If sThumb = "true" Then
                 Settings.Thumb.Checked = True
+                Settings.pThumbs.Visible = True
             Else
                 Settings.Thumb.Checked = False
+                Settings.pThumbs.Visible = False
             End If
             If sNoCols = "true" Then
                 Settings.NoCols.Checked = True
@@ -1194,28 +1289,28 @@ Public Module UserInterface
             End If
             Select Case spOut
                 Case "ASC"
-                    Call MainForm.ControlUpdate(MainForm.outASCII, Nothing)
+                    Call oMainForm.ControlUpdate(oMainForm.outASCII, Nothing)
                 Case "ANS"
-                    Call MainForm.ControlUpdate(MainForm.outANSI, Nothing)
+                    Call oMainForm.ControlUpdate(oMainForm.outANSI, Nothing)
                 Case "HTML"
-                    Call MainForm.ControlUpdate(MainForm.outHTML, Nothing)
+                    Call oMainForm.ControlUpdate(oMainForm.outHTML, Nothing)
                 Case "UTF"
-                    Call MainForm.ControlUpdate(MainForm.outUnicode, Nothing)
+                    Call oMainForm.ControlUpdate(oMainForm.outUnicode, Nothing)
                 Case "PCB"
-                    Call MainForm.ControlUpdate(MainForm.outBBS, Nothing)
+                    Call oMainForm.ControlUpdate(oMainForm.outBBS, Nothing)
                 Case "BIN"
-                    Call MainForm.ControlUpdate(MainForm.outBinary, Nothing)
+                    Call oMainForm.ControlUpdate(oMainForm.outBinary, Nothing)
                 Case "IMG"
-                    Call MainForm.ControlUpdate(MainForm.outImage, Nothing)
+                    Call oMainForm.ControlUpdate(oMainForm.outImage, Nothing)
                 Case "AVI"
-                    Call MainForm.ControlUpdate(MainForm.outVideo, Nothing)
+                    Call oMainForm.ControlUpdate(oMainForm.outVideo, Nothing)
                 Case Else
             End Select
-            MainForm.inCP.Text = spCPin
-            MainForm.outCP.Text = spCPout
+            oMainForm.inCP.Text = spCPin
+            oMainForm.outCP.Text = spCPout
             bUpdatingControls = False
             UpdateControls()
-
+            System.Windows.Forms.Application.DoEvents()
 
         Catch ex As Exception
             MainFormLoaded = True
@@ -1229,16 +1324,16 @@ Public Module UserInterface
         Dim result As Integer
 
         If sDefault <> "" Then
-            MainForm.FolderBrowserDialog1.SelectedPath = sDefault
+            oMainForm.FolderBrowserDialog1.SelectedPath = sDefault
         End If
 
-        MainForm.FolderBrowserDialog1.Description = Desc
+        oMainForm.FolderBrowserDialog1.Description = Desc
 
-        MainForm.FolderBrowserDialog1.ShowNewFolderButton = shownew
-        result = MainForm.FolderBrowserDialog1.ShowDialog()
+        oMainForm.FolderBrowserDialog1.ShowNewFolderButton = shownew
+        result = oMainForm.FolderBrowserDialog1.ShowDialog()
         If result = 1 Then
-            If IO.Directory.Exists(MainForm.FolderBrowserDialog1.SelectedPath) = True Then
-                SelectFolder = MainForm.FolderBrowserDialog1.SelectedPath
+            If IO.Directory.Exists(oMainForm.FolderBrowserDialog1.SelectedPath) = True Then
+                SelectFolder = oMainForm.FolderBrowserDialog1.SelectedPath
             Else
                 SelectFolder = sDefault
             End If
@@ -1250,29 +1345,31 @@ Public Module UserInterface
 
     Public Sub SelectFiles()
         Dim result As Integer = 0
-        If MainForm.btnAdd.Tag <> "" Then
-            If IO.File.Exists(MainForm.btnAdd.Tag) = False Then
+        If oMainForm.btnAdd.Tag <> "" Then
+            If IO.File.Exists(oMainForm.btnAdd.Tag) = False Then
 
             Else
-                MainForm.OpenFileDialog1.FileName = MainForm.btnAdd.Tag
+                oMainForm.OpenFileDialog1.FileName = oMainForm.btnAdd.Tag
             End If
         End If
         Dim sFileN As String = ReadVariousSet("LastOpenPath", "")
-        MainForm.OpenFileDialog1.FileName = sFileN
-        If MainForm.OpenFileDialog1.FileName = "OpenFileDialog1" Then
-            MainForm.OpenFileDialog1.FileName = ""
+        oMainForm.OpenFileDialog1.FileName = sFileN
+        If oMainForm.OpenFileDialog1.FileName = "OpenFileDialog1" Then
+            oMainForm.OpenFileDialog1.FileName = ""
         End If
-        If MainForm.OpenFileDialog1.FileName <> "" Then
-            MainForm.OpenFileDialog1.InitialDirectory = My.Computer.FileSystem.GetParentPath(MainForm.OpenFileDialog1.FileName)
+        If oMainForm.OpenFileDialog1.FileName <> "" Then
+            oMainForm.OpenFileDialog1.InitialDirectory = My.Computer.FileSystem.GetParentPath(oMainForm.OpenFileDialog1.FileName)
 
         End If
-        MainForm.OpenFileDialog1.CheckFileExists = True
-        result = MainForm.OpenFileDialog1.ShowDialog()
+        oMainForm.OpenFileDialog1.CheckFileExists = True
+        result = oMainForm.OpenFileDialog1.ShowDialog()
         If result <> 2 And result <> 3 Then
-            If MainForm.OpenFileDialog1.FileName <> "" Then
-                Dim aFiles() As String = MainForm.OpenFileDialog1.FileNames
-                MainForm.listFiles.SuspendLayout()
+            If oMainForm.OpenFileDialog1.FileName <> "" Then
+                Dim aFiles() As String = oMainForm.OpenFileDialog1.FileNames
+                oMainForm.listFiles.SuspendLayout()
                 bAddingFiles = True
+                Dim alphacomp As New AlphanumComparator.AlphanumComparator
+                Array.Sort(aFiles, alphacomp)
                 For a As Integer = 0 To UBound(aFiles)
                     If aFiles(a) <> "" Then
                         SaveVariousSet("LastOpenPath", aFiles(a))
@@ -1280,12 +1377,13 @@ Public Module UserInterface
                     End If
                     If a / 10 = CInt(a \ 10) Then
                         RefreshListFiles()
-                        My.Application.DoEvents()
+                        System.Windows.Forms.Application.DoEvents()
                     End If
                 Next
                 bAddingFiles = False
-                MainForm.listFiles.ResumeLayout()
+                oMainForm.listFiles.ResumeLayout()
                 RefreshListFiles()
+                InfoMsg(aFiles.Length.ToString & " items added to list.", False, False)
             End If
         End If
     End Sub
@@ -1426,219 +1524,220 @@ Public Module UserInterface
     End Sub
     Public Sub InfoMsg(ByVal msg As String, Optional ByVal nolinebreak As Boolean = False, Optional ByVal removeprev As Boolean = False)
         If nolinebreak Then
-            AddFormattedRichText(MainForm.log, msg, nolinebreak, removeprev)
+            AddFormattedRichText(oMainForm.log, msg, nolinebreak, removeprev)
         Else
-            AddFormattedRichText(MainForm.log, " - " & msg, nolinebreak, removeprev)
+            AddFormattedRichText(oMainForm.log, " - " & msg, nolinebreak, removeprev)
         End If
 
     End Sub
 
     Public Sub SummSettings()
         If ANSI_ASCII_Converter.Settings.rCompleteHTML.Checked = True Then
-            MainForm.settHTMLObj.Text = "Full HTML"
+            oMainForm.settHTMLObj.Text = "Full HTML"
         Else
-            MainForm.settHTMLObj.Text = "DIV Only"
+            oMainForm.settHTMLObj.Text = "DIV Only"
         End If
         If ANSI_ASCII_Converter.Settings.rStatic.Checked = True Then
-            MainForm.settAnim.Text = " / Static"
+            oMainForm.settAnim.Text = " / Static"
         Else
-            MainForm.settAnim.Text = " / Anim"
+            oMainForm.settAnim.Text = " / Anim"
         End If
         If ANSI_ASCII_Converter.Settings.NoCols.Checked = True Then
-            MainForm.settNoCols.Text = "No Colors"
+            oMainForm.settNoCols.Text = "No Colors"
         Else
-            MainForm.settNoCols.Text = "Colored"
+            oMainForm.settNoCols.Text = "Colored"
         End If
         If ANSI_ASCII_Converter.Settings.SmallFnt.Checked = True Then
-            MainForm.settSMALLFNT.Text = " / 80x50 Lines Mode"
+            oMainForm.settSMALLFNT.Text = " / 80x50 Lines Mode"
         Else
-            MainForm.settSMALLFNT.Text = " / 80x25 Lines Mode"
+            oMainForm.settSMALLFNT.Text = " / 80x25 Lines Mode"
         End If
         If ANSI_ASCII_Converter.Settings.Thumb.Checked = True Then
-            MainForm.attCreTh.Text = "Thumbnails"
+            oMainForm.attCreTh.Text = "Thumbnails"
         Else
-            MainForm.attCreTh.Text = "Image"
+            oMainForm.attCreTh.Text = "Image"
         End If
-        MainForm.settHTMLFont.Text = "HTML Font: " & sHTMLFont
+        oMainForm.settHTMLFont.Text = "HTML Font: " & sHTMLFont
         If ANSI_ASCII_Converter.Settings.Sanitize.Checked = True Then
-            MainForm.settSanitize.Text = ", Sanitize: Yes"
+            oMainForm.settSanitize.Text = ", Sanitize: Yes"
         Else
-            MainForm.settSanitize.Text = ", Sanitize: No"
+            oMainForm.settSanitize.Text = ", Sanitize: No"
         End If
         If ANSI_ASCII_Converter.Settings.Thumb.Checked = True Then
             Select Case ANSI_ASCII_Converter.Settings.pThumbs.Tag.ToString
                 Case "0"
-                    MainForm.settThumbs.Text = "Scale: " & ANSI_ASCII_Converter.Settings.ThumbScalePercent.Text.ToString & "%"
+                    oMainForm.settThumbs.Text = "Scale: " & ANSI_ASCII_Converter.Settings.ThumbScalePercent.Text.ToString & "%"
                 Case "1"
-                    MainForm.settThumbs.Text = "Fixed Width w: " & ANSI_ASCII_Converter.Settings.ThumbWidth.Text.ToString
+                    oMainForm.settThumbs.Text = "Fixed Width w: " & ANSI_ASCII_Converter.Settings.ThumbWidth.Text.ToString
                 Case "2"
-                    MainForm.settThumbs.Text = "Fixed Height h: " & ANSI_ASCII_Converter.Settings.ThumbHeight.Text.ToString
+                    oMainForm.settThumbs.Text = "Fixed Height h: " & ANSI_ASCII_Converter.Settings.ThumbHeight.Text.ToString
                 Case "3"
-                    MainForm.settThumbs.Text = "Custom:  w: " & ANSI_ASCII_Converter.Settings.ThumbWidth.Text.ToString & ", h: " & ANSI_ASCII_Converter.Settings.ThumbHeight.Text.ToString
+                    oMainForm.settThumbs.Text = "Custom:  w: " & ANSI_ASCII_Converter.Settings.ThumbWidth.Text.ToString & ", h: " & ANSI_ASCII_Converter.Settings.ThumbHeight.Text.ToString
             End Select
         Else
-            MainForm.settThumbs.Text = "Original Size"
+            oMainForm.settThumbs.Text = "Original Size"
         End If
         If ANSI_ASCII_Converter.Settings.rUTF8.Checked = True Then
-            MainForm.settUTF.Text = "UTF-8"
+            oMainForm.settUTF.Text = "UTF-8"
         Else
-            MainForm.settUTF.Text = "UTF-16"
+            oMainForm.settUTF.Text = "UTF-16"
         End If
         If ANSI_ASCII_Converter.Settings.bRemoveCompleted.Checked = True Then
-            MainForm.settGen.Text = "List: Auto-Remove Completed"
+            oMainForm.settGen.Text = "List: Auto-Remove Completed"
         Else
-            MainForm.settGen.Text = "List: Keep Completed"
+            oMainForm.settGen.Text = "List: Keep Completed"
         End If
-        MainForm.settVidFmt.Text = "Video: " & Settings.pVidFmts.Tag.ToString
+        oMainForm.settVidFmt.Text = "Video: " & Settings.pVidFmts.Tag.ToString
         Select Case Settings.pVidFmts.Tag.ToString
             Case "AVI"
-                MainForm.settVidCodec.Text = "(" & Settings.pAVICodec.Tag.ToString & ")"
+                oMainForm.settVidCodec.Text = "(" & Settings.pAVICodec.Tag.ToString & ")"
             Case "MPG"
-                MainForm.settVidCodec.Text = "(" & Replace(Settings.pMPGCodec.Tag.ToString, "video", "", 1, -1, CompareMethod.Text) & ")"
+                oMainForm.settVidCodec.Text = "(" & Replace(Settings.pMPGCodec.Tag.ToString, "video", "", 1, -1, CompareMethod.Text) & ")"
             Case Else
-                MainForm.settVidCodec.Text = ""
+                oMainForm.settVidCodec.Text = ""
         End Select
-        MainForm.settVideo.Text = "FPS: " & FPS.ToString & " / BPS: " & BPS.ToString
-        MainForm.settLFExt.Text = Settings.txtLastFrame.Text.ToString & " sec"
+        oMainForm.settVidCodec.BringToFront()
+        oMainForm.settVideo.Text = "FPS: " & FPS.ToString & " / BPS: " & BPS.ToString
+        oMainForm.settLFExt.Text = Settings.txtLastFrame.Text.ToString & " sec"
         If ANSI_ASCII_Converter.Settings.rSauceStrip.Checked = True Then
-            MainForm.settSauce.Text = "Sauce: Strip"
+            oMainForm.settSauce.Text = "Sauce: Strip"
         Else
-            MainForm.settSauce.Text = "Sauce: Keep"
+            oMainForm.settSauce.Text = "Sauce: Keep"
         End If
         Select Case ANSI_ASCII_Converter.Settings.pBBS.Tag.ToString
             Case "PCB"
-                MainForm.settBBS.Text = "BBS: PCBoard"
+                oMainForm.settBBS.Text = "BBS: PCBoard"
             Case "AVT"
-                MainForm.settBBS.Text = "BBS: Avatar"
+                oMainForm.settBBS.Text = "BBS: Avatar"
             Case "WC2"
-                MainForm.settBBS.Text = "BBS: Wildcat 2"
+                oMainForm.settBBS.Text = "BBS: Wildcat 2"
             Case "WC3"
-                MainForm.settBBS.Text = "BBS: Wildcat 3"
+                oMainForm.settBBS.Text = "BBS: Wildcat 3"
         End Select
 
         Select Case ANSI_ASCII_Converter.Settings.pOutExist.Tag.ToString
             Case "0"
-                MainForm.settExist.Text = "Exist: Over"
+                oMainForm.settExist.Text = "Exist: Over"
             Case "1"
-                MainForm.settExist.Text = "Exist: Skip"
+                oMainForm.settExist.Text = "Exist: Skip"
             Case "2"
-                MainForm.settExist.Text = "Exist: Auto-Ren"
+                oMainForm.settExist.Text = "Exist: Auto-Ren"
             Case "3"
-                MainForm.settExist.Text = "Exist: Ask"
+                oMainForm.settExist.Text = "Exist: Ask"
         End Select
         If ANSI_ASCII_Converter.Settings.rExtraExt.Checked = True Then
-            MainForm.settExt.Text = "Ext: Append"
+            oMainForm.settExt.Text = "Ext: Append"
         Else
-            MainForm.settExt.Text = "Ext: Replace"
+            oMainForm.settExt.Text = "Ext: Replace"
         End If
-        MainForm.settImgOut.Text = ", Image Format: " & Settings.pIMGOut.Tag
+        oMainForm.settImgOut.Text = ", Image Format: " & Settings.pIMGOut.Tag
 
-        MainForm.settSanitize.Tag = Color.Black
-        MainForm.settGen.Tag = Color.Black
-        MainForm.settExist.Tag = Color.Black
-        MainForm.settExt.Tag = Color.Black
-        If MainForm.pOut.Tag.ToString = "IMG" Or MainForm.pOut.Tag.ToString = "AVI" Then
-            MainForm.settSMALLFNT.ForeColor = Color.Black
-            MainForm.settNoCols.ForeColor = Color.Black
-            MainForm.settSMALLFNT.Tag = Color.Black
-            MainForm.settNoCols.Tag = Color.Black
-            If MainForm.pOut.Tag.ToString = "IMG" Then
-                MainForm.attCreTh.ForeColor = Color.Black
-                MainForm.attCreTh.Tag = Color.Black
-                MainForm.settThumbs.ForeColor = Color.Black
-                MainForm.settThumbs.Tag = Color.Black
-                MainForm.settImgOut.ForeColor = Color.Black
-                MainForm.settImgOut.Tag = Color.Black
+        oMainForm.settSanitize.Tag = Color.Black
+        oMainForm.settGen.Tag = Color.Black
+        oMainForm.settExist.Tag = Color.Black
+        oMainForm.settExt.Tag = Color.Black
+        If oMainForm.pOut.Tag.ToString = "IMG" Or oMainForm.pOut.Tag.ToString = "AVI" Then
+            oMainForm.settSMALLFNT.ForeColor = Color.Black
+            oMainForm.settNoCols.ForeColor = Color.Black
+            oMainForm.settSMALLFNT.Tag = Color.Black
+            oMainForm.settNoCols.Tag = Color.Black
+            If oMainForm.pOut.Tag.ToString = "IMG" Then
+                oMainForm.attCreTh.ForeColor = Color.Black
+                oMainForm.attCreTh.Tag = Color.Black
+                oMainForm.settThumbs.ForeColor = Color.Black
+                oMainForm.settThumbs.Tag = Color.Black
+                oMainForm.settImgOut.ForeColor = Color.Black
+                oMainForm.settImgOut.Tag = Color.Black
             Else
-                MainForm.attCreTh.ForeColor = Color.Gray
-                MainForm.attCreTh.Tag = Color.Gray
-                MainForm.settThumbs.ForeColor = Color.Gray
-                MainForm.settThumbs.Tag = Color.Gray
-                MainForm.settImgOut.ForeColor = Color.Gray
-                MainForm.settImgOut.Tag = Color.Gray
+                oMainForm.attCreTh.ForeColor = Color.Gray
+                oMainForm.attCreTh.Tag = Color.Gray
+                oMainForm.settThumbs.ForeColor = Color.Gray
+                oMainForm.settThumbs.Tag = Color.Gray
+                oMainForm.settImgOut.ForeColor = Color.Gray
+                oMainForm.settImgOut.Tag = Color.Gray
             End If
-            If MainForm.pOut.Tag.ToString = "AVI" Then
-                MainForm.settVideo.ForeColor = Color.Black
-                MainForm.settVideo.Tag = Color.Black
-                MainForm.settVidFmt.ForeColor = Color.Black
-                MainForm.settVidFmt.Tag = Color.Black
-                MainForm.settLFExt.ForeColor = Color.Black
-                MainForm.settLFExt.Tag = Color.Black
+            If oMainForm.pOut.Tag.ToString = "AVI" Then
+                oMainForm.settVideo.ForeColor = Color.Black
+                oMainForm.settVideo.Tag = Color.Black
+                oMainForm.settVidFmt.ForeColor = Color.Black
+                oMainForm.settVidFmt.Tag = Color.Black
+                oMainForm.settLFExt.ForeColor = Color.Black
+                oMainForm.settLFExt.Tag = Color.Black
                 If Settings.pVidFmts.Tag.ToString = "AVI" Or Settings.pVidFmts.Tag.ToString = "MPG" Then
-                    MainForm.settVidCodec.ForeColor = Color.Black
-                    MainForm.settVidCodec.Tag = Color.Black
+                    oMainForm.settVidCodec.ForeColor = Color.Black
+                    oMainForm.settVidCodec.Tag = Color.Black
                 Else
-                    MainForm.settVidCodec.ForeColor = Color.Gray
-                    MainForm.settVidCodec.Tag = Color.Gray
+                    oMainForm.settVidCodec.ForeColor = Color.Gray
+                    oMainForm.settVidCodec.Tag = Color.Gray
                 End If
             Else
-                MainForm.settVideo.ForeColor = Color.Gray
-                MainForm.settVideo.Tag = Color.Gray
-                MainForm.settVidFmt.ForeColor = Color.Gray
-                MainForm.settVidFmt.Tag = Color.Gray
-                MainForm.settVidCodec.ForeColor = Color.Gray
-                MainForm.settVidCodec.Tag = Color.Gray
-                MainForm.settLFExt.ForeColor = Color.Gray
-                MainForm.settLFExt.Tag = Color.Gray
+                oMainForm.settVideo.ForeColor = Color.Gray
+                oMainForm.settVideo.Tag = Color.Gray
+                oMainForm.settVidFmt.ForeColor = Color.Gray
+                oMainForm.settVidFmt.Tag = Color.Gray
+                oMainForm.settVidCodec.ForeColor = Color.Gray
+                oMainForm.settVidCodec.Tag = Color.Gray
+                oMainForm.settLFExt.ForeColor = Color.Gray
+                oMainForm.settLFExt.Tag = Color.Gray
             End If
         Else
-            MainForm.settNoCols.ForeColor = Color.Gray
-            MainForm.settNoCols.Tag = Color.Gray
-            MainForm.settSMALLFNT.ForeColor = Color.Gray
-            MainForm.settSMALLFNT.Tag = Color.Gray
-            MainForm.attCreTh.ForeColor = Color.Gray
-            MainForm.attCreTh.Tag = Color.Gray
-            MainForm.settThumbs.ForeColor = Color.Gray
-            MainForm.settThumbs.Tag = Color.Gray
-            MainForm.settImgOut.ForeColor = Color.Gray
-            MainForm.settImgOut.Tag = Color.Gray
-            MainForm.settVideo.ForeColor = Color.Gray
-            MainForm.settVideo.Tag = Color.Gray
-            MainForm.settVidFmt.ForeColor = Color.Gray
-            MainForm.settVidFmt.Tag = Color.Gray
-            MainForm.settVidCodec.ForeColor = Color.Gray
-            MainForm.settVidCodec.Tag = Color.Gray
-            MainForm.settLFExt.ForeColor = Color.Gray
-            MainForm.settLFExt.Tag = Color.Gray
+            oMainForm.settNoCols.ForeColor = Color.Gray
+            oMainForm.settNoCols.Tag = Color.Gray
+            oMainForm.settSMALLFNT.ForeColor = Color.Gray
+            oMainForm.settSMALLFNT.Tag = Color.Gray
+            oMainForm.attCreTh.ForeColor = Color.Gray
+            oMainForm.attCreTh.Tag = Color.Gray
+            oMainForm.settThumbs.ForeColor = Color.Gray
+            oMainForm.settThumbs.Tag = Color.Gray
+            oMainForm.settImgOut.ForeColor = Color.Gray
+            oMainForm.settImgOut.Tag = Color.Gray
+            oMainForm.settVideo.ForeColor = Color.Gray
+            oMainForm.settVideo.Tag = Color.Gray
+            oMainForm.settVidFmt.ForeColor = Color.Gray
+            oMainForm.settVidFmt.Tag = Color.Gray
+            oMainForm.settVidCodec.ForeColor = Color.Gray
+            oMainForm.settVidCodec.Tag = Color.Gray
+            oMainForm.settLFExt.ForeColor = Color.Gray
+            oMainForm.settLFExt.Tag = Color.Gray
         End If
 
-        If MainForm.pOut.Tag.ToString = "HTML" Then
-            MainForm.settHTMLFont.ForeColor = Color.Black
-            MainForm.settHTMLFont.Tag = Color.Black
-            MainForm.settHTMLObj.ForeColor = Color.Black
-            MainForm.settHTMLObj.Tag = Color.Black
-            MainForm.settAnim.ForeColor = Color.Black
-            MainForm.settAnim.Tag = Color.Black
+        If oMainForm.pOut.Tag.ToString = "HTML" Then
+            oMainForm.settHTMLFont.ForeColor = Color.Black
+            oMainForm.settHTMLFont.Tag = Color.Black
+            oMainForm.settHTMLObj.ForeColor = Color.Black
+            oMainForm.settHTMLObj.Tag = Color.Black
+            oMainForm.settAnim.ForeColor = Color.Black
+            oMainForm.settAnim.Tag = Color.Black
         Else
-            MainForm.settHTMLFont.ForeColor = Color.Gray
-            MainForm.settHTMLFont.Tag = Color.Gray
-            MainForm.settHTMLObj.ForeColor = Color.Gray
-            MainForm.settHTMLObj.Tag = Color.Gray
-            MainForm.settAnim.ForeColor = Color.Gray
-            MainForm.settAnim.Tag = Color.Gray
+            oMainForm.settHTMLFont.ForeColor = Color.Gray
+            oMainForm.settHTMLFont.Tag = Color.Gray
+            oMainForm.settHTMLObj.ForeColor = Color.Gray
+            oMainForm.settHTMLObj.Tag = Color.Gray
+            oMainForm.settAnim.ForeColor = Color.Gray
+            oMainForm.settAnim.Tag = Color.Gray
         End If
-        If MainForm.pOut.Tag.ToString = "UTF" Then
-            MainForm.settUTF.ForeColor = Color.Black
-            MainForm.settUTF.Tag = Color.Black
+        If oMainForm.pOut.Tag.ToString = "UTF" Then
+            oMainForm.settUTF.ForeColor = Color.Black
+            oMainForm.settUTF.Tag = Color.Black
         Else
-            MainForm.settUTF.ForeColor = Color.Gray
-            MainForm.settUTF.Tag = Color.Gray
+            oMainForm.settUTF.ForeColor = Color.Gray
+            oMainForm.settUTF.Tag = Color.Gray
         End If
-        If MainForm.pOut.Tag.ToString = "BBS" Then
-            MainForm.settBBS.ForeColor = Color.Black
-            MainForm.settBBS.Tag = Color.Black
+        If oMainForm.pOut.Tag.ToString = "BBS" Then
+            oMainForm.settBBS.ForeColor = Color.Black
+            oMainForm.settBBS.Tag = Color.Black
         Else
-            MainForm.settBBS.ForeColor = Color.Gray
-            MainForm.settBBS.Tag = Color.Gray
+            oMainForm.settBBS.ForeColor = Color.Gray
+            oMainForm.settBBS.Tag = Color.Gray
         End If
-        If MainForm.pOut.Tag.ToString <> "IMG" And Settings.rAnim.Checked = False Then
-            MainForm.settSauce.ForeColor = Color.Black
-            MainForm.settSauce.Tag = Color.Black
+        If oMainForm.pOut.Tag.ToString <> "IMG" And Settings.rAnim.Checked = False Then
+            oMainForm.settSauce.ForeColor = Color.Black
+            oMainForm.settSauce.Tag = Color.Black
         Else
-            MainForm.settSauce.ForeColor = Color.Gray
-            MainForm.settSauce.Tag = Color.Gray
+            oMainForm.settSauce.ForeColor = Color.Gray
+            oMainForm.settSauce.Tag = Color.Gray
         End If
-    
+
 
 
     End Sub

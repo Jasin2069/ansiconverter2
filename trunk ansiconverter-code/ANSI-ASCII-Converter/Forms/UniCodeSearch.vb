@@ -3,7 +3,10 @@
     Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
         Me.Close()
     End Sub
-
+    Protected Overrides Sub OnClosing(e As System.ComponentModel.CancelEventArgs)
+        MyBase.OnClosing(e)
+        My.Application.OpenForms.Remove(oUniCodeSearch)
+    End Sub
     Private Sub UniCodeSearch_Activated(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Activated
         '   Me.Width = MainForm.Width
         '   Me.Height = MainForm.Height
@@ -52,7 +55,7 @@
 
         DataGridView1.Rows.Clear()
         sCount.Text = 0
-        My.Application.DoEvents()
+        System.Windows.Forms.Application.DoEvents()
         DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
@@ -116,19 +119,19 @@
         recCount.Refresh()
         Converter.bHTMLEncode = False
         Converter.bSanitize = False
-        Converter.BuildMappings("CP437")
-        My.Application.DoEvents()
+        Converter.ConverterSupport.BuildMappings("CP437")
+        System.Windows.Forms.Application.DoEvents()
         Try
             Dim bMatch As Boolean = False
             For a As Integer = 0 To UniNamesList.Count - 1
                 bMatch = False
                 If bIDs.Checked = True And bMatch = False Then
-                    If Converter.isInt(sSearch) Then
+                    If Converter.ConverterSupport.isInt(sSearch) Then
                         If CInt(sSearch) = a Then
                             bMatch = True
                         End If
                     End If
-                    If InStr(UniNamesList.Item(a).CodeHex, sSearch, CompareMethod.Text) > 0 Then
+                    If InStr(1, UniNamesList.Item(a).Code, sSearch, CompareMethod.Text) > 0 Then
                         bMatch = True
                     End If
                     If InStr(UniNamesList.Item(a).CodeHex, sSearch, CompareMethod.Text) > 0 Then
@@ -176,10 +179,10 @@
                     With itemP
                         If UniNamesList.Item(a).Code >= 0 And UniNamesList.Item(a).Code <= 32 Then
                             '.Cells(1).Value = ChrW(AscW(ChrW(9216 + a)))
-                            .Cells(0).Value = Converter.aCtrlChars(UniNamesList.Item(a).Code)
+                            .Cells(0).Value = Converter.Internal.aCtrlChars(UniNamesList.Item(a).Code)
                             .Cells(0).Style.Font = New Drawing.Font(selectedFont.FontFamily, selectedFont.Size * 2, FontStyle.Bold, 3) 'New Font("Lucida Console", 9, FontStyle.Bold, GraphicsUnit.Point)
                         Else
-                            .Cells(0).Value = Converter.AscConv(UniNamesList.Item(a).Code)
+                            .Cells(0).Value = Converter.ConverterSupport.AscConv(UniNamesList.Item(a).Code)
                         End If
                         .Cells(1).Value = "Dec:" & Strings.Right(Space(10) & UniNamesList.Item(a).Code, 10) & vbCrLf & _
                                           "Hex:" & Strings.Right("0000000000" & UniNamesList.Item(a).CodeHex, 10) & vbCrLf & _
@@ -211,7 +214,7 @@
                     End With
                     sCount.Text += 1
                     MyRow = DataGridView1.Rows.Add(itemP)
-                    My.Application.DoEvents()
+                    System.Windows.Forms.Application.DoEvents()
                 End If
             Next
             'DataGridView1.AutoSize = True

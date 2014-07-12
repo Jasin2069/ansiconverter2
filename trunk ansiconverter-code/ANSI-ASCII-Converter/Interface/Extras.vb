@@ -11,27 +11,11 @@ Public Module Extras
     Public sBlockData As String = ""
     Public aBlockData() As String
     Public UniNamesList As New List(Of NL)
+
+    Public aCtrlChars As String() = New String() {"NUL", "SOH", "STX", "ETX", "EOT", "ENQ", "ACK", "BEL", "BS", "HT", "LF", "VT", "FF", "CR", "SO", "SI", "DLE", "DC1", "DC2", "DC3", "DC4", "NAK", "SYN", "ETB", "CAN", "EM", "SUB", "ESC", "FS", "GS", "RS", "US", "SP"}
+
     '------------------------------------
-    Public Structure NL
-        Public Code As Integer
-        Public CodeHex As String
-        Public CodeBin As String
-        Public CodeOct As String
-        Public Name As String
-        Public Aliases As List(Of String) '=
-        Public Similar As List(Of String) 'x
-        Public Notes As List(Of String)  '*
-        Public Sub New(ByVal C As Integer, ByVal Ch As String, ByVal cO As String, ByVal cB As String, ByVal N As String)
-            Code = C
-            CodeHex = Ch
-            Name = N
-            CodeBin = cB
-            CodeOct = cO
-            Aliases = New List(Of String)
-            Similar = New List(Of String)
-            Notes = New List(Of String)
-        End Sub
-    End Structure
+
     Public Sub ProcBlocks(ByVal selBlock)
         Dim iRes
 
@@ -40,40 +24,42 @@ Public Module Extras
         iRes = BuildUniCodeBlocks(sBlockData)
         If selBlock = "" Then
             selBlock = aUniBlocks.item(0).sKey
-            UnicodeBlocks.seBlockName.Text = aUniBlocks.item(0).sDisplay
+            oUnicodeBlocks.seBlockName.Text = aUniBlocks.item(0).sDisplay
         End If
         pBlock.Visible = False
         '226, 80
-        UnicodeBlocks.FadingLabel1.Top = pBlock.Top + 20
-        UnicodeBlocks.FadingLabel1.Left = pBlock.Left + 100
+        oUnicodeBlocks.FadingLabel1.Top = pBlock.Top + 20
+        oUnicodeBlocks.FadingLabel1.Left = pBlock.Left + 100
+
 
 
         'pUniBlockTemplate
-        UnicodeBlocks.FadingLabel1.Visible = True
-        UnicodeBlocks.FadingLabel1.ffUnderObject = pBlock
-        UnicodeBlocks.FadingLabel1.ffAutoFade = True
-        UnicodeBlocks.FadingLabel1.Fade()
+        'UnicodeBlocks.Controls.Add(UnicodeBlocks.FadingLabel1)
+        oUnicodeBlocks.FadingLabel1.Visible = True
+        'UnicodeBlocks.FadingLabel1.ffUnderObject = pBlock
+        oUnicodeBlocks.FadingLabel1.AutoFade = True
+        oUnicodeBlocks.FadingLabel1.Fade()
         For Each ctrl As Control In pBlock.Controls
             ctrl.Dispose()
         Next
         pBlock.Dispose()
         pBlock = New Windows.Forms.Panel
         pBlock.Name = "pBlocker"
-        UnicodeBlocks.Controls.Add(pBlock)
+        oUnicodeBlocks.Controls.Add(pBlock)
         pBlock.Visible = False
         '  ScrollBar = New ScrollBar.DefaultBackColor = Color.DarkBlue
 
-        CopyControlSettings(UnicodeBlocks.pUniBlockTemplate, pBlock)
+        CopyControlSettings(oUnicodeBlocks.pUniBlockTemplate, pBlock)
         pBlock.Visible = False
-        pBlock.Location = UnicodeBlocks.pUniBlockTemplate.Location
+        pBlock.Location = oUnicodeBlocks.pUniBlockTemplate.Location
         pBlock.AutoScroll = True
-        AddHandler UnicodeBlocks.MouseHover, AddressOf cpblock_panelzoomreset
+        AddHandler oUnicodeBlocks.MouseHover, AddressOf cpblock_panelzoomreset
         If iRes > 0 Then
-            UnicodeBlocks.NuMBlocks.Text = iRes
+            oUnicodeBlocks.NuMBlocks.Text = iRes
             BuildCharList(selBlock, pBlock)
         End If
         pBlock.Visible = True
-        My.Application.DoEvents()
+        System.Windows.Forms.Application.DoEvents()
 
 
     End Sub
@@ -103,13 +89,13 @@ Public Module Extras
                         aTmp2 = Split(aTmp1(a), vbTab)
                         If aTmp2(0) <> "" Then
                             bNewChar = True
-                            If Converter.isHex(aTmp2(0)) Then
+                            If Converter.ConverterSupport.isHex(aTmp2(0)) Then
                                 If iCurrChar <> -1 Then
                                     UNList.Add(newNL)
                                 End If
                                 bIgnore = False
-                                iCurrChar = Converter.HexToDec(aTmp2(0))
-                                newNL = New NL(iCurrChar, aTmp2(0), Oct(iCurrChar), Converter.Int2Bin(iCurrChar), aTmp2(1))
+                                iCurrChar = Converter.ConverterSupport.HexToDec(aTmp2(0))
+                                newNL = New NL(iCurrChar, aTmp2(0), Oct(iCurrChar), Converter.ConverterSupport.Int2Bin(iCurrChar), aTmp2(1))
                             Else
                                 bIgnore = True
                             End If
@@ -154,7 +140,7 @@ Public Module Extras
             'sCallResults = APICall(sBaseURL, "get", "", "", "", "", False)
             Dim webClient As System.Net.WebClient = New System.Net.WebClient()
             sCallResults = webClient.DownloadString(sBaseURL)
-            UnicodeBlocks.listUniBlocks.DataSource = Nothing
+            oUnicodeBlocks.listUniBlocks.DataSource = Nothing
             iBlockCount = 0
             If sCallResults <> "" Then
                 sCallResults = Replace(sCallResults, vbCrLf, vbLf, 1, -1, CompareMethod.Text)
@@ -176,9 +162,9 @@ Public Module Extras
                                     sRangeFrom = aRange(0)
                                     sRangeTo = aRange(1)
                                 End If
-                                If sName <> "" And sRangeFrom <> "" And sRangeFrom.length <= 4 And sRangeTo <> "" And Converter.isHex(sRangeFrom) And Converter.isHex(sRangeTo) Then
+                                If sName <> "" And sRangeFrom <> "" And sRangeFrom.length <= 4 And sRangeTo <> "" And Converter.ConverterSupport.isHex(sRangeFrom) And Converter.ConverterSupport.isHex(sRangeTo) Then
                                     iDiff = 0
-                                    iDiff = Converter.HexToDec(sRangeTo) - Converter.HexToDec(sRangeFrom)
+                                    iDiff = Converter.ConverterSupport.HexToDec(sRangeTo) - Converter.ConverterSupport.HexToDec(sRangeFrom)
                                     If iDiff < 5000 Then
                                         iBlockCount += 1
                                         sBlockData = sBlockData & sRangeFrom & "|" & sRangeTo & "|" & sName & "~"
@@ -191,11 +177,11 @@ Public Module Extras
                 Next
             End If
 
-            UnicodeBlocks.listUniBlocks.DataSource = aUniBlocks
-            UnicodeBlocks.listUniBlocks.DisplayMember = "sDisplay"
-            UnicodeBlocks.listUniBlocks.ValueMember = "sKey"
-            UnicodeBlocks.listUniBlocks.Text = ""
-            UnicodeBlocks.listUniBlocks.SetSelected(0, True)
+            oUnicodeBlocks.listUniBlocks.DataSource = aUniBlocks
+            oUnicodeBlocks.listUniBlocks.DisplayMember = "sDisplay"
+            oUnicodeBlocks.listUniBlocks.ValueMember = "sKey"
+            oUnicodeBlocks.listUniBlocks.Text = ""
+            oUnicodeBlocks.listUniBlocks.SetSelected(0, True)
         Else
             'aBlockData = Split(sBlockData, "~")
             iBlockCount = aUniBlocks.Count
@@ -204,6 +190,9 @@ Public Module Extras
 
         Return iBlockCount
     End Function
+
+  
+
     '--------------------------------------------------------------
     Public Sub BuildCharList(ByVal sKeyVal As String, ByRef p As Windows.Forms.Panel)
         Dim iCol, iLine, iTop, iLeft
@@ -211,8 +200,8 @@ Public Module Extras
         Dim iCurr
 
         aKeyVal = Split(sKeyVal, "-")
-        iFrom = Converter.HexToDec(aKeyVal(0))
-        iTo = Converter.HexToDec(aKeyVal(1))
+        iFrom = Converter.ConverterSupport.HexToDec(aKeyVal(0))
+        iTo = Converter.ConverterSupport.HexToDec(aKeyVal(1))
         iNumC = iTo - iFrom + 1
         'MsgBox "From: " & iFrom & ", To:" & iTo, vbOk, "test"
         'UnicodeBlocks.seBlockName.Text &= " (" & iNumC & " characters)"
@@ -236,7 +225,7 @@ Public Module Extras
             lCi.Name = "lci" & iCurr
             lCh.Name = "lch" & iCurr
             p.Controls.Add(p2)
-            CopyControlSettings(UnicodeBlocks.pCharTemplate, p2)
+            CopyControlSettings(oUnicodeBlocks.pCharTemplate, p2)
             p2.Top = iTop
             p2.Left = iLeft
 
@@ -244,11 +233,11 @@ Public Module Extras
             p2.Controls.Add(lCi)
             p2.Controls.Add(lCh)
 
-            CopyControlSettings(UnicodeBlocks.lblCharTemplate, lC)
+            CopyControlSettings(oUnicodeBlocks.lblCharTemplate, lC)
             lC.Visible = True
-            CopyControlSettings(UnicodeBlocks.lblCharIntTemplate, lCi)
+            CopyControlSettings(oUnicodeBlocks.lblCharIntTemplate, lCi)
             lCi.Visible = True
-            CopyControlSettings(UnicodeBlocks.lblCharHextemplate, lCh)
+            CopyControlSettings(oUnicodeBlocks.lblCharHextemplate, lCh)
             lCh.Visible = True
             p2.BringToFront()
             'AddHandler p2.MouseEnter, AddressOf cpblock_panelzoomin
@@ -270,7 +259,7 @@ Public Module Extras
             '      Console.WriteLine("name: " & p2.Name & ", top: " & iTop & ", Left: " & iLeft & ", width: " & p2.Width & ", height: " & p2.Height)
 
             If iCurr >= 0 And iCurr <= 32 Then
-                lC.Text = Converter.aCtrlChars(iCurr)
+                lC.Text = Converter.Internal.aCtrlChars(iCurr)
                 lC.Font = New Font("Lucida Console", 9, FontStyle.Bold, GraphicsUnit.Point)
             Else
                 If iCurr = 38 Then
@@ -280,8 +269,17 @@ Public Module Extras
                 End If
 
             End If
+            lC.Tag = iCurr
+            lCi.Tag = iCurr
+            lCh.Tag = iCurr
+            p2.Tag = iCurr
+            AddHandler p2.Click, AddressOf CharClicker
+            AddHandler lC.Click, AddressOf CharClicker
+            AddHandler lCi.Click, AddressOf CharClicker
+            AddHandler lCh.Click, AddressOf CharClicker
+
             lCi.Text = iCurr
-            lCh.Text = Converter.UniHex(iCurr)
+            lCh.Text = Converter.ConverterSupport.UniHex(iCurr)
 
 
             iCol = iCol + 1
@@ -294,11 +292,26 @@ Public Module Extras
 
         Next
 
-        UnicodeBlocks.FontDialog1.Font = selectedFont
-        ApplyFont(UnicodeBlocks.FontDialog1, Nothing)
-        My.Application.DoEvents()
+        oUnicodeBlocks.FontDialog1.Font = selectedFont
+        ApplyFont(oUnicodeBlocks.FontDialog1, Nothing)
+        System.Windows.Forms.Application.DoEvents()
 
 
+    End Sub
+    Public Sub CharClicker(ByVal sender As Object, ByVal e As EventArgs)
+        Try
+            If IsNumeric(sender.tag) Then
+                Dim idx As Integer = UniNamesList.FindIndex(Function(x) CInt(sender.tag).Equals(CInt(x.Code)))
+                If idx >= 0 Then
+                    Dim ChrDet As New CharDetail(UniNamesList.Item(idx))
+                    ChrDet.Activate()
+                    ChrDet.ShowDialog()
+                    ChrDet.Dispose()
+                End If
+            End If
+        Catch ex As Exception
+
+        End Try
     End Sub
     Public Sub CopyControlSettings(ByRef cFrom As Windows.Forms.Control, ByRef cTo As Windows.Forms.Control)
         Dim panelf As Windows.Forms.Panel
@@ -393,9 +406,9 @@ Public Module Extras
             currCPBlockzoompanel = New Windows.Forms.Panel
             currCPBlockzoompanel.Name = "copyXPanel"
             currCPBlockzoompanel.Visible = False
-            UnicodeBlocks.Controls.Add(currCPBlockzoompanel)
-            currCPBlockzoompanel.Left = UnicodeBlocks.pUniBlockTemplate.Left + sender.left
-            currCPBlockzoompanel.Top = UnicodeBlocks.pUniBlockTemplate.Top + sender.top
+            oUnicodeBlocks.Controls.Add(currCPBlockzoompanel)
+            currCPBlockzoompanel.Left = oUnicodeBlocks.pUniBlockTemplate.Left + sender.left
+            currCPBlockzoompanel.Top = oUnicodeBlocks.pUniBlockTemplate.Top + sender.top
             currCPBlockzoompanel.Tag = sender
             currCPBlockzoompanel.SendToBack()
             CopyControlSettings(sender, currCPBlockzoompanel)
@@ -523,9 +536,9 @@ Public Module Extras
                 Call ApplyFont(seldialog, Nothing)
             End If
         Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Exclamation, My.Application.ApplicationContext.MainForm.Text)
+            MsgBox(ex.Message, MsgBoxStyle.Exclamation, oMainForm.Text)
             Err.Clear()
-            seldialog.Font = UnicodeBlocks.lblCharTemplate.Font
+            seldialog.Font = oUnicodeBlocks.lblCharTemplate.Font
             Call ApplyFont(seldialog, Nothing)
         End Try
 
@@ -534,10 +547,16 @@ Public Module Extras
 
     Public Sub ApplyFont(ByVal sender As Object, ByVal e As EventArgs)
         selectedFont = sender.Font
-        UnicodeBlocks.lblSelFont.Text = selectedFont.Name & " (" & selectedFont.Size.ToString & " " & selectedFont.Unit.ToString & ")"
-        CodePageMaps.lblSelFont.Text = UnicodeBlocks.lblSelFont.Text
-        UniCodeSearch.lblSelFont.Text = UnicodeBlocks.lblSelFont.Text
-        Settings.lblSelFont.Text = UnicodeBlocks.lblSelFont.Text
+        If Not oUnicodeBlocks Is Nothing Then
+            oUnicodeBlocks.lblSelFont.Text = selectedFont.Name & " (" & selectedFont.Size.ToString & " " & selectedFont.Unit.ToString & ")"
+        End If
+        If Not oCodePageMaps Is Nothing Then
+            oCodePageMaps.lblSelFont.Text = selectedFont.Name & " (" & selectedFont.Size.ToString & " " & selectedFont.Unit.ToString & ")"
+        End If
+        If Not oUniCodeSearch Is Nothing Then
+            oUniCodeSearch.lblSelFont.Text = selectedFont.Name & " (" & selectedFont.Size.ToString & " " & selectedFont.Unit.ToString & ")"
+        End If
+
         Dim tempChild As Form = My.Application.OpenForms.Item(1)
         If bDebug = True Then Console.WriteLine(tempChild.Name)
 
@@ -547,29 +566,29 @@ Public Module Extras
         Call SaveVariousSet("SelectedFontBold", selectedFont.Bold)
 
         If tempChild.Name = "CodePageMaps" Then
-            If CodePageMaps.DataGridView1.ColumnCount > 0 Then
-                CodePageMaps.DataGridView1.Columns(0).DefaultCellStyle.Font = New Drawing.Font(selectedFont.FontFamily, selectedFont.Size * 0.4, FontStyle.Regular, 3)
-                CodePageMaps.DataGridView1.Columns(1).DefaultCellStyle.Font = New Drawing.Font(selectedFont.FontFamily, selectedFont.Size * 0.66, FontStyle.Regular, 3)
-                CodePageMaps.DataGridView1.Columns(2).DefaultCellStyle.Font = New Drawing.Font(selectedFont.FontFamily, selectedFont.Size * 0.4, FontStyle.Regular, 3)
-                CodePageMaps.DataGridView1.Columns(3).DefaultCellStyle.Font = New Drawing.Font(selectedFont.FontFamily, selectedFont.Size * 0.4, FontStyle.Regular, 3)
-                CodePageMaps.DataGridView1.Columns(4).DefaultCellStyle.Font = New Drawing.Font(selectedFont.FontFamily, selectedFont.Size * 0.5, FontStyle.Regular, 3)
+            If oCodePageMaps.DataGridView1.ColumnCount > 0 Then
+                oCodePageMaps.DataGridView1.Columns(0).DefaultCellStyle.Font = New Drawing.Font(selectedFont.FontFamily, selectedFont.Size * 0.4, FontStyle.Regular, 3)
+                oCodePageMaps.DataGridView1.Columns(1).DefaultCellStyle.Font = New Drawing.Font(selectedFont.FontFamily, selectedFont.Size * 0.66, FontStyle.Regular, 3)
+                oCodePageMaps.DataGridView1.Columns(2).DefaultCellStyle.Font = New Drawing.Font(selectedFont.FontFamily, selectedFont.Size * 0.4, FontStyle.Regular, 3)
+                oCodePageMaps.DataGridView1.Columns(3).DefaultCellStyle.Font = New Drawing.Font(selectedFont.FontFamily, selectedFont.Size * 0.4, FontStyle.Regular, 3)
+                oCodePageMaps.DataGridView1.Columns(4).DefaultCellStyle.Font = New Drawing.Font(selectedFont.FontFamily, selectedFont.Size * 0.5, FontStyle.Regular, 3)
                 For x As Integer = 0 To 32
-                    CodePageMaps.DataGridView1.Rows(x).Cells(1).Style.Font = New Drawing.Font(selectedFont.FontFamily, selectedFont.Size * 0.4, FontStyle.Bold, 3)
+                    oCodePageMaps.DataGridView1.Rows(x).Cells(1).Style.Font = New Drawing.Font(selectedFont.FontFamily, selectedFont.Size * 0.4, FontStyle.Bold, 3)
                 Next
             End If
         End If
         If tempChild.Name = "UniCodeSearch" Then
-            If UniCodeSearch.DataGridView1.ColumnCount > 0 Then
-                UniCodeSearch.DataGridView1.Columns(0).DefaultCellStyle.Font = New Drawing.Font(selectedFont.FontFamily, selectedFont.Size * 2, FontStyle.Regular, 3)
-                UniCodeSearch.DataGridView1.Columns(1).DefaultCellStyle.Font = New Drawing.Font(selectedFont.FontFamily, selectedFont.Size * 0.4, FontStyle.Regular, 3)
-                UniCodeSearch.DataGridView1.Columns(2).DefaultCellStyle.Font = New Drawing.Font(selectedFont.FontFamily, selectedFont.Size * 0.4, FontStyle.Regular, 3)
-                UniCodeSearch.DataGridView1.Columns(3).DefaultCellStyle.Font = New Drawing.Font(selectedFont.FontFamily, selectedFont.Size * 0.4, FontStyle.Regular, 3)
-                UniCodeSearch.DataGridView1.Columns(4).DefaultCellStyle.Font = New Drawing.Font(selectedFont.FontFamily, selectedFont.Size * 0.4, FontStyle.Regular, 3)
+            If oUniCodeSearch.DataGridView1.ColumnCount > 0 Then
+                oUniCodeSearch.DataGridView1.Columns(0).DefaultCellStyle.Font = New Drawing.Font(selectedFont.FontFamily, selectedFont.Size * 2, FontStyle.Regular, 3)
+                oUniCodeSearch.DataGridView1.Columns(1).DefaultCellStyle.Font = New Drawing.Font(selectedFont.FontFamily, selectedFont.Size * 0.4, FontStyle.Regular, 3)
+                oUniCodeSearch.DataGridView1.Columns(2).DefaultCellStyle.Font = New Drawing.Font(selectedFont.FontFamily, selectedFont.Size * 0.4, FontStyle.Regular, 3)
+                oUniCodeSearch.DataGridView1.Columns(3).DefaultCellStyle.Font = New Drawing.Font(selectedFont.FontFamily, selectedFont.Size * 0.4, FontStyle.Regular, 3)
+                oUniCodeSearch.DataGridView1.Columns(4).DefaultCellStyle.Font = New Drawing.Font(selectedFont.FontFamily, selectedFont.Size * 0.4, FontStyle.Regular, 3)
             End If
         End If
         If tempChild.Name = "UnicodeBlocks" Then
             'Grp.Item(a).Font = New Drawing.Font(Grp.Item(a).Font.FontFamily, Grp.Item(a).Font.Size, FontStyle.Bold)
-            Dim oCtrls As Windows.Forms.Control() = UnicodeBlocks.Controls.Find("pBlocker", False)
+            Dim oCtrls As Windows.Forms.Control() = oUnicodeBlocks.Controls.Find("pBlocker", False)
             If oCtrls.Count > 0 Then
                 For Each oChildCtrl In oCtrls(0).Controls
                     For Each oChildLabel In oChildCtrl.Controls
@@ -605,4 +624,89 @@ Public Module Extras
             End If
         End If
     End Sub
+
+
+    Public Sub CodePageDifferences(ByRef DGW As DataGridView)
+        Dim MyRow As Integer
+        Dim results(,) As Integer
+        ReDim results(255, CPS.CodePages.Count)
+        For a As Integer = 0 To 255
+            For b As Integer = 0 To CPS.CodePages.Count - 1
+                If b = 0 Then
+                    results(a, 0) = 0
+                    results(a, b + 1) = CPS.CodePages.Item(b).toUNI(a)
+                Else
+                    Dim iChr As Integer = CPS.CodePages.Item(b).toUNI(a)
+                    If results(a, 1) = iChr Then
+                        results(a, b + 1) = -1
+                    Else
+                        results(a, b + 1) = iChr
+                        results(a, 0) += 1
+                    End If
+                End If
+
+            Next
+        Next
+        DGW.Rows.Clear()
+        DGW.Columns.Clear()
+        DGW.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        DGW.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None
+        DGW.Columns.Add("ASC", "ASC")
+        DGW.Columns(0).ReadOnly = True
+        DGW.Columns(0).DefaultCellStyle.Font = New Drawing.Font(selectedFont.FontFamily, selectedFont.Size * 0.7, FontStyle.Regular, 3) ' New Font("Lucida Console", 9, FontStyle.Regular, GraphicsUnit.Point)
+        DGW.Columns(0).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DGW.Columns(0).Width = 40
+        For a As Integer = 0 To CPS.CodePages.Count - 4
+            Dim sCP As String = CType(CPS.CodePagesSelection(a), AnsiCPMaps.clsCodePage).Code
+            DGW.Columns.Add(sCP, sCP)
+            DGW.Columns(a + 1).ReadOnly = True
+            If a = 0 Then
+                DGW.Columns(a + 1).DefaultCellStyle.Font = New Drawing.Font(selectedFont.FontFamily, selectedFont.Size, FontStyle.Bold, 3) ' New Font("Lucida Console", 9, FontStyle.Regular, GraphicsUnit.Point)
+            Else
+                DGW.Columns(a + 1).DefaultCellStyle.Font = New Drawing.Font(selectedFont.FontFamily, selectedFont.Size, FontStyle.Regular, 3) ' New Font("Lucida Console", 9, FontStyle.Regular, GraphicsUnit.Point)
+            End If
+
+            DGW.Columns(a + 1).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            DGW.Columns(a + 1).Width = 40
+        Next
+        Try
+
+            For a As Integer = 0 To 254
+                If results(a, 0) > 0 Then
+                    Dim itemP As New DataGridViewRow
+                    itemP.CreateCells(DGW)
+                    Try
+                        With itemP
+                            .Cells(0).Value = Strings.Right("  " & a, 3)
+                            .Cells(0).Style.BackColor = Color.Silver
+                            For b As Integer = 0 To CPS.CodePages.Count - 4
+                                If results(a, b + 1) <> -1 Then
+                                    If a >= 0 And a <= 32 Then
+                                        .Cells(b + 1).Value = aCtrlChars(a)
+
+                                        .Cells(b + 1).Style.Font = New Drawing.Font(selectedFont.FontFamily, selectedFont.Size * 0.8, FontStyle.Bold, 3) 'New Font("Lucida Console", 9, FontStyle.Bold, GraphicsUnit.Point)
+                                    Else
+                                        .Cells(b + 1).Value = ChrW(results(a, b + 1))
+                                    End If
+                                Else
+                                    .Cells(b + 1).Value = " "
+                                    .Cells(b + 1).Style.BackColor = Color.FromArgb(255, 64, 64, 64)
+                                End If
+                            Next
+                        End With
+                    Catch ex As Exception
+
+                    End Try
+                    MyRow = DGW.Rows.Add(itemP)
+                    'My.Application.DoEvents()
+                End If
+            Next
+            DGW.AutoResizeColumns()
+            System.Windows.Forms.Application.DoEvents()
+        Catch ex As Exception
+
+        End Try
+
+    End Sub
+
 End Module

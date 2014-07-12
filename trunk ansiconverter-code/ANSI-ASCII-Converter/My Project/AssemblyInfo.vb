@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("Converter for ASCII, ANSI, PCB, BIN Text to HTML, Unicode and back")> 
 <Assembly: AssemblyCompany("Carsten Cumbrowski aka Roy/SAC")> 
 <Assembly: AssemblyProduct("ANSI-ASCII-Converter")> 
-<Assembly: AssemblyCopyright("Copyleft 2011-12")> 
+<Assembly: AssemblyCopyright("Copyleft 2011-14")> 
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.04.0.0")> 
-<Assembly: AssemblyFileVersion("1.04.0.0")> 
+<Assembly: AssemblyVersion("1.05.0.0")> 
+<Assembly: AssemblyFileVersion("1.05.0.0")> 

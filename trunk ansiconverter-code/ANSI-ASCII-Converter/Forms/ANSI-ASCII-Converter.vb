@@ -1,28 +1,38 @@
 ﻿Imports System.Windows.Forms.Control
-
+Imports System.Threading
+Imports System.ComponentModel
 Public Class MainForm
     Private DraggingStart As Boolean = False
 
+    Public MainDataLoaded As Boolean = False
+    Private _Target As ISynchronizeInvoke
+    Public ReadOnly Property Target As ISynchronizeInvoke
+        Get
+            Return _Target
+        End Get
+    End Property
     Private Sub MainForm_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.GotFocus
         If NFOViewer.Opacity > 0 Then
             NFOViewer.Close()
         End If
     End Sub
 
+
     Private Sub MainForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         MainFormLoaded = False
-
+        MainThreadID = System.Threading.Thread.CurrentThread.GetHashCode()
+        Me.Text = My.Application.Info.ProductName & " - " & My.Application.Info.Version.ToString
         Me.Top = (My.Computer.Screen.WorkingArea.Height / 2) - (Me.Height / 2)
         Me.Left = (My.Computer.Screen.WorkingArea.Width / 2) - (Me.Width / 2)
-        Console.WriteLine("Maroon R: " & Drawing.Color.Maroon.R.ToString & ",G:" & Drawing.Color.Maroon.G.ToString & ",B:" & Drawing.Color.Maroon.B.ToString)
-        Console.WriteLine("RoyalBlue R: " & Drawing.Color.RoyalBlue.R.ToString & ",G:" & Drawing.Color.RoyalBlue.G.ToString & ",B:" & Drawing.Color.RoyalBlue.B.ToString)
+        'Console.WriteLine("Maroon R: " & Drawing.Color.Maroon.R.ToString & ",G:" & Drawing.Color.Maroon.G.ToString & ",B:" & Drawing.Color.Maroon.B.ToString)
+        'Console.WriteLine("RoyalBlue R: " & Drawing.Color.RoyalBlue.R.ToString & ",G:" & Drawing.Color.RoyalBlue.G.ToString & ",B:" & Drawing.Color.RoyalBlue.B.ToString)
         Try
             Call InitConst()
         Catch ex As Exception
 
         End Try
 
-
+        Me._Target = Me
         'pHTMLObj.Left = 388
         'pHTMLObj.Top = 163
         'pUTF.Left = outUnicode.Left + 25
@@ -96,7 +106,7 @@ Public Class MainForm
         AddHandler outCP.SelectedValueChanged, AddressOf outCP_SelectedValueChanged
 
 
-        listFiles.DataSource = Converter.ListInputFiles
+        listFiles.DataSource = FileListItemBindingSource
         listFiles.SelectionMode = SelectionMode.MultiExtended
         listFiles.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         AddHandler listFiles.DrawItem, AddressOf DrawItemHandler
@@ -131,8 +141,8 @@ Public Class MainForm
         AddHandler listFiles.MouseLeave, AddressOf listfiles_MouseLeave
         AddHandler btnOutputFolder.Click, AddressOf btnOutputFolder_Click
 
-        AddHandler btnSettings.Click, AddressOf btnSettings_Click
-        AddHandler btnSettings2.Click, AddressOf btnSettings_Click
+        AddHandler btnSettings.Click, AddressOf btnSettings2_Click
+        AddHandler btnSettings2.Click, AddressOf btnSettings2_Click
         'btnSettings2
         For Each l As Label In ListSettLabels
             'AddHandler l.Click, AddressOf ShowUpdateControl
@@ -215,11 +225,7 @@ Public Class MainForm
             If bDebug = True Then Console.WriteLine("Error Restoring Font Settings")
         End Try
 
-        Try
-            Call LoadAll()
-        Catch ex As Exception
-
-        End Try
+        'InitializeForm()
     End Sub
 
 
@@ -231,16 +237,32 @@ Public Class MainForm
         filelist = e.Data.GetData(DataFormats.FileDrop)
         listFiles.SuspendLayout()
         bAddingFiles = True
+        Dim alphacomp As New AlphanumComparator.AlphanumComparator
+        Array.Sort(filelist, alphacomp)
+        If filelist.Count > 10 Then
+            bBatchAdd = True
+            Me.SuspendLayout()
+        Else
+            bBatchAdd = False
+        End If
         For ax = 0 To filelist.Length - 1
             AddFile(filelist(ax))
-            If ax / 10 = CInt(ax \ 10) Then
-                RefreshListFiles()
-                My.Application.DoEvents()
+            If Not bBatchAdd Then
+                If ax / 10 = CInt(ax \ 10) Then
+                    RefreshListFiles()
+                    System.Windows.Forms.Application.DoEvents()
+                End If
             End If
         Next
+        If bBatchAdd Then
+            Me.ResumeLayout(True)
+            bBatchAdd = False
+        End If
+
         bAddingFiles = False
         listFiles.ResumeLayout()
         RefreshListFiles()
+        InfoMsg(filelist.Length.ToString & " items added to list.", False, False)
         'For Each file In filelist
         ' AddFile(file)
         ' Next
@@ -252,7 +274,7 @@ Public Class MainForm
         If numTotal.Text = 0 Then
             lblDropHere.Visible = True
         End If
-        My.Application.DoEvents()
+        System.Windows.Forms.Application.DoEvents()
 
     End Sub
     Public Sub MainForm_MouseOver(ByVal sender As Object, ByVal e As EventArgs)
@@ -261,15 +283,15 @@ Public Class MainForm
         If numTotal.Text = 0 Then
             lblDropHere.Visible = True
         End If
-        My.Application.DoEvents()
+        System.Windows.Forms.Application.DoEvents()
     End Sub
     Public Sub listfiles_DragLeave(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DragEventArgs)
         listFiles.BackColor = Color.White
-        listFiles.Refresh()
+        listFiles.PerformLayout()
         If numTotal.Text = 0 Then
             lblDropHere.Visible = True
         End If
-        My.Application.DoEvents()
+        System.Windows.Forms.Application.DoEvents()
 
     End Sub
 
@@ -285,7 +307,7 @@ Public Class MainForm
             e.Effect = DragDropEffects.None
             listFiles.BackColor = Color.White
         End If
-        My.Application.DoEvents()
+        System.Windows.Forms.Application.DoEvents()
     End Sub
     Private Sub InputUpdate(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim iFound As Integer = ListIn2.FindIndex(Function(x) sender.Equals(x))
@@ -366,12 +388,40 @@ Public Class MainForm
 
 
     Private Sub btnStart_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        log.Text = ""
-        My.Application.DoEvents()
-        Me.Cursor = Windows.Forms.Cursors.WaitCursor
-        ConvertAllFiles()
-        Me.Cursor = Windows.Forms.Cursors.Default
+        Select Case oConv.Status
+            Case Converter.ProcessFiles.eStatus.Processing
+                Select Case MsgBox("Do you really want to abort the current process? " & vbCrLf & "Press 'Yes' to ABORT!, 'No' to only PAUSE! or 'Cancel' to CONTINUE! Processing.", MsgBoxStyle.YesNoCancel, "Abort/Pause Processing?")
 
+                    Case MsgBoxResult.Cancel
+                    Case MsgBoxResult.Yes
+                        oConv.CancelProcessing()
+                        Me.btnStart.Text = "Aborting"
+                        ToolTip1.SetToolTip(btnStart, "")
+                        Me.btnStart.Enabled = False
+                        System.Windows.Forms.Application.DoEvents()
+                    Case MsgBoxResult.No
+                        oConv.PauseProcessing()
+                        Me.btnStart.Text = "Paused"
+                        ToolTip1.SetToolTip(btnStart, "Click to 'Resume'" & vbCrLf & "Current Batch Processing")
+                        System.Windows.Forms.Application.DoEvents()
+                End Select
+            Case Converter.ProcessFiles.eStatus.Paused
+                ToolTip1.SetToolTip(btnStart, "click to 'Abort' or 'Pause'" & vbCrLf & "current batch processing")
+                oConv.ResumeProcessing()
+                Me.btnStart.Text = "Abort"
+                System.Windows.Forms.Application.DoEvents()
+            Case Else
+                log.Text = ""
+                System.Windows.Forms.Application.DoEvents()
+                Me.Cursor = Windows.Forms.Cursors.WaitCursor
+                Me.btnStart.Text = "Abort"
+                ToolTip1.SetToolTip(btnStart, "click to 'Abort' or 'Pause'" & vbCrLf & "current batch processing")
+                Me.btnStart.BeginColor = Drawing.Color.DarkRed
+                Me.btnStart.EndColor = Drawing.Color.Orange
+                Me.btnStart.Cursor = Cursors.Hand
+                ConvertAllFiles()
+                Me.Cursor = Windows.Forms.Cursors.Default
+        End Select
     End Sub
 
 
@@ -442,6 +492,7 @@ Public Class MainForm
         End If
     End Sub
 
+
    
     Private Sub btnCPMaps_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Try
@@ -457,7 +508,9 @@ Public Class MainForm
             'CodePageMaps.Visible = False
 
             'CodePageMaps.Visible = True
-            CodePageMaps.ShowDialog()
+            oCodePageMaps = New CodePageMaps
+            My.Application.OpenForms.Add(oCodePageMaps)
+            oCodePageMaps.ShowDialog()
             'CodePageMaps.BringToFront()
             'CodePageMaps.Activate()
 
@@ -467,47 +520,72 @@ Public Class MainForm
     End Sub
 
     Private Sub btnUniBlocks_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        If bWebConnectionIssue Then
+            If MsgBox("There seems to be a problem with your Internet Connection or the site: " & uriUniDataRoot & "." & vbCrLf & "Do you want to continue anyway (may results in an Error)?", MsgBoxStyle.YesNo, "Connection Error") = MsgBoxResult.No Then
+                Exit Sub
+            End If
+        End If
         Try
             'UnicodeBlocks.Visible = False
             'UnicodeBlocks.BringToFront()
-            UnicodeBlocks.ShowDialog()
+            oUnicodeBlocks = New UnicodeBlocks
+            My.Application.OpenForms.Add(oUnicodeBlocks)
+            oUnicodeBlocks.ShowDialog()
             'UnicodeBlocks.Activate()
             'UnicodeBlocks.Visible = True
         Catch ex As Exception
-
+            MsgBox("Unable to load Unicode Blocks.", MsgBoxStyle.OkOnly, "Error")
         End Try
 
     End Sub
 
     Private Sub btnUniSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        If bWebConnectionIssue Then
+            If MsgBox("There seems to be a problem with your Internet Connection or the site: " & uriUniDataRoot & "." & vbCrLf & "Do you want to continue anyway (may results in an Error)?", MsgBoxStyle.YesNo, "Connection Error") = MsgBoxResult.No Then
+                Exit Sub
+            End If
+        End If
         Try
             'UnicodeBlocks.Visible = False
             'UnicodeBlocks.BringToFront()
 
             'UnicodeBlocks.Activate()
             'UnicodeBlocks.Visible = True
+            oUniCodeSearch = New UniCodeSearch
+            My.Application.OpenForms.Add(oUniCodeSearch)
         Catch ex As Exception
-
+            MsgBox("Unable to load Unicode Blocks.", MsgBoxStyle.OkOnly, "Error")
         End Try
-        UniCodeSearch.ShowDialog()
+        oUniCodeSearch.ShowDialog()
     End Sub
-  
-
- 
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNFO.Click
-        Dim oNFO As New NFOViewer
-        oNFO.AutoStart = False
-        oNFO.Opacity = 0
-        oNFO.WindowSize = Me.Size
-        oNFO.WindowPosition = Me.Location
-        oNFO.NFOText = RTrim(Converter.ByteArrayToString(My.Resources.RoySAC))
-        oNFO.Show()
-        oNFO.BringToFront()
-        oNFO.StartForm()
-        oNFO.Activate()
+    Protected Overrides Sub OnActivated(e As System.EventArgs)
+        MyBase.OnActivated(e)
+        If Me.MainDataLoaded = False Then
+            Try
+                Call LoadAll()
+                MainDataLoaded = True
+            Catch ex As Exception
+                MainDataLoaded = True
+            End Try
+        End If
+    End Sub
 
 
-        oNFO.NFOText = RTrim(Converter.ByteArrayToString(My.Resources.RoySAC))
+    Private Sub btnNFO_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNFO.Click
+        oNfo = New NFOViewer
+        My.Application.OpenForms.Add(oNfo)
+        oNfo.AutoStart = False
+        oNfo.Opacity = 0
+        oNfo.WindowSize = Me.Size
+        oNfo.WindowPosition = Me.Location
+        oNfo.NFOText = RTrim(Converter.ConverterSupport.ByteArrayToString(My.Resources.RoySAC))
+        oNfo.Show()
+        oNfo.BringToFront()
+        oNfo.StartForm()
+        oNfo.Activate()
+
+
+        oNfo.NFOText = RTrim(Converter.ConverterSupport.ByteArrayToString(My.Resources.RoySAC))
         'oNFO.Dispose()
 
 
@@ -519,7 +597,7 @@ Public Class MainForm
         '   oForm.Dispose()
     End Sub
 
- 
+
 
     Private Sub settMouseOver(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim l As Windows.Forms.Label
@@ -542,7 +620,19 @@ Public Class MainForm
 
 
     Private Sub btnSettings_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Settings.ShowDialog()
+        If TypeOf sender Is Windows.Forms.Label Then
+            Dim l As Windows.Forms.Label = CType(sender, Windows.Forms.Label)
+            If l.Tag.Equals(Color.Black) Then
+                Settings.SuspendLayout()
+                Settings.Visible = False
+                Settings.showdialog(sender.name)
+            End If
+        Else
+            Settings.SuspendLayout()
+            Settings.Visible = False
+            Settings.showdialog("")
+        End If
+
     End Sub
 
     Private Sub DebugSwitch(ByVal sender As Object, ByVal e As EventArgs)
@@ -554,5 +644,13 @@ Public Class MainForm
             CType(sender, Control).ForeColor = Color.White
         End If
     End Sub
+
+    Private Sub btnSettings2_Click(sender As System.Object, e As System.EventArgs)
+        Settings.SuspendLayout()
+        Settings.Visible = False
+        Settings.showdialog("")
+    End Sub
+
+
 End Class
 

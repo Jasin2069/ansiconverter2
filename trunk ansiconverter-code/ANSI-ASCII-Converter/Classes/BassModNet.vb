@@ -340,15 +340,15 @@ Public Class BassModNet
         While BassVolume < iToVol
             BassVolume += 1
             If BassVolume > iToVol Then BassVolume = iToVol
-            My.Application.DoEvents()
+            System.Windows.Forms.Application.DoEvents()
             If Not Me.SetVolume(BassVolume) Then
                 Console.WriteLine("BASS:Error Setting Volume")
-                My.Application.DoEvents()
+                System.Windows.Forms.Application.DoEvents()
             End If
             System.Threading.Thread.Sleep(2)
             For z As Integer = 1 To 10000
                 If z Mod 1000 = 0 Then
-                    My.Application.DoEvents()
+                    System.Windows.Forms.Application.DoEvents()
                 End If
             Next
             System.Threading.Thread.Sleep(2)
@@ -358,15 +358,15 @@ Public Class BassModNet
         While BassVolume > 0
             BassVolume -= 1
             If BassVolume < 0 Then BassVolume = 0
-            My.Application.DoEvents()
+            System.Windows.Forms.Application.DoEvents()
             If Not Me.SetVolume(BassVolume) Then
                 Console.WriteLine("BASS:Error Setting Volume")
-                My.Application.DoEvents()
+                System.Windows.Forms.Application.DoEvents()
             End If
             System.Threading.Thread.Sleep(2)
             For z As Integer = 1 To 10000
                 If z Mod 1000 = 0 Then
-                    My.Application.DoEvents()
+                    System.Windows.Forms.Application.DoEvents()
                 End If
             Next
             System.Threading.Thread.Sleep(2)
@@ -380,7 +380,7 @@ Public Class BassModNet
     Public Sub ExportAndLoadAssembly()
 
         Dim sTmpFile As String = IO.Path.GetTempFileName & ".dll"
-        Call Converter.WriteFile(sTmpFile, My.Resources.BassMOD_Net, True, 0, True, True)
+        Call Converter.ConverterSupport.WriteFile(sTmpFile, My.Resources.BassMOD_Net, True, 0, True, True)
         asmBASS = System.Reflection.Assembly.LoadFrom(sTmpFile)
         If TypeOf asmBASS Is System.Reflection.Assembly Then
             bAsmLoaded = True

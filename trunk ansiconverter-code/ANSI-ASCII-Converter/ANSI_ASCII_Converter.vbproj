@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -7,12 +7,12 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{505B1281-F5DB-411C-8846-B42419301A3F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>ANSI_ASCII_Converter.My.MyApplication</StartupObject>
+    <StartupObject>Sub Main</StartupObject>
     <RootNamespace>ANSI_ASCII_Converter</RootNamespace>
     <AssemblyName>ANSI_ASCII_Converter</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <MyType>WindowsForms</MyType>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <MyType>WindowsFormsWithCustomSubMain</MyType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <OptionExplicit>On</OptionExplicit>
     <OptionCompare>Binary</OptionCompare>
     <OptionStrict>Off</OptionStrict>
@@ -22,6 +22,12 @@
     <AssemblyOriginatorKeyFile>ANSI-ASCII-Converter.snk</AssemblyOriginatorKeyFile>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -44,7 +50,8 @@
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>ANSI_ASCII_Converter.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -53,8 +60,9 @@
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>ANSI_ASCII_Converter.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
     <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -62,22 +70,24 @@
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\x86\Debug\</OutputPath>
     <DocumentationFile>ANSI_ASCII_Converter.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
     <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.vb</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\x86\Release\</OutputPath>
     <DocumentationFile>ANSI_ASCII_Converter.xml</DocumentationFile>
     <Optimize>true</Optimize>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
     <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.vb</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MyControls, Version=1.0.2.0, Culture=neutral, PublicKeyToken=ed3dfbe285c6d8fa, processorArchitecture=MSIL">
@@ -85,6 +95,7 @@
       <HintPath>..\..\..\..\Program Files (x86)\RoysCustomControls\MyControls.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -108,12 +119,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="Classes\AlphaSorter.vb" />
     <Compile Include="Classes\BassModNet.vb" />
     <Compile Include="Classes\CloneControls.vb" />
     <Compile Include="Classes\CodePage.vb" />
     <Compile Include="Classes\NFOViewer.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Classes\NL.vb" />
     <Compile Include="Classes\ScrollBar.Designer.vb">
       <DependentUpon>ScrollBar.vb</DependentUpon>
     </Compile>
@@ -125,8 +138,20 @@
     <Compile Include="Classes\xPanel.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\CustomPanelControl.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FadingLabelPanel.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Convert\Data.vb" />
     <Compile Include="Convert\ProcessFiles.vb" />
+    <Compile Include="Forms\CharDetail.Designer.vb">
+      <DependentUpon>CharDetail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CharDetail.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\CodePageMaps.Designer.vb">
       <DependentUpon>CodePageMaps.vb</DependentUpon>
     </Compile>
@@ -137,6 +162,12 @@
       <DependentUpon>ANSI-ASCII-Converter.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\ANSI-ASCII-Converter.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FontsLoader.Designer.vb">
+      <DependentUpon>FontsLoader.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FontsLoader.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Settings.Designer.vb">
@@ -158,11 +189,17 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Interface\ControlDepends.vb" />
+    <Compile Include="Interface\Convert.vb" />
     <Compile Include="Interface\Extras.vb" />
     <Compile Include="Interface\Interface.vb" />
     <Compile Include="Interface\Reflect.vb" />
     <Compile Include="Interface\ReplicateControls.vb" />
     <Compile Include="Interface\Settings.vb" />
+    <Compile Include="MainModule.vb" />
+    <Compile Include="My Project\Application1.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -188,6 +225,9 @@
       <DependentUpon>ScrollBar.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CharDetail.resx">
+      <DependentUpon>CharDetail.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CodePageMaps.resx">
       <DependentUpon>CodePageMaps.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -195,6 +235,9 @@
     <EmbeddedResource Include="Forms\ANSI-ASCII-Converter.resx">
       <DependentUpon>ANSI-ASCII-Converter.vb</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FontsLoader.resx">
+      <DependentUpon>FontsLoader.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Settings.resx">
       <DependentUpon>Settings.vb</DependentUpon>
@@ -218,8 +261,9 @@
   <ItemGroup>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
-      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+      <LastGenOutput>Application1.Designer.vb</LastGenOutput>
     </None>
+    <None Include="My Project\DataSources\Converter.FileListItem.datasource" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>
@@ -254,6 +298,11 @@
     <Content Include="RoORS.ico" />
   </ItemGroup>
   <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
       <Visible>False</Visible>
       <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
@@ -268,6 +317,11 @@
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5</ProductName>
       <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
       <Visible>False</Visible>

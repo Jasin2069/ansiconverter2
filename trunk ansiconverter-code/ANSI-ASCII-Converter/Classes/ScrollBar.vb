@@ -3,6 +3,10 @@ Imports System.Windows.Forms
 Public Class ScrollBar
     Inherits Windows.Forms.Control
 
+    Public Enum eOrientation
+        Vertical = 1
+        Horizontal = 2
+    End Enum
     'Required by the Windows Form Designer
     Private components As System.ComponentModel.IContainer
     Private WithEvents pScrollbar1 As System.Windows.Forms.Panel
@@ -13,7 +17,8 @@ Public Class ScrollBar
     Private WithEvents pMiddle1 As System.Windows.Forms.Panel
     Private WithEvents btnMiddle1 As System.Windows.Forms.Button
     Private WithEvents Timer1 As System.Windows.Forms.Timer
-    Private Const OrgControlHeight = 327
+    Private OrgControlHeight As Integer = 327
+    Private OrgControlWidth As Integer = 24
 
     Private m_Action As String = ""
     Private m_MouseDown As Boolean = False
@@ -47,6 +52,87 @@ Public Class ScrollBar
     Private p_UpDownBigBtnsForeColor As Drawing.Color = Color.FromArgb(255, 192, 192, 255)
     Private p_UpDownBigBtnsBackColor As Drawing.Color = Color.FromArgb(255, 50, 50, 255)
     Private p_MiddleBtnColor As Drawing.Color = Color.FromArgb(255, 192, 0, 0)
+
+    Private p_ObjectSize As Long = 100
+    Private p_ObjectScale As Integer = 100
+    Private p_UpdateUnitSize As Double = 1
+    Private p_ObjectVisibleRange As Long = 10
+    Private p_ObjectScrollPosition As Long = 0
+
+    Private p_Orient As eOrientation = eOrientation.Vertical
+
+    Private p_BtnUpLabel As Integer = 9651
+    Private p_BtnDnLabel As Integer = 9661
+    Private p_BtnLtLabel As Integer = 9665
+    Private p_BtnRtLabel As Integer = 9655
+
+    Private p_BtnIncLabel As Integer = 9651
+    Private p_BtnDecLabel As Integer = 9661
+
+    Public Delegate Sub actionAbsolutePositionChangedEventHandler(ByVal sender As System.Object, ByVal position As System.Double)
+    Public Delegate Sub actionIncrementalPositionChangedUpEventHandler(ByVal sender As System.Object, ByVal change As System.Double)
+    Public Delegate Sub actionIncrementalPositionChangedDownEventHandler(ByVal sender As System.Object, ByVal change As System.Double)
+
+    Public Event actionAbsolutePositionChanged As actionAbsolutePositionChangedEventHandler
+    Public Event actionIncrementalPositionChangedUp As actionIncrementalPositionChangedUpEventHandler
+    Public Event actionIncrementalPositionChangedDown As actionIncrementalPositionChangedDownEventHandler
+
+    Public Property ObjectSize() As Long
+        Get
+            Return p_ObjectSize
+        End Get
+        Set(ByVal value As Long)
+            If p_ObjectSize <> value And value > 0 Then
+                p_ObjectSize = value
+                p_UpdateUnitSize = Math.Round(p_ObjectSize / p_ObjectScale, 5)
+            End If
+        End Set
+    End Property
+    Public Property Orientation() As eOrientation
+        Get
+            Return p_Orient
+        End Get
+        Set(ByVal value As eOrientation)
+            If p_Orient <> value Then
+                p_Orient = value
+                FlipOver()
+                Select Case p_Orient
+                    Case eOrientation.Horizontal
+                        p_BtnDecLabel = p_BtnLtLabel
+                        p_BtnIncLabel = p_BtnRtLabel
+                    Case eOrientation.Vertical
+                        p_BtnDecLabel = p_BtnDnLabel
+                        p_BtnIncLabel = p_BtnUpLabel
+                End Select
+            End If
+        End Set
+    End Property
+    Public Property ObjectScale() As Long
+        Get
+            Return p_ObjectScale
+        End Get
+        Set(ByVal value As Long)
+            If p_ObjectScale <> value And value > 0 Then
+                p_ObjectScale = value
+                p_UpdateUnitSize = Math.Round(p_ObjectSize / p_ObjectScale, 5)
+            End If
+        End Set
+    End Property
+    Public Property ObjectVisibleRange() As Long
+        Get
+            Return p_ObjectVisibleRange
+        End Get
+        Set(ByVal value As Long)
+            If p_ObjectVisibleRange <> value And p_ObjectVisibleRange > 0 And p_ObjectVisibleRange < p_ObjectSize Then
+                p_ObjectVisibleRange = value
+            End If
+        End Set
+    End Property
+    Public ReadOnly Property UpdateUnitSize() As Double
+        Get
+            Return p_UpdateUnitSize
+        End Get
+    End Property
 
     Public Property MiddleBtnColor() As Drawing.Color
         Get
@@ -227,24 +313,45 @@ Public Class ScrollBar
     End Property
     Private Sub ControlResize(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Resize
         Dim scalefactor As Double = 1
-        scalefactor = Me.Height / OrgControlHeight
-        Me.pScrollbar1.Width = Me.Width
-        Me.pScrollbar1.Height = Me.Height
-        Me.pMiddle1.Width = Me.pScrollbar1.Width
-        For Each c As Control In Me.ListScrollbarButtons
-            Dim b As Button = CType(c, Button)
-            b.Width = pScrollbar1.Width
-            b.Height = Me.ListScrollBarButtonsOrgHeight.Item(Me.ListScrollBarButtonsOrgHeight.FindIndex(Function(x) b.Equals(x))) * scalefactor
-            Dim fnt As Font = New Font(b.Font.FontFamily, Me.ListScrollBarButtonsOrgFontSize.Item(Me.ListScrollBarButtonsOrgFontSize.FindIndex(Function(x) b.Equals(x))) * scalefactor, b.Font.Style, GraphicsUnit.Point)
-            b.Font = fnt
-        Next
-        Dim btnHeights As Integer = Me.btnUpBig1.Height + Me.btnUp1.Height + 4
-        Me.btnUpBig1.Top = 0
-        Me.btnUp1.Top = Me.btnUpBig1.Height + 2
-        Me.btnDownBig1.Top = Me.pScrollbar1.Height - Me.btnDownBig1.Height
-        Me.btnDown1.Top = Me.btnDownBig1.Top - Me.btnDown1.Height - 2
-        Me.pMiddle1.Top = btnHeights
-        Me.pMiddle1.Height = Me.pScrollbar1.Height - (btnHeights * 2)
+        If p_Orient = eOrientation.Vertical Then
+            scalefactor = Me.Height / OrgControlHeight
+            Me.pScrollbar1.Width = Me.Width
+            Me.pScrollbar1.Height = Me.Height
+            Me.pMiddle1.Width = Me.pScrollbar1.Width
+            For Each c As Control In Me.ListScrollbarButtons
+                Dim b As Button = CType(c, Button)
+                b.Width = pScrollbar1.Width
+                b.Height = Me.ListScrollBarButtonsOrgHeight.Item(Me.ListScrollBarButtonsOrgHeight.FindIndex(Function(x) b.Equals(x))) * scalefactor
+                Dim fnt As Font = New Font(b.Font.FontFamily, Me.ListScrollBarButtonsOrgFontSize.Item(Me.ListScrollBarButtonsOrgFontSize.FindIndex(Function(x) b.Equals(x))) * scalefactor, b.Font.Style, GraphicsUnit.Point)
+                b.Font = fnt
+            Next
+            Dim btnHeights As Integer = Me.btnUpBig1.Height + Me.btnUp1.Height + 4
+            Me.btnUpBig1.Top = 0
+            Me.btnUp1.Top = Me.btnUpBig1.Height + 2
+            Me.btnDownBig1.Top = Me.pScrollbar1.Height - Me.btnDownBig1.Height
+            Me.btnDown1.Top = Me.btnDownBig1.Top - Me.btnDown1.Height - 2
+            Me.pMiddle1.Top = btnHeights
+            Me.pMiddle1.Height = Me.pScrollbar1.Height - (btnHeights * 2)
+        Else
+            scalefactor = Me.Width / OrgControlWidth
+            Me.pScrollbar1.Height = Me.Height
+            Me.pScrollbar1.Width = Me.Width
+            Me.pMiddle1.Height = Me.pScrollbar1.Height
+            For Each c As Control In Me.ListScrollbarButtons
+                Dim b As Button = CType(c, Button)
+                b.Height = pScrollbar1.Height
+                b.Width = Me.ListScrollBarButtonsOrgHeight.Item(Me.ListScrollBarButtonsOrgHeight.FindIndex(Function(x) b.Equals(x))) * scalefactor
+                Dim fnt As Font = New Font(b.Font.FontFamily, Me.ListScrollBarButtonsOrgFontSize.Item(Me.ListScrollBarButtonsOrgFontSize.FindIndex(Function(x) b.Equals(x))) * scalefactor, b.Font.Style, GraphicsUnit.Point)
+                b.Font = fnt
+            Next
+            Dim btnHeights As Integer = Me.btnUpBig1.Width + Me.btnUp1.Width + 4
+            Me.btnUpBig1.Left = 0
+            Me.btnUp1.Left = Me.btnUpBig1.Width + 2
+            Me.btnDownBig1.Left = Me.pScrollbar1.Width - Me.btnDownBig1.Width
+            Me.btnDown1.Left = Me.btnDownBig1.Left - Me.btnDown1.Width - 2
+            Me.pMiddle1.Left = btnHeights
+            Me.pMiddle1.Width = Me.pScrollbar1.Width - (btnHeights * 2)
+        End If
     End Sub
     Public Sub New()
 
@@ -292,19 +399,46 @@ Public Class ScrollBar
     End Sub
 
     Private Sub DataGridRowsCountChange(ByVal sender As Object, ByVal e As EventArgs)
+        Dim bGrid As Boolean = True
         If Me.DGridView Is Nothing Then
-            Exit Sub
+            bGrid = False
         End If
         Dim lPcntScrolled As Double = 0, lScrollPos As Double = 0
-        Dim btnHalfSize As Integer = 0, btnMiddlePos As Integer = 0, iBtnHeight As Integer = 0, iNumRowsVisible As Integer = 0
-        If Me.DGridView.RowCount = 0 Then
+        Dim btnHalfSize As Integer = 0, btnMiddlePos As Integer = 0, iBtnHeight As Integer = 0, iNumRowsVisible As Long = 0
+        Dim iRowCount As Long = 0
+
+        If p_Orient = eOrientation.Vertical Then
+            If bGrid Then iRowCount = Me.DGridView.RowCount
+        Else
+            If bGrid Then iRowCount = Me.DGridView.ColumnCount
+        End If
+        If Not bGrid Then iRowCount = p_ObjectScale
+
+
+        If iRowCount = 0 Then
             Me.btnMiddle1.Visible = False
         Else
             '  Console.WriteLine("-------------- cycle starts ---------------")
             Me.btnMiddle1.Visible = True
-            iNumRowsVisible = (Me.DGridView.Height - Me.DGridView.ColumnHeadersHeight) / Me.DGridView.Rows(0).Height
-            'Height of pMiddle1
-            iBtnHeight = (Me.pMiddle1.Height * iNumRowsVisible) / Me.DGridView.RowCount
+            If p_Orient = eOrientation.Vertical Then
+                If bGrid Then
+                    iNumRowsVisible = (Me.DGridView.Height - Me.DGridView.ColumnHeadersHeight) / Me.DGridView.Rows(0).Height
+                    'Height of pMiddle1
+                    iBtnHeight = (Me.pMiddle1.Height * iNumRowsVisible) / Me.DGridView.RowCount
+                Else
+                    iNumRowsVisible = p_ObjectVisibleRange
+                    iBtnHeight = (Me.pMiddle1.Height * p_ObjectVisibleRange) / p_ObjectSize
+                End If
+            Else
+                If bGrid Then
+                    iNumRowsVisible = (Me.DGridView.Width - Me.DGridView.RowHeadersWidth) / Me.DGridView.Columns(0).Width
+                    'Height of pMiddle1
+                    iBtnHeight = (Me.pMiddle1.Width * iNumRowsVisible) / Me.DGridView.ColumnCount
+                Else
+                    iNumRowsVisible = p_ObjectVisibleRange
+                    iBtnHeight = (Me.pMiddle1.Width * p_ObjectVisibleRange) / p_ObjectSize
+                End If
+            End If
 
             'Console.WriteLine("iBtnHeight=" & iBtnHeight & ", iNumRowsVisible=" & iNumRowsVisible)
 
@@ -312,28 +446,73 @@ Public Class ScrollBar
             If iBtnHeight = 0 Then : iBtnHeight = 2 : End If
             Me.btnMiddle1.Height = iBtnHeight
             'Now location
-            If Me.DGridView.FirstDisplayedScrollingRowIndex = 0 Then
-                Me.btnMiddle1.Top = 0
+            Dim iFirstDispIndex As Long = 0
+            '
+            If bGrid Then
+                If p_Orient = eOrientation.Vertical Then
+                    iFirstDispIndex = Me.DGridView.FirstDisplayedScrollingRowIndex
+                Else
+                    iFirstDispIndex = Me.DGridView.FirstDisplayedScrollingColumnIndex
+                End If
+
+            Else
+                iFirstDispIndex = p_ObjectScrollPosition
+            End If
+            If iFirstDispIndex = 0 Then
+                If p_Orient = eOrientation.Vertical Then
+                    Me.btnMiddle1.Top = 0
+                Else
+                    Me.btnMiddle1.Left = 0
+                End If
                 ' Console.WriteLine("Top of the list")
             Else
-                lPcntScrolled = (Me.DGridView.FirstDisplayedScrollingRowIndex * 100) / Me.DGridView.RowCount
-                lScrollPos = (Me.pMiddle1.Height * lPcntScrolled) / 100
-                btnHalfSize = Me.btnMiddle1.Height / 2 : btnMiddlePos = Me.btnMiddle1.Top + btnHalfSize
+                If bGrid Then
+                    If p_Orient = eOrientation.Vertical Then
+                        lPcntScrolled = (Me.DGridView.FirstDisplayedScrollingRowIndex * 100) / Me.DGridView.RowCount
+                    Else
+                        lPcntScrolled = (Me.DGridView.FirstDisplayedScrollingColumnIndex * 100) / Me.DGridView.ColumnCount
+                    End If
+
+                Else
+                    lPcntScrolled = (p_ObjectScrollPosition * 100) / p_ObjectScale
+                End If
+
+                If p_Orient = eOrientation.Vertical Then
+                    lScrollPos = (Me.pMiddle1.Height * lPcntScrolled) / 100
+                    btnHalfSize = Me.btnMiddle1.Height / 2 : btnMiddlePos = Me.btnMiddle1.Top + btnHalfSize
+                    If (lScrollPos < btnHalfSize) Then
+                        '  Console.WriteLine("lScrollPos < btnHalfSize, pos = 0")
+                        Me.btnMiddle1.Top = 0
+                    Else
+                        If (lScrollPos > (Me.pMiddle1.Height - btnHalfSize)) Then
+                            Me.btnMiddle1.Top = Me.pMiddle1.Height - Me.btnMiddle1.Height
+                            'Console.WriteLine(" lScrollPos > (p-height - btnMiddlePos), top = p-height - btn-height")
+                        Else
+                            Me.btnMiddle1.Top = lScrollPos - btnHalfSize
+                            ' Console.WriteLine("else")
+                        End If
+                    End If
+                Else
+                    lScrollPos = (Me.pMiddle1.Width * lPcntScrolled) / 100
+                    btnHalfSize = Me.btnMiddle1.Width / 2 : btnMiddlePos = Me.btnMiddle1.Left + btnHalfSize
+                    If (lScrollPos < btnHalfSize) Then
+                        '  Console.WriteLine("lScrollPos < btnHalfSize, pos = 0")
+                        Me.btnMiddle1.Left = 0
+                    Else
+                        If (lScrollPos > (Me.pMiddle1.Width - btnHalfSize)) Then
+                            Me.btnMiddle1.Left = Me.pMiddle1.Width - Me.btnMiddle1.Width
+                            'Console.WriteLine(" lScrollPos > (p-height - btnMiddlePos), top = p-height - btn-height")
+                        Else
+                            Me.btnMiddle1.Left = lScrollPos - btnHalfSize
+                            ' Console.WriteLine("else")
+                        End If
+                    End If
+
+                End If
 
                 'Console.WriteLine("lPcntScrolled = " & lPcntScrolled & ", lScrollPos = " & lScrollPos & ", btnHalfSize = " & btnHalfSize & ", btnMiddlePos = " & btnMiddlePos)
 
-                If (lScrollPos < btnHalfSize) Then
-                    '  Console.WriteLine("lScrollPos < btnHalfSize, pos = 0")
-                    Me.btnMiddle1.Top = 0
-                Else
-                    If (lScrollPos > (Me.pMiddle1.Height - btnHalfSize)) Then
-                        Me.btnMiddle1.Top = Me.pMiddle1.Height - Me.btnMiddle1.Height
-                        'Console.WriteLine(" lScrollPos > (p-height - btnMiddlePos), top = p-height - btn-height")
-                    Else
-                        Me.btnMiddle1.Top = lScrollPos - btnHalfSize
-                        ' Console.WriteLine("else")
-                    End If
-                End If
+
             End If
         End If
     End Sub
@@ -344,7 +523,7 @@ Public Class ScrollBar
             If Not p_UpBtnImageHover Is Nothing Then
                 Me.btnUp1.Text = ""
             Else
-                Me.btnUp1.Text = ChrW(9651)
+                Me.btnUp1.Text = ChrW(p_BtnIncLabel)
             End If
         End If
         If sender.name = "btnDown1" Then
@@ -352,7 +531,7 @@ Public Class ScrollBar
             If Not p_DnBtnImageHover Is Nothing Then
                 Me.btnDown1.Text = ""
             Else
-                Me.btnDown1.Text = ChrW(9661)
+                Me.btnDown1.Text = ChrW(p_BtnDecLabel)
             End If
         End If
         sender.Refresh()
@@ -364,7 +543,7 @@ Public Class ScrollBar
             If Not p_UpBtnImage Is Nothing Then
                 Me.btnUp1.Text = ""
             Else
-                Me.btnUp1.Text = ChrW(9651)
+                Me.btnUp1.Text = ChrW(p_BtnIncLabel)
             End If
         End If
         If sender.name = "btnDown1" Then
@@ -372,7 +551,7 @@ Public Class ScrollBar
             If Not p_DnBtnImage Is Nothing Then
                 Me.btnDown1.Text = ""
             Else
-                Me.btnDown1.Text = ChrW(9661)
+                Me.btnDown1.Text = ChrW(p_BtnDecLabel)
             End If
         End If
         sender.Refresh()
@@ -418,16 +597,32 @@ Public Class ScrollBar
     End Sub
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If m_MouseDown = True And CStr(m_Action) = "2" Then
-            Dim btnHalfSize As Integer = Me.btnMiddle1.Height / 2
+            Dim btnHalfSize As Integer
+            If p_Orient = eOrientation.Vertical Then
+                btnHalfSize = Me.btnMiddle1.Height / 2
+            Else
+                btnHalfSize = Me.btnMiddle1.Width / 2
+            End If
+
             Me.m_delta = Me.m_position - Me.pMiddle1.PointToClient(MousePosition) 'Cursor.Position 'e.Location
             'MousePosition.X, MousePosition.Y
             Me.m_position = Me.pMiddle1.PointToClient(MousePosition) 'Cursor.Position 'e.Location
-            Me.m_position.Y += btnHalfSize
+            If p_Orient = eOrientation.Vertical Then
+                Me.m_position.Y += btnHalfSize
+            Else
+                Me.m_position.X += btnHalfSize
+            End If
+
             Dim et As MouseEventArgs = New MouseEventArgs(Windows.Forms.MouseButtons.Left, 1, Me.m_position.X, Me.m_position.Y, 0)
             'Call DebugMousePos(et)
-            If Me.m_position.Y < (Me.pMiddle1.Height) And Me.m_position.Y > 0 Then
-
-                Me.positionofmousecheck(pMiddle1, et)
+            If p_Orient = eOrientation.Vertical Then
+                If Me.m_position.Y < (Me.pMiddle1.Height) And Me.m_position.Y > 0 Then
+                    Me.positionofmousecheck(pMiddle1, et)
+                End If
+            Else
+                If Me.m_position.X < (Me.pMiddle1.Width) And Me.m_position.X > 0 Then
+                    Me.positionofmousecheck(pMiddle1, et)
+                End If
             End If
         End If
 
@@ -474,7 +669,7 @@ Public Class ScrollBar
             If Not p_UpBtnImageClick Is Nothing Then
                 Me.btnUp1.Text = ""
             Else
-                Me.btnUp1.Text = ChrW(9651)
+                Me.btnUp1.Text = ChrW(p_BtnIncLabel)
             End If
         End If
         If sender.name = "btnDown1" Then
@@ -482,7 +677,7 @@ Public Class ScrollBar
             If Not p_DnBtnImageClick Is Nothing Then
                 Me.btnDown1.Text = ""
             Else
-                Me.btnDown1.Text = ChrW(9661)
+                Me.btnDown1.Text = ChrW(p_BtnDecLabel)
             End If
         End If
     End Sub
@@ -501,7 +696,7 @@ Public Class ScrollBar
             If Not p_UpBtnImage Is Nothing Then
                 Me.btnUp1.Text = ""
             Else
-                Me.btnUp1.Text = ChrW(9651)
+                Me.btnUp1.Text = ChrW(p_BtnIncLabel)
             End If
         End If
         If sender.name = "btnDown1" Then
@@ -509,24 +704,27 @@ Public Class ScrollBar
             If Not p_DnBtnImage Is Nothing Then
                 Me.btnDown1.Text = ""
             Else
-                Me.btnDown1.Text = ChrW(9661)
+                Me.btnDown1.Text = ChrW(p_BtnDecLabel)
             End If
         End If
 
     End Sub
 
     Private Sub PerformScrollAction(ByVal saction As String)
+        Dim bGrid As Boolean = True
         If Me.DGridView Is Nothing Then
-            Exit Sub
+            bGrid = False
         End If
         Dim b As Button = Me.ListScrollbarButtons.Item(CType(saction, Integer))
-        Dim dgv As DataGridView
+
+
+        Dim dgv As DataGridView = Nothing
         If b.Tag = "0" Then
             'dgv = b.Parent.Parent.Parent.Controls.Find("DataGridView1", False)(0)
         Else
             'dgv = b.Parent.Parent.Controls.Find("DataGridView1", False)(0)
         End If
-        dgv = DGridView
+        If bGrid Then dgv = DGridView
 
         If dgv.Rows.Count = 0 Then
             'dgv.ScrollBars.Vertical.crollingOffset -= 5
@@ -535,33 +733,51 @@ Public Class ScrollBar
 
         Select Case b.Tag
             Case "-1"  '"btnUpBig1"
-                If dgv.FirstDisplayedScrollingRowIndex < 5 Then
-                    dgv.FirstDisplayedScrollingRowIndex = 0
+                If bGrid Then
+                    If p_Orient = eOrientation.Vertical Then
+                        If dgv.FirstDisplayedScrollingRowIndex < 5 Then : dgv.FirstDisplayedScrollingRowIndex = 0 : Else : dgv.FirstDisplayedScrollingRowIndex -= 5 : End If
+                    Else
+                        If dgv.FirstDisplayedScrollingColumnIndex < 5 Then : dgv.FirstDisplayedScrollingColumnIndex = 0 : Else : dgv.FirstDisplayedScrollingColumnIndex -= 5 : End If
+                    End If
                 Else
-                    dgv.FirstDisplayedScrollingRowIndex -= 5
+                    If p_ObjectScrollPosition < 5 Then : p_ObjectScrollPosition = 0 : Else : p_ObjectScrollPosition -= 5 : End If
                 End If
             Case "-5" '"btnUp1"
-                If dgv.FirstDisplayedScrollingRowIndex < 2 Then
-                    dgv.FirstDisplayedScrollingRowIndex = 0
+                If bGrid Then
+                    If p_Orient = eOrientation.Vertical Then
+                        If dgv.FirstDisplayedScrollingRowIndex < 2 Then : dgv.FirstDisplayedScrollingRowIndex = 0 : Else : dgv.FirstDisplayedScrollingRowIndex -= 1 : End If
+                    Else
+                        If dgv.FirstDisplayedScrollingColumnIndex < 2 Then : dgv.FirstDisplayedScrollingColumnIndex = 0 : Else : dgv.FirstDisplayedScrollingColumnIndex -= 1 : End If
+                    End If
                 Else
-                    dgv.FirstDisplayedScrollingRowIndex -= 1
+                    If p_ObjectScrollPosition < 2 Then : p_ObjectScrollPosition = 0 : Else : p_ObjectScrollPosition -= 1 : End If
                 End If
 
             Case "0" '"btnMiddle1"
                 '  MouseScrollMove(b, Nothing)
                 If bDebug = True Then Console.WriteLine("btnMiddle action")
             Case "+1" '"btnDown1"
-                If dgv.Rows.Count - dgv.FirstDisplayedScrollingRowIndex < 2 Then
-                    dgv.FirstDisplayedScrollingRowIndex = dgv.Rows.Count - 1
+                If bGrid Then
+                    If p_Orient = eOrientation.Vertical Then
+                        If dgv.Rows.Count - dgv.FirstDisplayedScrollingRowIndex < 2 Then : dgv.FirstDisplayedScrollingRowIndex = dgv.Rows.Count - 1 : Else : dgv.FirstDisplayedScrollingRowIndex += 1 : End If
+                    Else
+                        If dgv.Rows.Count - dgv.FirstDisplayedScrollingColumnIndex < 2 Then : dgv.FirstDisplayedScrollingColumnIndex = dgv.Rows.Count - 1 : Else : dgv.FirstDisplayedScrollingColumnIndex += 1 : End If
+                    End If
+
                 Else
-                    dgv.FirstDisplayedScrollingRowIndex += 1
+                    If p_ObjectScale - p_ObjectScrollPosition < 2 Then : p_ObjectScrollPosition = p_ObjectScale - 1 : Else : p_ObjectScrollPosition += 1 : End If
                 End If
 
             Case "+5" '"btnDownBig1"
-                If dgv.Rows.Count - dgv.FirstDisplayedScrollingRowIndex < 6 Then
-                    dgv.FirstDisplayedScrollingRowIndex = dgv.Rows.Count - 1
+                If bGrid Then
+                    If p_Orient = eOrientation.Vertical Then
+                        If dgv.Rows.Count - dgv.FirstDisplayedScrollingRowIndex < 6 Then : dgv.FirstDisplayedScrollingRowIndex = dgv.Rows.Count - 1 : Else : dgv.FirstDisplayedScrollingRowIndex += 5 : End If
+                    Else
+                        If dgv.Rows.Count - dgv.FirstDisplayedScrollingColumnIndex < 6 Then : dgv.FirstDisplayedScrollingColumnIndex = dgv.Rows.Count - 1 : Else : dgv.FirstDisplayedScrollingColumnIndex += 5 : End If
+                    End If
+
                 Else
-                    dgv.FirstDisplayedScrollingRowIndex += 5
+                    If p_ObjectScale - p_ObjectScrollPosition < 6 Then : p_ObjectScrollPosition = p_ObjectScale - 1 : Else : p_ObjectScrollPosition += 5 : End If
                 End If
                 '    scrollControl(sender..Handle, eScrollDirection.Vertical, eScrollAction.Relitive, 50)
         End Select
@@ -577,8 +793,9 @@ Public Class ScrollBar
 
 
     Private Sub ScrollToPosition(ByVal iVertPos As Integer)
+        Dim bGrid As Boolean = True
         If Me.DGridView Is Nothing Then
-            Exit Sub
+            bGrid = False
         End If
         If PositionUpdating = False Then
             PositionUpdating = True
@@ -588,25 +805,75 @@ Public Class ScrollBar
                 Dim btnHalfSize As Integer = 0, btnMiddlePos As Integer = 0
                 Dim iNewAssumedPos As Integer = 0
 
-                btnHalfSize = Me.btnMiddle1.Height / 2 : btnMiddlePos = Me.btnMiddle1.Top + btnHalfSize
-                iNumRowsVisible = (Me.DGridView.Height - Me.DGridView.ColumnHeadersHeight) / Me.DGridView.Rows(0).Height
-                lPcntScrolled = (100 * iVertPos) / Me.pMiddle1.Height
+                If p_Orient = eOrientation.Vertical Then
+                    btnHalfSize = Me.btnMiddle1.Height / 2 : btnMiddlePos = Me.btnMiddle1.Top + btnHalfSize
+                    lPcntScrolled = (100 * iVertPos) / Me.pMiddle1.Height
+                Else
+                    btnHalfSize = Me.btnMiddle1.Width / 2 : btnMiddlePos = Me.btnMiddle1.Left + btnHalfSize
+                    lPcntScrolled = (100 * iVertPos) / Me.pMiddle1.Width
+                End If
                 If lPcntScrolled > 99 Then lPcntScrolled = 99
                 iNewAssumedPos = iVertPos - btnHalfSize
+
+                If p_Orient = eOrientation.Vertical Then
+                    If bGrid Then iNumRowsVisible = (Me.DGridView.Height - Me.DGridView.ColumnHeadersHeight) / Me.DGridView.Rows(0).Height
+                Else
+                    If bGrid Then iNumRowsVisible = (Me.DGridView.Width - Me.DGridView.RowHeadersWidth) / Me.DGridView.Columns(0).Width
+                End If
+
+                If Not bGrid Then iNumRowsVisible = p_ObjectVisibleRange
+
                 If iNewAssumedPos < btnHalfSize Then
                     Me.btnMiddle1.Top = 0
-                    Me.DGridView.FirstDisplayedScrollingRowIndex = 0
+                    If p_Orient = eOrientation.Vertical Then
+                        If bGrid Then : Me.DGridView.FirstDisplayedScrollingRowIndex = 0 : Else : p_ObjectScrollPosition = 0 : End If
+                    Else
+                        If bGrid Then : Me.DGridView.FirstDisplayedScrollingColumnIndex = 0 : Else : p_ObjectScrollPosition = 0 : End If
+                    End If
+
                 Else
-                    If iNewAssumedPos > (Me.pMiddle1.Height - btnMiddlePos) And btnMiddlePos = Me.pMiddle1.Height - btnHalfSize Then
-                        Me.btnMiddle1.Top = Me.pMiddle1.Height - Me.btnMiddle1.Height
-                        If Me.DGridView.RowCount - iNumRowsVisible > 0 Then
-                            Me.DGridView.FirstDisplayedScrollingRowIndex = Me.DGridView.RowCount - iNumRowsVisible
+                    If p_Orient = eOrientation.Vertical Then
+                        If iNewAssumedPos > (Me.pMiddle1.Height - btnMiddlePos) And btnMiddlePos = Me.pMiddle1.Height - btnHalfSize Then
+                            Me.btnMiddle1.Top = Me.pMiddle1.Height - Me.btnMiddle1.Height
+                            If bGrid Then
+                                If Me.DGridView.RowCount - iNumRowsVisible > 0 Then
+                                    Me.DGridView.FirstDisplayedScrollingRowIndex = Me.DGridView.RowCount - iNumRowsVisible
+                                Else
+                                    Me.DGridView.FirstDisplayedScrollingRowIndex = 0
+                                End If
+                            Else
+                                If p_ObjectScale - p_ObjectVisibleRange > 0 Then
+                                    p_ObjectScrollPosition = p_ObjectScale - p_ObjectVisibleRange
+                                Else
+                                    p_ObjectScrollPosition = 0
+                                End If
+                            End If
                         Else
-                            Me.DGridView.FirstDisplayedScrollingRowIndex = 0
+                            Me.btnMiddle1.Top = iNewAssumedPos - btnHalfSize
+                            If bGrid Then Me.DGridView.FirstDisplayedScrollingRowIndex = (lPcntScrolled * Me.DGridView.RowCount) / 100
+                            If Not bGrid Then p_ObjectScrollPosition = (lPcntScrolled * p_ObjectScale) / 100
                         End If
                     Else
-                        Me.btnMiddle1.Top = iNewAssumedPos - btnHalfSize
-                        Me.DGridView.FirstDisplayedScrollingRowIndex = (lPcntScrolled * Me.DGridView.RowCount) / 100
+                        If iNewAssumedPos > (Me.pMiddle1.Width - btnMiddlePos) And btnMiddlePos = Me.pMiddle1.Width - btnHalfSize Then
+                            Me.btnMiddle1.Left = Me.pMiddle1.Width - Me.btnMiddle1.Width
+                            If bGrid Then
+                                If Me.DGridView.ColumnCount - iNumRowsVisible > 0 Then
+                                    Me.DGridView.FirstDisplayedScrollingColumnIndex = Me.DGridView.ColumnCount - iNumRowsVisible
+                                Else
+                                    Me.DGridView.FirstDisplayedScrollingColumnIndex = 0
+                                End If
+                            Else
+                                If p_ObjectScale - p_ObjectVisibleRange > 0 Then
+                                    p_ObjectScrollPosition = p_ObjectScale - p_ObjectVisibleRange
+                                Else
+                                    p_ObjectScrollPosition = 0
+                                End If
+                            End If
+                        Else
+                            Me.btnMiddle1.Left = iNewAssumedPos - btnHalfSize
+                            If bGrid Then Me.DGridView.FirstDisplayedScrollingColumnIndex = (lPcntScrolled * Me.DGridView.ColumnCount) / 100
+                            If Not bGrid Then p_ObjectScrollPosition = (lPcntScrolled * p_ObjectScale) / 100
+                        End If
                     End If
 
                 End If
@@ -617,7 +884,38 @@ Public Class ScrollBar
         End If
     End Sub
 
+    Private Sub FlipOver()
+        Me.SuspendLayout()
+        Dim iTemp As Integer = 0
+        Dim lTemp As Long = 0
+        Dim dTemp As Double = 0.0
+        RemoveHandler Me.Resize, AddressOf ControlResize
 
+        iTemp = OrgControlHeight
+        OrgControlHeight = OrgControlWidth
+        OrgControlWidth = iTemp
+
+        FlipControl(pScrollbar1)
+        FlipControl(btnDownBig1)
+        FlipControl(btnUpBig1)
+        FlipControl(btnDown1)
+        FlipControl(btnUp1)
+        FlipControl(pMiddle1)
+        FlipControl(btnMiddle1)
+        FlipControl(Me)
+
+        AddHandler Me.Resize, AddressOf ControlResize
+        Me.ResumeLayout()
+    End Sub
+    Private Sub FlipControl(ByRef Ctrl As Windows.Forms.Control)
+        Dim iTemp As Integer = 0
+        iTemp = Ctrl.Height
+        Ctrl.Height = Ctrl.Width
+        Ctrl.Width = iTemp
+        iTemp = Ctrl.Top
+        Ctrl.Top = Ctrl.Left
+        Ctrl.Left = iTemp
+    End Sub
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
