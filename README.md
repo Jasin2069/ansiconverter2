@@ -5,7 +5,7 @@ This will be used to covert to code to c# and make sure it's safe to use. The pl
 ************************************************************************************************
 ************************************************************************************************
 CAUTION -- THE ROYSAC.EXE HAS BEEN FLAGGED FOR A VIRUS ON SOURCEFORGE, CHROME, AND WINDOWS DEFENDER. 
-I WILL BE REMOVING THE EXECUTABLES AND MAKING SURE IT IS SAFE
+IT HAS BEEN REMOVED FROM THIS COPY AND EVERYTHING IS CURRENTLY SAFE THAT I CAN SEE
 ************************************************************************************************
 ************************************************************************************************
 ```
